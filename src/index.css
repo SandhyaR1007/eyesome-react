@@ -20,9 +20,7 @@ body {
 .font-monoton {
   font-family: "Monoton", cursive;
 }
-.font-josephin {
-  font-family: "Josefin Sans", sans-serif;
-}
+
 .custom-bg-gradient {
   background: linear-gradient(
     180deg,

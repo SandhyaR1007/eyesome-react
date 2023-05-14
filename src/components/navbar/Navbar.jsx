@@ -22,7 +22,7 @@ const Navbar = () => {
           </span>
         </section>
 
-        <section className="hidden  sm:flex items-center md:w-1/4 sm:w-1/3 bg-[#E7E1D1] px-3 rounded-full text-sm">
+        <section className="hidden  sm:flex items-center md:w-1/4 sm:w-1/3 bg-black/[0.075] px-3 rounded-full text-sm">
           <input
             className="w-full py-2 px-3 bg-transparent focus:outline-none"
             type="text"
@@ -44,7 +44,7 @@ const Navbar = () => {
           <MenuDropdown />
         </section>
       </div>
-      <section className="sm:hidden  flex items-center  mt-4 bg-[#E7E1D1] px-3 rounded-full text-sm">
+      <section className="sm:hidden  flex items-center  mt-4 bg-black/[0.075] px-3 rounded-full text-sm">
         <input
           className="w-full py-2 px-3 bg-transparent focus:outline-none"
           type="text"
