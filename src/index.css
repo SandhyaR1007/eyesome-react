@@ -1,3 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Monoton&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --theme-color: #fbfaf7;
+  --primary-text-color: #252525;
+  --secondary-text-color: #807c77;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: var(--theme-color);
+  font-family: "Josefin Sans", sans-serif;
+}
+.font-monoton {
+  font-family: "Monoton", cursive;
+}
+.font-josephin {
+  font-family: "Josefin Sans", sans-serif;
+}
+.custom-bg-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(226, 169, 45, 1) 0%,
+    rgba(148, 62, 14, 1) 100%
+  );
+}
+.btn-primary {
+  @apply py-2 px-4 bg-gray-900 text-sm text-gray-100 rounded-lg hover:bg-gray-800;
+}
