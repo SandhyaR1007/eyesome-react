@@ -1,12 +1,12 @@
 import React from "react";
 import { Navbar } from "./components";
-import { Home } from "./pages";
+import { ProductListing } from "./pages";
 
 const App = () => {
   return (
     <div className="mx-[5%] md:mx-[10%]">
       <Navbar />
-      <Home />
+      <ProductListing />
     </div>
   );
 };
