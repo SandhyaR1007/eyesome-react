@@ -42,7 +42,7 @@ const TrendingList = () => {
     },
   ];
   return (
-    <section className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-4 font-josephin py-4 mt-10">
+    <section className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3   lg:grid-cols-4 gap-4  py-4 mt-10">
       <h1 className="text-4xl lg:text-5xl  break-words flex items-center ">
         Trending Products
       </h1>
