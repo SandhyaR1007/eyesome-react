@@ -26,7 +26,7 @@ const ratings = [1, 2, 3, 4];
 const FilterHeading = ({ text }) => <h2 className="text-xl mb-4">{text}</h2>;
 const Filters = () => {
   return (
-    <aside className="filtersContainer fixed left-0 top-0 h-screen z-10 flex flex-col p-3 gap-3 overflow-auto scrollbar">
+    <aside className="filtersContainer fixed left-0 top-0 h-screen z-10 flex flex-col p-3 gap-3 overflow-auto">
       <div className="text-sm text-gray-600">Clear</div>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Filter Products</h1>
