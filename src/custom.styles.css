@@ -1,7 +1,12 @@
 .btn-primary {
   @apply py-2 px-4 bg-gray-900 text-sm text-gray-100 rounded-lg hover:bg-gray-800;
 }
-
+.btn-rounded-primary {
+  @apply border  bg-[--primary-text-color] text-white py-1.5   rounded-full px-6  transition;
+}
+.btn-rounded-secondary {
+  @apply border border-[--primary-text-color]  py-1.5   rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition;
+}
 .custom-bg-gradient {
   background: linear-gradient(
     180deg,
@@ -9,7 +14,11 @@
     rgba(148, 62, 14, 1) 100%
   );
 }
-
+.card {
+  @apply flex flex-col justify-between bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden;
+}
+.cardImg {
+}
 .filtersContainer {
   width: 280px;
   background: rgba(255, 255, 255, 0.3);
