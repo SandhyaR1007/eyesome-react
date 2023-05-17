@@ -4,6 +4,7 @@ import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
+import Logo from "./Logo";
 
 const Navbar = () => {
   return (
@@ -17,9 +18,7 @@ const Navbar = () => {
             width={40}
           />
 
-          <span className="font-monoton text-3xl hover:text-red-600 cursor-pointer">
-            eyesome
-          </span>
+          <Logo />
         </section>
 
         <section className="hidden  sm:flex items-center md:w-1/4 sm:w-1/3 bg-black/[0.075] px-3 rounded-full text-sm">
