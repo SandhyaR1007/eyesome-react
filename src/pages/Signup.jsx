@@ -6,7 +6,7 @@ const Signup = () => {
       <section className=" hidden lg:block max-h-screen  rounded-lg">
         <img src={bannerHero} alt="" className="w-full h-full object-cover" />
       </section>
-      <div className="flex items-center justify-center w-full ">
+      <div className="flex items-center justify-center w-full px-5">
         <section className="px-7 py-10 rounded-md shadow-md bg-white/[0.7] flex flex-col gap-6 w-full max-w-lg">
           <div className="font-monoton text-3xl hover:text-red-600 cursor-pointer text-center">
             eyesome
@@ -40,8 +40,8 @@ const Signup = () => {
           </div>
 
           <div className="w-full py-2   flex flex-col gap-4 items-center">
-            <button className="btn-rounded-secondary bg-black text-white flex items-center gap-2 md:text-sm lg:text-base">
-              Sign up
+            <button className="btn-primary w-2/3 text-lg text-center">
+              Create
             </button>
           </div>
         </section>
