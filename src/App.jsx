@@ -1,7 +1,13 @@
 import React from "react";
 import "./custom.styles.css";
 import { Navbar } from "./components";
-import { Home, ProductDetails, ProductListing, Profile } from "./pages";
+
+
+
+
+import {Profile, Checkout, Home, ProductDetails, ProductListing } from "./pages";
+
+
 
 const App = () => {
   return (
@@ -10,7 +16,10 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductListing /> */}
       {/* <ProductDetails /> */}
+
       <Profile />
+
+
     </div>
   );
 };
