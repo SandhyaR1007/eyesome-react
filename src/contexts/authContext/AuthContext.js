@@ -1,10 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router";
 
 const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(
     localStorage.getItem("authenticated")
   );
@@ -17,7 +15,6 @@ const AuthContextProvider = ({ children }) => {
       setIsAuthenticated(true);
       setTimeout(() => {
         setLoggingIn(false);
-        navigate("/");
       }, 1000);
     }
   };
