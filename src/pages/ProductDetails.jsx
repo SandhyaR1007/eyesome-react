@@ -16,7 +16,7 @@ const ProductDetails = () => {
       "These classic aviator sunglasses are perfect for any occasion.",
   };
   return (
-    <div className="md:min-h-[80vh] flex justify-center items-center">
+    <div className="md:min-h-[80vh] flex justify-center items-center py-3">
       <main className="grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 gap-10 ">
         <section className="p-10 bg-black/[0.075] max-h-screen flex items-center rounded-lg">
           <img src={glassCategory1} alt="" className="w-full " />
