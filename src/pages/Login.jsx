@@ -1,16 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import bannerHero from "../assets/bannerHero.jpg";
 import { Logo } from "../components";
+import { useAuthContext } from "../contexts";
 
 const Login = () => {
+  const { login, isAuthenticated, loggingIn } = useAuthContext();
+  const navigate = useNavigate();
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
   });
 
+  useEffect(() => {
+    let id;
+    if (
+      isAuthenticated &&
+      loginCredentials.email &&
+      loginCredentials.password
+    ) {
+      id = setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(id);
+    };
+  }, [isAuthenticated]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    login(loginCredentials);
   };
   return (
     <main className="grid  grid-rows-1 lg:grid-cols-2 w-full  h-screen m-auto">
@@ -57,8 +79,15 @@ const Login = () => {
                 />
               </label>
               <div className="w-full py-2   flex flex-col gap-4 items-center ">
-                <button className="btn-primary w-2/3 text-lg text-center">
-                  Login
+                <button
+                  className="btn-primary w-2/3 text-lg text-center disabled:bg-opacity-50"
+                  disabled={
+                    loggingIn ||
+                    !loginCredentials.email ||
+                    !loginCredentials.password
+                  }
+                >
+                  {loggingIn ? "Logging In..." : "Login"}
                 </button>
                 <button
                   className="btn-secondary w-2/3 text-sm md:text-base text-center"
