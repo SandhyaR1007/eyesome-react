@@ -4,7 +4,9 @@ import { Navbar } from "./components";
 
 
 
-import { Checkout, Home, ProductDetails, ProductListing } from "./pages";
+
+import {Profile, Checkout, Home, ProductDetails, ProductListing } from "./pages";
+
 
 
 const App = () => {
@@ -15,7 +17,8 @@ const App = () => {
       {/* <ProductListing /> */}
       {/* <ProductDetails /> */}
 
-      <Checkout />
+      <Profile />
+
 
     </div>
   );
