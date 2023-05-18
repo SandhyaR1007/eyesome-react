@@ -2,12 +2,13 @@ import React from "react";
 import "./custom.styles.css";
 import { Navbar } from "./components";
 
-
-
-
-import {Profile, Checkout, Home, ProductDetails, ProductListing } from "./pages";
-
-
+import {
+  Profile,
+  Checkout,
+  Home,
+  ProductDetails,
+  ProductListing,
+} from "./pages";
 
 const App = () => {
   return (
@@ -18,8 +19,6 @@ const App = () => {
       {/* <ProductDetails /> */}
 
       <Profile />
-
-
     </div>
   );
 };
