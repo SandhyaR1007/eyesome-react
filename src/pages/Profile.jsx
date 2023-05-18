@@ -1,7 +1,9 @@
 import { useState } from "react";
-import glassCategory1 from "../assets/glassCategory1.png";
+import { AiOutlinePlus } from "react-icons/ai";
 
 const Profile = () => {
+  const [selectedItem, setSelectedItem] = useState("profile");
+  const [addNewAddress, setAddNewAddress] = useState(false);
   const [addressData, setAddressData] = useState([
     {
       address: "8505 Christina Ridges West Cooper Arunachal Pradesh Pin:820598",
@@ -14,89 +16,131 @@ const Profile = () => {
     town: "aaa y698590809",
     pincode: "123345",
   });
-
+  const AddressForm = () => {
+    return (
+      <form
+        action=""
+        className="flex flex-col gap-3 p-5 bg-gray-50 shadow-md my-3"
+      >
+        <label className="flex flex-col">
+          Flat, House no., Building
+          <input type="text" className="border rounded-md p-1.5 shadow-sm" />
+        </label>
+        <label className="flex flex-col">
+          Area, Colony, Street
+          <input type="email" className="border rounded-md p-1.5 shadow-sm" />
+        </label>
+        <div className="flex gap-2 flex-wrap">
+          <label className="flex flex-1 flex-col">
+            Town/City
+            <input
+              type="password"
+              className="border rounded-md p-1.5 shadow-sm"
+            />
+          </label>
+          <label className="flex flex-1 flex-col">
+            Pin Code
+            <input
+              type="password"
+              className="border rounded-md p-1.5 shadow-sm"
+            />
+          </label>
+        </div>
+        <div className="flex gap-3 mt-3">
+          <button
+            type="button"
+            onClick={() => setAddNewAddress(!addNewAddress)}
+            className="btn-rounded-secondary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
+          >
+            Cancel
+          </button>
+          <button
+            className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
+            onClick={() => {
+              setAddressData([
+                ...addressData,
+                {
+                  address: `${newAddress.area},${newAddress.flat},${newAddress.town}`,
+                  pincode: newAddress.pincode,
+                },
+              ]);
+              setAddNewAddress(!addNewAddress);
+            }}
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    );
+  };
   const AddressCard = ({ address, pincode }) => {
     return (
-      <label className="flex bg-gray-50 items-center gap-2 shadow-sm p-4 rounded-sm">
-        <input type="radio" name="address" id="" className="accent-current" />
+      <div className="flex flex-col bg-gray-50  gap-2 shadow-sm p-4 rounded-sm my-2">
         <p>
           {address}
           Mobile:
           {pincode}
         </p>
-      </label>
+        <div className="flex gap-3">
+          <button className="text-amber-500 font-bold">Edit</button>
+          <button className="text-red-600 font-bold">Remove</button>
+        </div>
+      </div>
     );
   };
   return (
-    <div className="md:min-h-[80vh] flex justify-center items-center py-3">
-      <main className="max-w-lg m-auto">
-        <section className="p-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full h-min">
-          <div className="flex">
-            <button className="flex-1 text-lg bg-[--primary-text-color] text-white p-3 shadow-sm">
-              Profile
-            </button>
-            <button className="flex-1 text-lg bg-gray-100 p-3 shadow-sm ">
-              Address
+    <div className="min-h-[80vh] min-w-md max-w-lg m-auto mt-10">
+      <section className="h-full p-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full">
+        <div className="flex">
+          <button
+            className={`flex-1 text-sm  ${
+              selectedItem === "profile"
+                ? "bg-[--primary-text-color] text-white"
+                : "bg-gray-100"
+            } p-3 shadow-sm transition-colors `}
+            onClick={() => setSelectedItem("profile")}
+          >
+            Profile
+          </button>
+          <button
+            onClick={() => setSelectedItem("address")}
+            className={`flex-1 text-sm  ${
+              selectedItem === "address"
+                ? "bg-[--primary-text-color] text-white"
+                : "bg-gray-100"
+            } p-3 shadow-sm transition-colors `}
+          >
+            Address
+          </button>
+        </div>
+        {selectedItem === "profile" ? (
+          <div className="flex flex-col gap-4 w-full p-5">
+            <p>Username: Test User</p>
+            <p>Email: usermail@email.com</p>
+            <hr />
+            <button className="w-1/2 text-lg bg-rose-600 py-2 px-6 text-white rounded-md ">
+              Logout
             </button>
           </div>
+        ) : (
+          <div>
+            {addressData.map((data) => (
+              <AddressCard address={data.address} pincode={data.pincode} />
+            ))}
 
-          <h3 className="text-denter text-gray-600">OR</h3>
-          <form
-            action=""
-            className="flex flex-col gap-3 p-5 bg-gray-50 shadow-sm"
-          >
-            <label className="flex flex-col">
-              Flat, House no., Building
-              <input
-                type="text"
-                className="border rounded-md p-1.5 shadow-sm"
-              />
-            </label>
-            <label className="flex flex-col">
-              Area, Colony, Street
-              <input
-                type="email"
-                className="border rounded-md p-1.5 shadow-sm"
-              />
-            </label>
-            <div className="flex gap-2 flex-wrap">
-              <label className="flex flex-1 flex-col">
-                Town/City
-                <input
-                  type="password"
-                  className="border rounded-md p-1.5 shadow-sm"
-                />
-              </label>
-              <label className="flex flex-1 flex-col">
-                Pin Code
-                <input
-                  type="password"
-                  className="border rounded-md p-1.5 shadow-sm"
-                />
-              </label>
-            </div>
-            <div className="flex gap-3 mt-3">
-              <button className="btn-rounded-secondary rounded-full flex items-center gap-2 md:text-sm lg:text-base">
-                Cancel
-              </button>
+            {addNewAddress ? (
+              <AddressForm />
+            ) : (
               <button
-                className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
-                onClick={() => {
-                  setAddressData([
-                    ...addressData,
-                    {
-                      address: `${newAddress.area},${newAddress.flat},${newAddress.town}`,
-                      pincode: newAddress.pincode,
-                    },
-                  ]);
-                }}
+                className="btn-rounded-primary text-sm mt-3 flex gap-1 "
+                onClick={() => setAddNewAddress(!addNewAddress)}
               >
-                Save
+                <AiOutlinePlus className="mb-1" /> Add New Address
               </button>
-            </div>
-          </form>
-        </section>
-      </main>
+            )}
+          </div>
+        )}
+      </section>
     </div>
   );
 };
