@@ -1,7 +1,11 @@
 import React from "react";
 import "./custom.styles.css";
 import { Navbar } from "./components";
+
+
+
 import { Checkout, Home, ProductDetails, ProductListing } from "./pages";
+
 
 const App = () => {
   return (
@@ -10,7 +14,9 @@ const App = () => {
       {/* <Home /> */}
       {/* <ProductListing /> */}
       {/* <ProductDetails /> */}
+
       <Checkout />
+
     </div>
   );
 };
