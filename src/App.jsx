@@ -1,25 +1,13 @@
 import React from "react";
-import "./custom.styles.css";
-import { Navbar } from "./components";
 
-import {
-  Profile,
-  Checkout,
-  Home,
-  ProductDetails,
-  ProductListing,
-} from "./pages";
+import { Index as Route } from "./routes/index";
+import "./custom.styles.css";
 
 const App = () => {
   return (
-    <div className="mx-[5%] md:mx-[10%]">
-      <Navbar />
-      {/* <Home /> */}
-      {/* <ProductListing /> */}
-      {/* <ProductDetails /> */}
-
-      <Profile />
-    </div>
+    <>
+      <Route />
+    </>
   );
 };
 
