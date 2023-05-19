@@ -1,4 +1,4 @@
-import { Checkout, Home, ProductDetails, Profile } from "../pages";
+import { Checkout, Profile } from "../pages";
 
 const privateRoutes = [
   {
