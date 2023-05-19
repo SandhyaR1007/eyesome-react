@@ -6,7 +6,10 @@ import {
   useState,
 } from "react";
 import { initialState, productsReducer } from "../../reducers/productsReducer";
-import { getAllProductsService } from "../../api/apiServices";
+import {
+  getAllProductsService,
+  getCartItemsService,
+} from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
 
 export const ProductsContext = createContext();
@@ -17,26 +20,37 @@ const ProductsContextProvider = ({ children }) => {
 
   useEffect(async () => {
     setLoading(true);
-    try {
-      const response = await getAllProductsService();
-      if (response.status === 200) {
-        dispatch({
-          type: actionTypes.INITIALIZE_PRODUCTS,
-          payload: response.data.products,
-        });
+    (async () => {
+      try {
+        const productsRes = await getAllProductsService();
+        if (productsRes.status === 200) {
+          dispatch({
+            type: actionTypes.INITIALIZE_PRODUCTS,
+            payload: productsRes.data.products,
+          });
+        }
+
+        const cartRes = await getCartItemsService();
+        if (cartRes.status === 200) {
+          console.log({ cartRes });
+          dispatch({
+            type: actionTypes.INITIALIZE_CART,
+            payload: cartRes.data.cart,
+          });
+        }
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
       }
-      console.log({ response });
-    } catch (e) {
-      console.log(e);
-    } finally {
-      setLoading(false);
-    }
+    })();
   }, []);
 
   return (
     <ProductsContext.Provider
       value={{
         allProducts: state.allProducts,
+        cart: state.cart,
         loading,
       }}
     >

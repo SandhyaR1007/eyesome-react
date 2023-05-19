@@ -12,3 +12,6 @@ export const GET_PRODUCT_BY_ID_URL = `${baseUrl}/products/:productId`;
 //category urls
 export const GET_ALL_CATEGORIES_URL = `${baseUrl}/categories`;
 export const GET_CATEGORY_BY_ID_URL = `${baseUrl}/category/:categoryId`;
+
+//cart urls
+export const CART_URL = `${baseUrl}/user/cart`;
