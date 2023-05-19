@@ -18,11 +18,12 @@ const AuthContextProvider = ({ children }) => {
     setSigningUp(true);
     try {
       const response = await signupService(username, email, password);
-      if (response.status === 200) {
+      console.log(response);
+      if (response.status === 200 || response.status === 201) {
         localStorage.setItem("token", response?.data?.encodedToken);
         localStorage.setItem(
           "userInfo",
-          JSON.stringify(response?.data?.foundUser)
+          JSON.stringify(response?.data?.createdUser)
         );
         setIsAuthenticated(response?.data?.encodedToken);
       }
