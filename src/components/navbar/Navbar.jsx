@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { CiSearch } from "react-icons/ci";
@@ -11,14 +12,17 @@ const Navbar = () => {
     <nav className="flex flex-col sm:flex-row py-4 max-w-screen mb-3">
       <div className="flex justify-between w-full items-center">
         <section className="relative flex">
-          <img
-            className="rounded-full border-2  bg-yellow-300 me-3 hover:bg-yellow-500 cursor-pointer"
-            src={defaultUser}
-            alt="userProfileImage"
-            width={40}
-          />
-
-          <Logo />
+          <Link to="/profile">
+            <img
+              className="rounded-full border-2  bg-yellow-300 me-3 hover:bg-yellow-500 cursor-pointer"
+              src={defaultUser}
+              alt="userProfileImage"
+              width={40}
+            />
+          </Link>
+          <Link to="/">
+            <Logo />
+          </Link>
         </section>
 
         <section className="hidden  sm:flex items-center md:w-1/4 sm:w-1/3 bg-black/[0.075] px-3 rounded-full text-sm">
