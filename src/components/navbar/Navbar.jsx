@@ -6,8 +6,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
+import { useProductsContext } from "../../contexts";
 
 const Navbar = () => {
+  const { cart } = useProductsContext();
   return (
     <nav className="flex flex-col sm:flex-row py-4 max-w-screen mb-3">
       <div className="flex justify-between w-full items-center">
@@ -40,9 +42,11 @@ const Navbar = () => {
           </li>
           <li className="relative bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-800 cursor-pointer mx-2 transition">
             <HiOutlineShoppingBag />
-            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
-              20
-            </div>
+            {cart.length > 0 && (
+              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                {cart.length}
+              </div>
+            )}
           </li>
         </ul>
         <section className="md:hidden cursor-pointer relative">
