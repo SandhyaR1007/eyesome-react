@@ -1,7 +1,9 @@
 import { GiRoundStar } from "react-icons/gi";
 import { BsBookmarkHeart } from "react-icons/bs";
+import { useProductsContext } from "../../contexts";
 
 const SingleProduct = ({ product }) => {
+  const { addProductToCart } = useProductsContext();
   return (
     <div
       key={product.id}
@@ -38,8 +40,15 @@ const SingleProduct = ({ product }) => {
           <p className="text-sm text-gray-600">{product.brand}</p>
         </div>
         <div className="w-full pt-2 border-t flex justify-between items-center">
-          <button className="border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition">
-            Add to Cart
+          <button
+            className="border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition"
+            onClick={() => {
+              if (!product?.inCart) {
+                addProductToCart(product);
+              }
+            }}
+          >
+            {product?.inCart ? "Go to Cart" : "Add to Cart"}
           </button>
           <button>
             <BsBookmarkHeart className="text-xl hover:text-rose-600 transition" />
