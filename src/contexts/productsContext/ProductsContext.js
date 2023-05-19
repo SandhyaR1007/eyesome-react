@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
   getAllProductsService,
@@ -46,12 +40,42 @@ const ProductsContextProvider = ({ children }) => {
     })();
   }, []);
 
+  const addProductToCart = (product) => {
+    const foundInCart = state.cart.find((item) => item.id === product.id);
+
+    if (foundInCart) {
+      dispatch({
+        type: actionTypes.ADD_PRODUCT_TO_CART,
+        payload: [
+          { ...product, addedQty: product.addedQty + 1 },
+          ...state.cart,
+        ],
+      });
+    } else {
+      dispatch({
+        type: actionTypes.ADD_PRODUCT_TO_CART,
+        payload: [
+          { ...product, addedQty: product.addedQty + 1 },
+          ...state.cart,
+        ],
+      });
+    }
+
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCTS,
+      payload: state.allProducts.map((item) =>
+        item.id === product.id ? { ...item, inCart: true } : item
+      ),
+    });
+  };
+
   return (
     <ProductsContext.Provider
       value={{
         allProducts: state.allProducts,
         cart: state.cart,
         loading,
+        addProductToCart,
       }}
     >
       {children}
