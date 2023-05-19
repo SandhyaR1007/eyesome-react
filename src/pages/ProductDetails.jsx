@@ -1,4 +1,5 @@
 import glassCategory1 from "../assets/glassCategory1.png";
+
 import { GiRoundStar } from "react-icons/gi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
