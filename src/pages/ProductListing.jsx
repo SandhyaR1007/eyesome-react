@@ -31,7 +31,10 @@ const ProductListing = () => {
           <section className="py-3 flex justify-between">
             <h1 className="text-2xl font-bold">Glasses for You!</h1>
             <div className="flex items-center gap-2">
-              {isFilterOpen && <Filters />}
+              <Filters
+                isFilterOpen={isFilterOpen}
+                setIsFilterOpen={setIsFilterOpen}
+              />
               <label>
                 <select name="sortBy">
                   <option value="" selected disabled>
