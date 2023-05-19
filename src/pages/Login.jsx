@@ -6,7 +6,7 @@ import { Logo } from "../components";
 import { useAuthContext } from "../contexts";
 
 const Login = () => {
-  const { login, isAuthenticated, loggingIn } = useAuthContext();
+  const { loginHandler, isAuthenticated, loggingIn } = useAuthContext();
   const navigate = useNavigate();
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
@@ -15,11 +15,7 @@ const Login = () => {
 
   useEffect(() => {
     let id;
-    if (
-      isAuthenticated &&
-      loginCredentials.email &&
-      loginCredentials.password
-    ) {
+    if (isAuthenticated) {
       id = setTimeout(() => {
         navigate("/");
       }, 1000);
@@ -32,7 +28,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(loginCredentials);
+    loginHandler(loginCredentials);
   };
   return (
     <main className="grid  grid-rows-1 lg:grid-cols-2 w-full  h-screen m-auto">
@@ -80,7 +76,7 @@ const Login = () => {
               </label>
               <div className="w-full py-2   flex flex-col gap-4 items-center ">
                 <button
-                  className="btn-primary w-2/3 text-lg text-center disabled:bg-opacity-50"
+                  className="btn-primary w-2/3 text-lg text-center "
                   disabled={
                     loggingIn ||
                     !loginCredentials.email ||
@@ -94,8 +90,8 @@ const Login = () => {
                   onClick={() => {
                     setLoginCredentials({
                       ...loginCredentials,
-                      email: "bangtanie@army.com",
-                      password: "army0707",
+                      email: "adarshbalika@gmail.com",
+                      password: "adarshbalika",
                     });
                   }}
                 >
