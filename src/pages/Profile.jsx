@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { useAuthContext } from "../contexts";
+import { useNavigate } from "react-router";
 
 const Profile = () => {
+  const userDetails = localStorage.getItem("userInfo")
+    ? JSON.parse(localStorage.getItem("userInfo"))
+    : null;
+  const navigate = useNavigate();
   const [selectedItem, setSelectedItem] = useState("profile");
   const [addNewAddress, setAddNewAddress] = useState(false);
+  const [loggingOut, setLoggingOut] = useState(false);
   const [addressData, setAddressData] = useState([
     {
       address: "8505 Christina Ridges West Cooper Arunachal Pradesh Pin:820598",
@@ -88,6 +95,17 @@ const Profile = () => {
       </div>
     );
   };
+
+  const { logoutHandler } = useAuthContext();
+
+  const handleLogOut = () => {
+    setLoggingOut(true);
+    setTimeout(() => {
+      logoutHandler();
+      setLoggingOut(false);
+    }, 1000);
+  };
+
   return (
     <div className="min-h-[80vh] min-w-md max-w-lg m-auto mt-10">
       <section className="h-full p-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full">
@@ -115,11 +133,24 @@ const Profile = () => {
         </div>
         {selectedItem === "profile" ? (
           <div className="flex flex-col gap-4 w-full p-5">
-            <p>Username: Test User</p>
-            <p>Email: usermail@email.com</p>
+            <p>
+              <span className="text-gray-600 me-1">Username:</span>
+              {userDetails
+                ? `${userDetails?.firstName} ${userDetails.lastName}`
+                : ""}
+            </p>
+            <p>
+              {" "}
+              <span className="text-gray-600 me-1">Email:</span>{" "}
+              {userDetails?.email ?? ""}
+            </p>
             <hr />
-            <button className="w-1/2 text-lg bg-rose-600 py-2 px-6 text-white rounded-md ">
-              Logout
+            <button
+              disabled={loggingOut}
+              className="w-1/2 text bg-rose-600 py-2 px-4 text-white rounded-md hover:bg-rose-700"
+              onClick={handleLogOut}
+            >
+              {loggingOut ? "Logging Out..." : "Logout"}
             </button>
           </div>
         ) : (
