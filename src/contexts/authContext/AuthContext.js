@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { loginService } from "../../api/apiServices";
+import { loginService, signupService } from "../../api/apiServices";
 
 export const AuthContext = createContext();
 
@@ -8,6 +8,30 @@ const AuthContextProvider = ({ children }) => {
     localStorage.getItem("token")
   );
   const [loggingIn, setLoggingIn] = useState(false);
+  const [signingUp, setSigningUp] = useState(false);
+
+  const signupHandler = async ({
+    username = "",
+    email = "",
+    password = "",
+  }) => {
+    setSigningUp(true);
+    try {
+      const response = await signupService(username, email, password);
+      if (response.status === 200) {
+        localStorage.setItem("token", response?.data?.encodedToken);
+        localStorage.setItem(
+          "userInfo",
+          JSON.stringify(response?.data?.foundUser)
+        );
+        setIsAuthenticated(response?.data?.encodedToken);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setSigningUp(false);
+    }
+  };
 
   const loginHandler = async ({ email = "", password = "" }) => {
     setLoggingIn(true);
@@ -36,7 +60,14 @@ const AuthContextProvider = ({ children }) => {
   };
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, loggingIn, loginHandler, logoutHandler }}
+      value={{
+        isAuthenticated,
+        loggingIn,
+        loginHandler,
+        logoutHandler,
+        signupHandler,
+        signingUp,
+      }}
     >
       {children}
     </AuthContext.Provider>
