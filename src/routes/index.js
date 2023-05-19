@@ -1,19 +1,26 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import SharedLayout from "./SharedLayout";
 import RequiresAuth from "./RequiresAuth";
 import { authRoutes, contentRoutes } from "./publicRoutes";
 import { privateRoutes } from "./privateRoutes";
 
-import { Home } from "../pages";
+import { Home, Login } from "../pages";
+import { useAuthContext } from "../contexts";
 
 const Index = () => {
+  const { isAuthenticated } = useAuthContext();
   return (
     <Routes>
-      {authRoutes.map((route, idx) => (
-        <Route key={idx} path={route.path} element={route.element} exact />
-      ))}
-
+      <Route
+        element={
+          isAuthenticated ? <Navigate to="/" replace={true} /> : <Outlet />
+        }
+      >
+        {authRoutes.map((route, idx) => (
+          <Route key={idx} path={route.path} element={route.element} exact />
+        ))}
+      </Route>
       <Route element={<SharedLayout />}>
         <Route path="/" element={<Home />} index />
         <Route path="*" element={<div>Some Error occurred</div>} />
