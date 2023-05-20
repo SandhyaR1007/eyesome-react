@@ -9,13 +9,17 @@ const SingleProduct = ({ product }) => {
   const navigate = useNavigate();
   return (
     <div
-      key={product.id}
       className="flex flex-col  bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden
       cursor-pointer
       transition-transform
       hover:scale-[1.02] hover:shadow-lg"
     >
-      <div className="flex items-center justify-center p-10 bg-black/[0.075] h-1/2">
+      <div
+        className="flex items-center justify-center p-10 bg-black/[0.075] h-1/2"
+        onClick={() => {
+          navigate(`/product-details/${product._id}`);
+        }}
+      >
         <img
           src={product.image}
           alt=""
