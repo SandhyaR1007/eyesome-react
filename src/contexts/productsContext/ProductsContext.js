@@ -2,6 +2,7 @@ import { createContext, useEffect, useReducer, useState } from "react";
 import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
   deleteProductFromCartService,
+  deleteProductFromWishlistService,
   getAllProductsService,
   getCartItemsService,
   getWishlistItemsService,
@@ -151,6 +152,25 @@ const ProductsContextProvider = ({ children }) => {
       ),
     });
   };
+
+  const deleteProductFromWishlist = async (productId) => {
+    try {
+      const response = await deleteProductFromWishlistService(productId);
+      console.log({ response });
+      dispatch({
+        type: actionTypes.DELETE_PRODUCTS_FROM_WISHLIST,
+        payload: state.wishlist.filter(({ _id }) => _id !== productId),
+      });
+      dispatch({
+        type: actionTypes.UPDATE_PRODUCTS,
+        payload: state.allProducts.map((product) =>
+          product._id === productId ? { ...product, inWish: false } : product
+        ),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <ProductsContext.Provider
       value={{
@@ -162,6 +182,8 @@ const ProductsContextProvider = ({ children }) => {
         updateProductQtyInCart,
         deleteProductFromCart,
         totalPriceOfCartProducts,
+        addProductToWishlist,
+        deleteProductFromWishlist,
       }}
     >
       {children}
