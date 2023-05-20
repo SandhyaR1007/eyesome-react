@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 
 import { useAuthContext, useProductsContext } from "../contexts";
 import { getProductByIdService } from "../api/apiServices";
@@ -11,8 +11,13 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const { isAuthenticated } = useAuthContext();
-  const { getProductById, addProductToCart, allProducts } =
-    useProductsContext();
+  const {
+    getProductById,
+    addProductToCart,
+    allProducts,
+    addProductToWishlist,
+    deleteProductFromWishlist,
+  } = useProductsContext();
   const [loading, setLoading] = useState(false);
   const product = getProductById(productId);
 
@@ -21,7 +26,6 @@ const ProductDetails = () => {
       setLoading(true);
       try {
         const response = await getProductByIdService(productId);
-        product = response?.data?.product;
       } catch (err) {
         console.log(err);
       } finally {
@@ -33,7 +37,7 @@ const ProductDetails = () => {
   return (
     <div className="md:min-h-[80vh] flex justify-center items-center py-3">
       <main className="grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 gap-10 ">
-        <section className="p-10 bg-black/[0.075] max-h-screen flex items-center rounded-lg">
+        <section className="relative p-10 bg-black/[0.075] max-h-screen flex items-center rounded-lg">
           <img src={product?.image} alt="" className="w-full " />
         </section>
 
@@ -100,8 +104,28 @@ const ProductDetails = () => {
               <HiOutlineShoppingBag />{" "}
               {product?.inCart ? "Go to Bag" : "Add to Bag"}
             </button>
-            <button className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base">
-              <BsBookmarkHeart /> <span>Wishlist Item</span>
+
+            <button
+              className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
+              onClick={() => {
+                if (product?.inWish) {
+                  deleteProductFromWishlist(product._id);
+                } else {
+                  addProductToWishlist(product);
+                }
+              }}
+            >
+              {product?.inWish ? (
+                <>
+                  <BsFillBookmarkHeartFill />
+                  <span>Remove from Wishlist</span>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <BsBookmarkHeart /> <span>Wishlist Item</span>
+                </>
+              )}{" "}
             </button>
           </div>
         </section>
