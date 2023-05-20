@@ -45,14 +45,14 @@ const ProductsContextProvider = ({ children }) => {
 
   const addProductToCart = async (product) => {
     try {
-      const response = await postAddProductToCartService(product);
+      const response = await postAddProductToCartService({
+        ...product,
+        qty: 1,
+      });
       console.log({ response });
       dispatch({
         type: actionTypes.ADD_PRODUCT_TO_CART,
-        payload: [
-          { ...product, addedQty: product.addedQty + 1 },
-          ...state.cart,
-        ],
+        payload: [{ ...product, qty: 1 }, ...state.cart],
       });
     } catch (err) {
       console.log(err);
@@ -75,7 +75,7 @@ const ProductsContextProvider = ({ children }) => {
           type: actionTypes.UPDATE_PRODUCT_QTY_IN_CART,
           payload: state.cart.map((product) =>
             product._id === productId
-              ? { ...product, addedQty: product.addedQty + 1 }
+              ? { ...product, qty: product.qty + 1 }
               : product
           ),
         });
@@ -84,7 +84,7 @@ const ProductsContextProvider = ({ children }) => {
           type: actionTypes.UPDATE_PRODUCT_QTY_IN_CART,
           payload: state.cart.map((product) =>
             product._id === productId
-              ? { ...product, addedQty: product.addedQty - 1 }
+              ? { ...product, qty: product.qty - 1 }
               : product
           ),
         });
@@ -101,6 +101,12 @@ const ProductsContextProvider = ({ children }) => {
       dispatch({
         type: actionTypes.DELETE_PRODUCTS_FROM_CART,
         payload: productId,
+      });
+      dispatch({
+        type: actionTypes.UPDATE_PRODUCTS,
+        payload: state.allProducts.map((product) =>
+          product._id === productId ? { ...product, inCart: false } : product
+        ),
       });
     } catch (err) {
       console.log(err);
