@@ -1,8 +1,21 @@
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsBookmarkHeart } from "react-icons/bs";
+import { useProductsContext } from "../../contexts";
 
 const CartItemCard = ({ product }) => {
+  const { updateProductQtyInCart, deleteProductFromCart } =
+    useProductsContext();
+
+  const updateHandler = (type) => {
+    if (type === "increment" && product.quantity > product.qty) {
+      updateProductQtyInCart(product._id, type);
+    } else if (product.qty > 1) {
+      updateProductQtyInCart(product._id, type);
+    } else {
+      deleteProductFromCart(product._id);
+    }
+  };
   return (
     <div className="m-auto flex flex-col gap-2  p-4 rounded-sm shadow-sm bg-white/[0.6] mb-2 max-w-xl">
       <div className="flex  items-center flex-wrap gap-2 w-full">
@@ -16,18 +29,27 @@ const CartItemCard = ({ product }) => {
             <div className="flex flex-col gap-3">
               <div className="flex gap-2 items-center">
                 <span className="text-gray-700">Quantity: </span>
-                <button className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md  text-xs">
+                <button
+                  className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md  text-xs"
+                  onClick={() => updateHandler("decrement")}
+                >
                   <AiOutlineMinus />
                 </button>
                 <span className="h-full w-10 bg-black/[0.075]  rounded-sm flex items-center justify-center">
-                  5
+                  {product.qty}
                 </span>
-                <button className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md text-xs">
+                <button
+                  className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md text-xs"
+                  onClick={() => updateHandler("increment")}
+                >
                   <AiOutlinePlus />
                 </button>
               </div>
               <div className="flex gap-3 ">
-                <button className="btn-rounded-secondary  text-sm mt-2 max-w-xs">
+                <button
+                  className="btn-rounded-secondary  text-sm mt-2 max-w-xs"
+                  onClick={() => deleteProductFromCart(product._id)}
+                >
                   Remove from Bag
                 </button>
                 <button>
