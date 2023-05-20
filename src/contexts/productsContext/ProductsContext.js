@@ -43,39 +43,18 @@ const ProductsContextProvider = ({ children }) => {
   }, []);
 
   const addProductToCart = async (product) => {
-    const foundInCart = state.cart.find((item) => item.id === product.id);
-
-    if (foundInCart) {
-      try {
-        const response = await postUpdateProductQtyCartService(
-          product.id,
-          "increment"
-        );
-        console.log({ response });
-        dispatch({
-          type: actionTypes.ADD_PRODUCT_TO_CART,
-          payload: [
-            { ...product, addedQty: product.addedQty + 1 },
-            ...state.cart,
-          ],
-        });
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      try {
-        const response = await postAddProductToCartService(product);
-        console.log({ response });
-        dispatch({
-          type: actionTypes.ADD_PRODUCT_TO_CART,
-          payload: [
-            { ...product, addedQty: product.addedQty + 1 },
-            ...state.cart,
-          ],
-        });
-      } catch (err) {
-        console.log(err);
-      }
+    try {
+      const response = await postAddProductToCartService(product);
+      console.log({ response });
+      dispatch({
+        type: actionTypes.ADD_PRODUCT_TO_CART,
+        payload: [
+          { ...product, addedQty: product.addedQty + 1 },
+          ...state.cart,
+        ],
+      });
+    } catch (err) {
+      console.log(err);
     }
 
     dispatch({
@@ -86,6 +65,46 @@ const ProductsContextProvider = ({ children }) => {
     });
   };
 
+  const updateProductQtyInCart = async (productId, type) => {
+    try {
+      const response = await postUpdateProductQtyCartService(productId, type);
+      console.log({ response });
+      if (type === "increment") {
+        dispatch({
+          type: actionTypes.UPDATE_PRODUCT_QTY_IN_CART,
+          payload: state.cart.map((product) =>
+            product._id === productId
+              ? { ...product, addedQty: product.addedQty + 1 }
+              : product
+          ),
+        });
+      } else {
+        dispatch({
+          type: actionTypes.UPDATE_PRODUCT_QTY_IN_CART,
+          payload: state.cart.map((product) =>
+            product._id === productId
+              ? { ...product, addedQty: product.addedQty - 1 }
+              : product
+          ),
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deletProductFromCart = async (productId) => {
+    try {
+      const response = await deletProductFromCart(productId);
+      console.log({ response });
+      dispatch({
+        type: actionTypes.DELETE_PRODUCTS_FROM_CART,
+        payload: productId,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <ProductsContext.Provider
       value={{
