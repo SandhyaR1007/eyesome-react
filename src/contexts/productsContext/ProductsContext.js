@@ -112,6 +112,10 @@ const ProductsContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const getTotalPriceOfItems = state.cart.reduce(
+    (acc, ({ qty, price }) => acc + qty * price, 0)
+  );
   return (
     <ProductsContext.Provider
       value={{
@@ -121,6 +125,7 @@ const ProductsContextProvider = ({ children }) => {
         addProductToCart,
         updateProductQtyInCart,
         deleteProductFromCart,
+        getTotalPriceOfItems,
       }}
     >
       {children}
