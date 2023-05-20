@@ -43,6 +43,9 @@ const ProductsContextProvider = ({ children }) => {
     })();
   }, []);
 
+  const getProductById = (productId) =>
+    state.allProducts.find(({ _id }) => _id === Number(productId));
+
   const addProductToCart = async (product) => {
     try {
       const response = await postAddProductToCartService({
@@ -123,6 +126,7 @@ const ProductsContextProvider = ({ children }) => {
         allProducts: state.allProducts,
         cart: state.cart,
         loading,
+        getProductById,
         addProductToCart,
         updateProductQtyInCart,
         deleteProductFromCart,
