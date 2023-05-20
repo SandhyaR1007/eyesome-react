@@ -47,7 +47,7 @@ export const products = [
     quantity: 10,
     image: sports1,
     rating: 4.5,
-    price: 19.99,
+    price: 1999.99,
   },
   {
     _id: uuid(),
@@ -60,7 +60,7 @@ export const products = [
     quantity: 5,
     image: sports2,
     rating: 4.2,
-    price: 12.99,
+    price: 1299.99,
   },
   {
     _id: uuid(),
@@ -73,7 +73,7 @@ export const products = [
     quantity: 15,
     image: sports3,
     rating: 4.7,
-    price: 29.99,
+    price: 2999.99,
   },
   {
     _id: uuid(),
@@ -87,7 +87,7 @@ export const products = [
     quantity: 8,
     image: sports4,
     rating: 3.8,
-    price: 24.99,
+    price: 2499.99,
   },
   {
     _id: uuid(),
@@ -100,7 +100,7 @@ export const products = [
     quantity: 3,
     image: sports6,
     rating: 4.6,
-    price: 39.99,
+    price: 3999.99,
   },
   {
     _id: uuid(),
@@ -113,7 +113,7 @@ export const products = [
     quantity: 9,
     image: vision7,
     rating: 4.3,
-    price: 29.99,
+    price: 2999.99,
   },
   {
     _id: uuid(),
@@ -126,7 +126,7 @@ export const products = [
     quantity: 7,
     image: vision8,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -139,7 +139,7 @@ export const products = [
     quantity: 7,
     image: vision9,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -152,7 +152,7 @@ export const products = [
     quantity: 10,
     image: sun3,
     rating: 4.5,
-    price: 19.99,
+    price: 1999.99,
   },
   {
     _id: uuid(),
@@ -165,7 +165,7 @@ export const products = [
     quantity: 5,
     image: sun4,
     rating: 4.2,
-    price: 12.99,
+    price: 1299.99,
   },
   {
     _id: uuid(),
@@ -178,7 +178,7 @@ export const products = [
     quantity: 15,
     image: sun5,
     rating: 4.7,
-    price: 29.99,
+    price: 2999.99,
   },
   {
     _id: uuid(),
@@ -191,7 +191,7 @@ export const products = [
     quantity: 7,
     image: sports9,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -205,7 +205,7 @@ export const products = [
     quantity: 8,
     image: sun7,
     rating: 3.8,
-    price: 24.99,
+    price: 2499.99,
   },
   {
     _id: uuid(),
@@ -218,7 +218,7 @@ export const products = [
     quantity: 3,
     image: sun8,
     rating: 4.6,
-    price: 39.99,
+    price: 3999.99,
   },
   {
     _id: uuid(),
@@ -231,7 +231,7 @@ export const products = [
     quantity: 10,
     image: vision1,
     rating: 4.5,
-    price: 19.99,
+    price: 1999.99,
   },
   {
     _id: uuid(),
@@ -244,7 +244,7 @@ export const products = [
     quantity: 6,
     image: sun9,
     rating: 4.1,
-    price: 14.99,
+    price: 1499.99,
   },
   {
     _id: uuid(),
@@ -257,7 +257,7 @@ export const products = [
     quantity: 9,
     image: sun10,
     rating: 4.3,
-    price: 29.99,
+    price: 2999.99,
   },
   {
     _id: uuid(),
@@ -270,7 +270,7 @@ export const products = [
     quantity: 7,
     image: sun14,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -283,7 +283,7 @@ export const products = [
     quantity: 7,
     image: sun11,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -296,7 +296,7 @@ export const products = [
     quantity: 6,
     image: sports7,
     rating: 4.1,
-    price: 14.99,
+    price: 1499.99,
   },
   {
     _id: uuid(),
@@ -309,7 +309,7 @@ export const products = [
     quantity: 9,
     image: sports8,
     rating: 4.3,
-    price: 29.99,
+    price: 2999.99,
   },
   {
     _id: uuid(),
@@ -322,7 +322,7 @@ export const products = [
     quantity: 5,
     image: vision2,
     rating: 4.2,
-    price: 12.99,
+    price: 1299.99,
   },
   {
     _id: uuid(),
@@ -335,7 +335,7 @@ export const products = [
     quantity: 15,
     image: vision3,
     rating: 4.7,
-    price: 29.99,
+    price: 2999.99,
   },
   {
     _id: uuid(),
@@ -348,7 +348,7 @@ export const products = [
     quantity: 7,
     image: sun11,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -361,7 +361,7 @@ export const products = [
     quantity: 7,
     image: sun12,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -374,7 +374,7 @@ export const products = [
     quantity: 7,
     image: sun13,
     rating: 4.8,
-    price: 49.99,
+    price: 4999.99,
   },
   {
     _id: uuid(),
@@ -388,7 +388,7 @@ export const products = [
     quantity: 8,
     image: vision4,
     rating: 3.8,
-    price: 24.99,
+    price: 2499.99,
   },
   {
     _id: uuid(),
@@ -401,7 +401,7 @@ export const products = [
     quantity: 3,
     image: vision5,
     rating: 4.6,
-    price: 39.99,
+    price: 3999.99,
   },
   {
     _id: uuid(),
@@ -414,6 +414,6 @@ export const products = [
     quantity: 6,
     image: vision6,
     rating: 4.1,
-    price: 14.99,
+    price: 1499.99,
   },
 ];
