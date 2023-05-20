@@ -6,6 +6,7 @@ import {
   getCartItemsService,
   getWishlistItemsService,
   postAddProductToCartService,
+  postAddProductToWishlistService,
   postUpdateProductQtyCartService,
 } from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
@@ -130,6 +131,26 @@ const ProductsContextProvider = ({ children }) => {
     (acc, { qty, price }) => acc + qty * price,
     0
   );
+
+  const addProductToWishlist = async (product) => {
+    try {
+      const response = await postAddProductToWishlistService(product);
+      console.log({ response });
+      dispatch({
+        type: actionTypes.ADD_PRODUCT_TO_WISHLIST,
+        payload: [{ ...product, inWish: true }, ...state.wishlist],
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCTS,
+      payload: state.allProducts.map((item) =>
+        item.id === product.id ? { ...item, inWish: true } : item
+      ),
+    });
+  };
   return (
     <ProductsContext.Provider
       value={{
