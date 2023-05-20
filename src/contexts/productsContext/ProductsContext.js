@@ -176,6 +176,7 @@ const ProductsContextProvider = ({ children }) => {
       value={{
         allProducts: state.allProducts,
         cart: state.cart,
+        wishlist: state.wishlist,
         loading,
         getProductById,
         addProductToCart,
