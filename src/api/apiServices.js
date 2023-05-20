@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CART_URL, GET_ALL_PRODUCTS_URL, LOGIN_URL } from "./apiUrls";
+import { CART_URL, PRODUCTS_URL, LOGIN_URL } from "./apiUrls";
 
 const token = localStorage.getItem("token");
 export const loginService = (email, password) =>
@@ -8,7 +8,10 @@ export const loginService = (email, password) =>
 export const signupService = (username, email, password) =>
   axios.post(LOGIN_URL, { username, email, password });
 
-export const getAllProductsService = () => axios.get(GET_ALL_PRODUCTS_URL);
+export const getAllProductsService = () => axios.get(PRODUCTS_URL);
+
+export const getProductByIdService = (productId) =>
+  axios.get(`${PRODUCTS_URL}/${productId}`);
 
 export const getCartItemsService = () =>
   axios.get(CART_URL, {
