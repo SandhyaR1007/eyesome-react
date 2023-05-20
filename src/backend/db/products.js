@@ -38,6 +38,7 @@ import vision9 from "../../assets/vision/vision9.png";
 export const products = [
   {
     _id: uuid(),
+    qty: 0,
     name: "Ardor Avaitor",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brand: "Brand 1",
@@ -51,6 +52,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Caper Active",
     description: "Pellentesque ac tortor sed ipsum feugiat condimentum.",
     brand: "Brand 2",
@@ -64,6 +66,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Alder Street",
     description: "Integer et nunc in turpis maximus facilisis ac ac elit.",
     brand: "Brand 3",
@@ -77,6 +80,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Corral Round",
     description:
       "Vestibulum eu tellus sed lorem tristique lacinia ut vel urna.",
@@ -91,6 +95,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Hyperclax Active",
     description: "Aenean at velit consequat, faucibus mi id, tempor velit.",
     brand: "Brand 5",
@@ -104,6 +109,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Rose Gold Chase",
     description: "Vivamus mattis quam sed libero pretium ullamcorper.",
     brand: "Brand 1",
@@ -117,6 +123,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Full Rim Airflex",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -130,6 +137,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Mercury Rounded Red",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -143,6 +151,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Candyfloss-302",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brand: "Brand 1",
@@ -156,6 +165,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Phenomenal Mercury-02",
     description: "Pellentesque ac tortor sed ipsum feugiat condimentum.",
     brand: "Brand 2",
@@ -169,6 +179,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Black rounded boss",
     description: "Integer et nunc in turpis maximus facilisis ac ac elit.",
     brand: "Brand 3",
@@ -182,6 +193,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Blue Ray Wayfarer",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -195,6 +207,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Pernik",
     description:
       "Vestibulum eu tellus sed lorem tristique lacinia ut vel urna.",
@@ -209,6 +222,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Silistra",
     description: "Aenean at velit consequat, faucibus mi id, tempor velit.",
     brand: "Brand 5",
@@ -222,6 +236,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Full rim acetate black",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     brand: "Brand 1",
@@ -235,6 +250,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Ruse",
     description: "Fusce sed est nec ipsum convallis semper nec id ipsum.",
     brand: "Brand 3",
@@ -248,6 +264,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Yambol",
     description: "Vivamus mattis quam sed libero pretium ullamcorper.",
     brand: "Brand 1",
@@ -261,6 +278,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Roadies Rd-202",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -274,6 +292,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Burgas",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -287,6 +306,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Hip Hop Candy",
     description: "Fusce sed est nec ipsum convallis semper nec id ipsum.",
     brand: "Brand 3",
@@ -300,6 +320,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Punk Cut Out",
     description: "Vivamus mattis quam sed libero pretium ullamcorper.",
     brand: "Brand 1",
@@ -313,6 +334,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Rounded Gold",
     description: "Pellentesque ac tortor sed ipsum feugiat condimentum.",
     brand: "Brand 2",
@@ -326,6 +348,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Jungle Safari",
     description: "Integer et nunc in turpis maximus facilisis ac ac elit.",
     brand: "Brand 3",
@@ -339,6 +362,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Burgas",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -352,6 +376,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Sofia",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -365,6 +390,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Plovediv",
     description: "Donec interdum felis non justo sollicitudin lobortis.",
     brand: "Brand 4",
@@ -378,6 +404,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Airway Black",
     description:
       "Vestibulum eu tellus sed lorem tristique lacinia ut vel urna.",
@@ -392,6 +419,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Cat-eyed Gold",
     description: "Aenean at velit consequat, faucibus mi id, tempor velit.",
     brand: "Brand 5",
@@ -405,6 +433,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    qty: 0,
     name: "Full Rim Steel Gray",
     description: "Fusce sed est nec ipsum convallis semper nec id ipsum.",
     brand: "Brand 3",
@@ -416,4 +445,35 @@ export const products = [
     rating: 4.1,
     price: 1499.99,
   },
+];
+const arr = [
+  { newPrice: 1899.99 },
+  { newPrice: 1199.99 },
+  { newPrice: 2899.99 },
+  { newPrice: 2399.99 },
+  { newPrice: 3899.99 },
+  { newPrice: 2899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 1899.99 },
+  { newPrice: 1199.99 },
+  { newPrice: 2899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 2399.99 },
+  { newPrice: 3899.99 },
+  { newPrice: 1899.99 },
+  { newPrice: 1399.99 },
+  { newPrice: 2899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 1399.99 },
+  { newPrice: 2899.99 },
+  { newPrice: 1199.99 },
+  { newPrice: 2899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 4899.99 },
+  { newPrice: 2399.99 },
+  { newPrice: 3899.99 },
+  { newPrice: 1399.99 },
 ];
