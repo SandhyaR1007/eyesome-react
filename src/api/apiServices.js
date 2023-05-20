@@ -30,7 +30,7 @@ export const postAddProductToCartService = (product) =>
 
 export const postUpdateProductQtyCartService = (productId, type) =>
   axios.post(
-    `${CART_URL}${productId}`,
+    `${CART_URL}/${productId}`,
     {
       action: {
         type,
@@ -44,7 +44,7 @@ export const postUpdateProductQtyCartService = (productId, type) =>
   );
 
 export const deleteProductFromCartService = (productId) =>
-  axios.delete(`${CART_URL}${productId}`, {
+  axios.delete(`${CART_URL}/${productId}`, {
     headers: {
       authorization: token,
     },
