@@ -8,14 +8,16 @@ import {
   postUpdateProductQtyCartService,
 } from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
+import { useAuthContext } from "..";
 
 export const ProductsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
+  const { isAuthenticated } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [state, dispatch] = useReducer(productsReducer, initialState);
 
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
     (async () => {
       try {
@@ -41,10 +43,10 @@ const ProductsContextProvider = ({ children }) => {
         setLoading(false);
       }
     })();
-  }, []);
+  }, [isAuthenticated]);
 
   const getProductById = (productId) =>
-    state.allProducts.find(({ _id }) => _id === Number(productId));
+    state.allProducts.find((product) => product._id === productId);
 
   const addProductToCart = async (product) => {
     try {
