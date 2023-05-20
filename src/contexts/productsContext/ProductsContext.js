@@ -114,7 +114,8 @@ const ProductsContextProvider = ({ children }) => {
   };
 
   const getTotalPriceOfItems = state.cart.reduce(
-    (acc, ({ qty, price }) => acc + qty * price, 0)
+    (acc, { qty, price }) => acc + qty * price,
+    0
   );
   return (
     <ProductsContext.Provider
