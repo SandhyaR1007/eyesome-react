@@ -36,16 +36,23 @@ const ProductListing = () => {
                 setIsFilterOpen={setIsFilterOpen}
               />
               <label>
-                <select name="sortBy">
+                <select
+                  name="sortBy"
+                  className="w-max py-1 px-2 rounded-md cursor-pointer shadow-md   hover:shadow-lg "
+                >
                   <option value="" selected disabled>
                     Sort By
                   </option>
-                  <option value="low">Low to High</option>
-                  <option value="high">High to Low</option>
+                  <option value="low" className="">
+                    Low to High
+                  </option>
+                  <option value="high" className="">
+                    High to Low
+                  </option>
                 </select>
               </label>
               <button
-                className="flex py-1 px-2 rounded-md shadow-sm items-center bg-white gap-1 hover:bg-[--primary-text-color] hover:text-white"
+                className="flex py-1 px-2 rounded-md shadow-md items-center  gap-1 hover:bg-[--primary-text-color] hover:text-white hover:shadow-lg"
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
               >
                 <BiFilter className="text-lg" />
