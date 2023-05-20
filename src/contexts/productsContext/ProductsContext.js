@@ -2,9 +2,12 @@ import { createContext, useEffect, useReducer, useState } from "react";
 import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
   deleteProductFromCartService,
+  deleteProductFromWishlistService,
   getAllProductsService,
   getCartItemsService,
+  getWishlistItemsService,
   postAddProductToCartService,
+  postAddProductToWishlistService,
   postUpdateProductQtyCartService,
 } from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
@@ -31,10 +34,17 @@ const ProductsContextProvider = ({ children }) => {
 
         const cartRes = await getCartItemsService();
         if (cartRes.status === 200) {
-          console.log({ cartRes });
           dispatch({
             type: actionTypes.INITIALIZE_CART,
             payload: cartRes.data.cart,
+          });
+        }
+
+        const wishlistRes = await getWishlistItemsService();
+        if (wishlistRes.status === 200) {
+          dispatch({
+            type: actionTypes.INITIALIZE_WISHLIST,
+            payload: wishlistRes.data.wishlist,
           });
         }
       } catch (e) {
@@ -105,7 +115,7 @@ const ProductsContextProvider = ({ children }) => {
       console.log({ response });
       dispatch({
         type: actionTypes.DELETE_PRODUCTS_FROM_CART,
-        payload: productId,
+        payload: state.cart.filter(({ _id }) => _id !== productId),
       });
       dispatch({
         type: actionTypes.UPDATE_PRODUCTS,
@@ -122,6 +132,45 @@ const ProductsContextProvider = ({ children }) => {
     (acc, { qty, price }) => acc + qty * price,
     0
   );
+
+  const addProductToWishlist = async (product) => {
+    try {
+      const response = await postAddProductToWishlistService(product);
+      console.log({ response });
+      dispatch({
+        type: actionTypes.ADD_PRODUCT_TO_WISHLIST,
+        payload: [{ ...product, inWish: true }, ...state.wishlist],
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
+    dispatch({
+      type: actionTypes.UPDATE_PRODUCTS,
+      payload: state.allProducts.map((item) =>
+        item.id === product.id ? { ...item, inWish: true } : item
+      ),
+    });
+  };
+
+  const deleteProductFromWishlist = async (productId) => {
+    try {
+      const response = await deleteProductFromWishlistService(productId);
+      console.log({ response });
+      dispatch({
+        type: actionTypes.DELETE_PRODUCTS_FROM_WISHLIST,
+        payload: state.wishlist.filter(({ _id }) => _id !== productId),
+      });
+      dispatch({
+        type: actionTypes.UPDATE_PRODUCTS,
+        payload: state.allProducts.map((product) =>
+          product._id === productId ? { ...product, inWish: false } : product
+        ),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <ProductsContext.Provider
       value={{
@@ -133,6 +182,8 @@ const ProductsContextProvider = ({ children }) => {
         updateProductQtyInCart,
         deleteProductFromCart,
         totalPriceOfCartProducts,
+        addProductToWishlist,
+        deleteProductFromWishlist,
       }}
     >
       {children}
