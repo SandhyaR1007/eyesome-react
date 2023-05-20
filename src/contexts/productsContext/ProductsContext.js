@@ -3,6 +3,8 @@ import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
   getAllProductsService,
   getCartItemsService,
+  postAddProductToCartService,
+  postUpdateProductQtyCartService,
 } from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
 
@@ -40,25 +42,40 @@ const ProductsContextProvider = ({ children }) => {
     })();
   }, []);
 
-  const addProductToCart = (product) => {
+  const addProductToCart = async (product) => {
     const foundInCart = state.cart.find((item) => item.id === product.id);
 
     if (foundInCart) {
-      dispatch({
-        type: actionTypes.ADD_PRODUCT_TO_CART,
-        payload: [
-          { ...product, addedQty: product.addedQty + 1 },
-          ...state.cart,
-        ],
-      });
+      try {
+        const response = await postUpdateProductQtyCartService(
+          product.id,
+          "increment"
+        );
+        console.log({ response });
+        dispatch({
+          type: actionTypes.ADD_PRODUCT_TO_CART,
+          payload: [
+            { ...product, addedQty: product.addedQty + 1 },
+            ...state.cart,
+          ],
+        });
+      } catch (err) {
+        console.log(err);
+      }
     } else {
-      dispatch({
-        type: actionTypes.ADD_PRODUCT_TO_CART,
-        payload: [
-          { ...product, addedQty: product.addedQty + 1 },
-          ...state.cart,
-        ],
-      });
+      try {
+        const response = await postAddProductToCartService(product);
+        console.log({ response });
+        dispatch({
+          type: actionTypes.ADD_PRODUCT_TO_CART,
+          payload: [
+            { ...product, addedQty: product.addedQty + 1 },
+            ...state.cart,
+          ],
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     dispatch({
