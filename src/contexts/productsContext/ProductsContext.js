@@ -4,6 +4,7 @@ import {
   deleteProductFromCartService,
   getAllProductsService,
   getCartItemsService,
+  getWishlistItemsService,
   postAddProductToCartService,
   postUpdateProductQtyCartService,
 } from "../../api/apiServices";
@@ -31,10 +32,17 @@ const ProductsContextProvider = ({ children }) => {
 
         const cartRes = await getCartItemsService();
         if (cartRes.status === 200) {
-          console.log({ cartRes });
           dispatch({
             type: actionTypes.INITIALIZE_CART,
             payload: cartRes.data.cart,
+          });
+        }
+
+        const wishlistRes = await getWishlistItemsService();
+        if (wishlistRes.status === 200) {
+          dispatch({
+            type: actionTypes.INITIALIZE_WISHLIST,
+            payload: wishlistRes.data.wishlist,
           });
         }
       } catch (e) {
@@ -105,7 +113,7 @@ const ProductsContextProvider = ({ children }) => {
       console.log({ response });
       dispatch({
         type: actionTypes.DELETE_PRODUCTS_FROM_CART,
-        payload: productId,
+        payload: state.cart.filter(({ _id }) => _id !== productId),
       });
       dispatch({
         type: actionTypes.UPDATE_PRODUCTS,
