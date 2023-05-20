@@ -1,13 +1,19 @@
 import { GiRoundStar } from "react-icons/gi";
 import { BsBookmarkHeart } from "react-icons/bs";
-import { useProductsContext } from "../../contexts";
+import { useAuthContext, useProductsContext } from "../../contexts";
+import { useNavigate } from "react-router";
 
 const SingleProduct = ({ product }) => {
+  const { isAuthenticated } = useAuthContext();
   const { addProductToCart } = useProductsContext();
+  const navigate = useNavigate();
   return (
     <div
       key={product.id}
-      className="flex flex-col  bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden"
+      className="flex flex-col  bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden
+      cursor-pointer
+      transition-transform
+      hover:scale-[1.02] hover:shadow-lg"
     >
       <div className="flex items-center justify-center p-10 bg-black/[0.075] h-1/2">
         <img
@@ -41,17 +47,23 @@ const SingleProduct = ({ product }) => {
         </div>
         <div className="w-full pt-2 border-t flex justify-between items-center">
           <button
-            className="border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition"
+            className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md`}
             onClick={() => {
-              if (!product?.inCart) {
-                addProductToCart(product);
+              if (!isAuthenticated) {
+                navigate("/login");
+              } else {
+                if (!product?.inCart) {
+                  addProductToCart(product);
+                } else {
+                  navigate("/cart");
+                }
               }
             }}
           >
             {product?.inCart ? "Go to Cart" : "Add to Cart"}
           </button>
           <button>
-            <BsBookmarkHeart className="text-xl hover:text-rose-600 transition" />
+            <BsBookmarkHeart className="text-xl hover:text-rose-600 transition " />
           </button>
         </div>
       </div>
