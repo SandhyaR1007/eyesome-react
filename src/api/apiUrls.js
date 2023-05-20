@@ -15,4 +15,3 @@ export const GET_CATEGORY_BY_ID_URL = `${baseUrl}/category/:categoryId`;
 
 //cart urls
 export const CART_URL = `${baseUrl}/user/cart`;
-export const UPDATE_PRODUCT_QTY_CART_URL = `${baseUrl}/user/cart/`;

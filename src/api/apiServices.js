@@ -1,10 +1,5 @@
 import axios from "axios";
-import {
-  CART_URL,
-  GET_ALL_PRODUCTS_URL,
-  LOGIN_URL,
-  UPDATE_PRODUCT_QTY_CART_URL,
-} from "./apiUrls";
+import { CART_URL, GET_ALL_PRODUCTS_URL, LOGIN_URL } from "./apiUrls";
 
 const token = localStorage.getItem("token");
 export const loginService = (email, password) =>
@@ -18,7 +13,7 @@ export const getAllProductsService = () => axios.get(GET_ALL_PRODUCTS_URL);
 export const getCartItemsService = () =>
   axios.get(CART_URL, {
     headers: {
-      authorization: `Bearer ${token}`,
+      authorization: token,
     },
   });
 
@@ -28,14 +23,14 @@ export const postAddProductToCartService = (product) =>
     { product },
     {
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: token,
       },
     }
   );
 
 export const postUpdateProductQtyCartService = (productId, type) =>
   axios.post(
-    `${UPDATE_PRODUCT_QTY_CART_URL}${productId}`,
+    `${CART_URL}${productId}`,
     {
       action: {
         type,
@@ -43,7 +38,14 @@ export const postUpdateProductQtyCartService = (productId, type) =>
     },
     {
       headers: {
-        authorization: `Bearer ${token}`,
+        authorization: token,
       },
     }
   );
+
+export const deleteProductFromCartService = (productId) =>
+  axios.delete(`${CART_URL}${productId}`, {
+    headers: {
+      authorization: token,
+    },
+  });
