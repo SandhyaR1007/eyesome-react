@@ -1,6 +1,7 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
+  deleteProductFromCartService,
   getAllProductsService,
   getCartItemsService,
   postAddProductToCartService,
@@ -93,9 +94,9 @@ const ProductsContextProvider = ({ children }) => {
     }
   };
 
-  const deletProductFromCart = async (productId) => {
+  const deleteProductFromCart = async (productId) => {
     try {
-      const response = await deletProductFromCart(productId);
+      const response = await deleteProductFromCartService(productId);
       console.log({ response });
       dispatch({
         type: actionTypes.DELETE_PRODUCTS_FROM_CART,
@@ -112,6 +113,8 @@ const ProductsContextProvider = ({ children }) => {
         cart: state.cart,
         loading,
         addProductToCart,
+        updateProductQtyInCart,
+        deleteProductFromCart,
       }}
     >
       {children}
