@@ -1,6 +1,7 @@
 import Mockman from "mockman-js";
 
 import { Login, ProductDetails, ProductListing, Signup } from "../pages";
+import Cart from "../pages/Cart";
 
 const authRoutes = [
   {
@@ -22,6 +23,10 @@ const contentRoutes = [
   {
     path: "/product-details",
     element: <ProductDetails />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
   },
   {
     path: "/mockman",
