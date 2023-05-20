@@ -7,10 +7,12 @@ import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
 import { useProductsContext } from "../../contexts";
+import { useState } from "react";
 
 const Navbar = () => {
   const { cart } = useProductsContext();
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <nav className="flex flex-col sm:flex-row py-4 max-w-screen mb-3">
       <div className="flex xs:justify-between w-full items-center">
@@ -44,7 +46,10 @@ const Navbar = () => {
             Explore
           </Link>
           <ul className=" hidden md:flex justify-between text-2xl ps-1">
-            <li className="bg-gray-200  p-2 rounded-full hover:bg-yellow-800 hover:text-white cursor-pointer mx-2 transition">
+            <li
+              className="bg-gray-200  p-2 rounded-full hover:bg-yellow-800 hover:text-white cursor-pointer mx-2 transition"
+              onClick={() => navigate("/wishlist")}
+            >
               <BsBookmarkHeart />
             </li>
             <li
@@ -60,8 +65,11 @@ const Navbar = () => {
             </li>
           </ul>
           <section className="md:hidden cursor-pointer relative">
-            <RxHamburgerMenu className="text-lg" />
-            <MenuDropdown />
+            <RxHamburgerMenu
+              className="text-lg"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            />
+            {isMenuOpen && <MenuDropdown navigate={navigate} />}
           </section>
         </section>
       </div>
