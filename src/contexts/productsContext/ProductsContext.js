@@ -113,7 +113,7 @@ const ProductsContextProvider = ({ children }) => {
     }
   };
 
-  const getTotalPriceOfItems = state.cart.reduce(
+  const totalPriceOfCartProducts = state.cart.reduce(
     (acc, { qty, price }) => acc + qty * price,
     0
   );
@@ -126,7 +126,7 @@ const ProductsContextProvider = ({ children }) => {
         addProductToCart,
         updateProductQtyInCart,
         deleteProductFromCart,
-        getTotalPriceOfItems,
+        totalPriceOfCartProducts,
       }}
     >
       {children}

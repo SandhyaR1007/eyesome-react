@@ -1,7 +1,10 @@
 import React from "react";
 import PriceCard from "./PriceCard";
+import { useProductsContext } from "../../contexts";
 
 const CartTotalCard = ({ cart }) => {
+  const { totalPriceOfCartProducts } = useProductsContext();
+
   return (
     <section className="md:col-span-1 py-7 px-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full h-min">
       <h1 className="text-xl">Price Details</h1>
@@ -12,7 +15,7 @@ const CartTotalCard = ({ cart }) => {
       <hr />
       <div className="flex justify-between items-center">
         <p className=" text-gray-600">Total</p>
-        <p className="text-2xl">₹ 90000</p>
+        <p className="text-2xl">₹ {totalPriceOfCartProducts}</p>
       </div>
 
       <div className="w-full py-2   flex gap-4 items-center">

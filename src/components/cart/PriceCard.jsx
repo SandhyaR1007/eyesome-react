@@ -4,9 +4,9 @@ const PriceCard = ({ product }) => {
   return (
     <div key={product._id} className=" flex  justify-between  ">
       <p className=" text-gray-600 flex-1">
-        {product.name} ({product.quantity})item
+        {product.name} ({product.qty})item
       </p>
-      <p className="text-lg">₹ {product.price}</p>
+      <p className="text-lg">₹ {product.qty * product.price}</p>
     </div>
   );
 };
