@@ -1,5 +1,10 @@
 import axios from "axios";
-import { CART_URL, GET_ALL_PRODUCTS_URL, LOGIN_URL } from "./apiUrls";
+import {
+  CART_URL,
+  GET_ALL_PRODUCTS_URL,
+  LOGIN_URL,
+  UPDATE_PRODUCT_QTY_CART_URL,
+} from "./apiUrls";
 
 const token = localStorage.getItem("token");
 export const loginService = (email, password) =>
@@ -17,10 +22,25 @@ export const getCartItemsService = () =>
     },
   });
 
-export const postProductsToCartService = (product) =>
+export const postAddProductToCartService = (product) =>
   axios.post(
     CART_URL,
-    { product: JSON.stringify(product) },
+    { product },
+    {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+export const postUpdateProductQtyCartService = (productId, type) =>
+  axios.post(
+    `${UPDATE_PRODUCT_QTY_CART_URL}${productId}`,
+    {
+      action: {
+        type,
+      },
+    },
     {
       headers: {
         authorization: `Bearer ${token}`,
