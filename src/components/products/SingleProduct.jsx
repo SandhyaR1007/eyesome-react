@@ -1,11 +1,12 @@
 import { GiRoundStar } from "react-icons/gi";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 import { useAuthContext, useProductsContext } from "../../contexts";
 import { useNavigate } from "react-router";
 
 const SingleProduct = ({ product }) => {
   const { isAuthenticated } = useAuthContext();
-  const { addProductToCart } = useProductsContext();
+  const { addProductToCart, addProductToWishlist, deleteProductFromWishlist } =
+    useProductsContext();
   const navigate = useNavigate();
   return (
     <div
@@ -66,8 +67,20 @@ const SingleProduct = ({ product }) => {
           >
             {product?.inCart ? "Go to Cart" : "Add to Cart"}
           </button>
-          <button>
-            <BsBookmarkHeart className="text-xl hover:text-rose-600 transition " />
+          <button
+            onClick={() => {
+              if (product?.inWish) {
+                deleteProductFromWishlist(product._id);
+              } else {
+                addProductToWishlist(product);
+              }
+            }}
+          >
+            {product.inWish ? (
+              <BsFillBookmarkHeartFill className="text-xl text-rose-600 hover:shadow-md transition" />
+            ) : (
+              <BsBookmarkHeart className="text-xl hover:text-rose-600 hover:shadow-md transition" />
+            )}
           </button>
         </div>
       </div>
