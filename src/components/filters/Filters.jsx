@@ -3,27 +3,17 @@ import Checkbox from "./Checkbox";
 import InputRange from "./InputRange";
 import InputRadio from "./InputRadio";
 import InputRadioType2 from "./InputRadioType2";
+import { useProductsContext } from "../../contexts";
 
-const checkboxCategories = [
-  {
-    name: "Vision",
-    value: "vision",
-  },
-  {
-    name: "Sunglasses",
-    value: "sunglasses",
-  },
-  {
-    name: "Sports",
-    value: "sports",
-  },
-];
+const checkboxCategories = ["vision", "sunglasses", "sports"];
 
-const gender = ["All", "Men", "Women", "Unisex"];
+const gendersList = ["all", "men", "women", "unisex"];
 
 const ratings = [1, 2, 3, 4];
 const FilterHeading = ({ text }) => <h2 className="text-xl mb-4">{text}</h2>;
 const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
+  const { clearFilters } = useProductsContext();
+
   return (
     <aside
       className={`filtersContainer fixed  top-0 h-screen z-10 flex flex-col p-3 gap-3 overflow-auto
@@ -32,7 +22,10 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
     }
     `}
     >
-      <div className="text-sm text-gray-600 underline cursor-pointer">
+      <div
+        className="text-sm text-gray-600 underline cursor-pointer"
+        onClick={clearFilters}
+      >
         Clear
       </div>
       <div className="flex items-center justify-between">
@@ -45,8 +38,8 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
       <section className="py-3">
         <FilterHeading text="Type" />
         <div className="grid grid-rows-2 grid-cols-2 gap-2">
-          {gender.map((data, index) => (
-            <InputRadioType2 data={data} selected="Men" />
+          {gendersList.map((data, index) => (
+            <InputRadioType2 data={data} />
           ))}
         </div>
       </section>
