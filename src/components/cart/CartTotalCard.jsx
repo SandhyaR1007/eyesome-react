@@ -1,8 +1,10 @@
 import React from "react";
 import PriceCard from "./PriceCard";
 import { useProductsContext } from "../../contexts";
+import { useNavigate } from "react-router";
 
 const CartTotalCard = ({ cart }) => {
+  const navigate = useNavigate();
   const { totalPriceOfCartProducts } = useProductsContext();
 
   return (
@@ -19,7 +21,10 @@ const CartTotalCard = ({ cart }) => {
       </div>
 
       <div className="w-full py-2   flex gap-4 items-center">
-        <button className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base">
+        <button
+          className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
+          onClick={() => navigate("/checkout")}
+        >
           Proceed to Checkout
         </button>
       </div>
