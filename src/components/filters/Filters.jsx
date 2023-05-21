@@ -50,7 +50,10 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
           ))}
         </div>
       </section>
-
+      <section className="py-3">
+        <FilterHeading text="Price Range" />
+        <InputRange />
+      </section>
       <section className="py-3">
         <FilterHeading text="Categories" />
         <div className="flex flex-col gap-2">
@@ -58,11 +61,6 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
             <Checkbox data={data} index={index} />
           ))}
         </div>
-      </section>
-
-      <section className="py-3">
-        <FilterHeading text="Price Range" />
-        <InputRange />
       </section>
 
       <section className="py-3 flex flex-col gap-2">
