@@ -203,7 +203,7 @@ const ProductsContextProvider = ({ children }) => {
         wishlist: state.wishlist,
         filters: state.filters,
         maxRange: state.maxRange,
-        catetoryList: state.catetoryList,
+        categoryList: state.categoryList,
         loading,
         trendingProducts,
         getProductById,
