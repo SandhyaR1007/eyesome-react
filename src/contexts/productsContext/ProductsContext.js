@@ -137,9 +137,12 @@ const ProductsContextProvider = ({ children }) => {
     }
   };
 
-  const totalPriceOfCartProducts = state.cart.reduce(
-    (acc, { qty, price }) => acc + qty * price,
-    0
+  const { totalPriceOfCartProducts, actualPriceOfCart } = state.cart.reduce(
+    (acc, { qty, price, newPrice }) => ({
+      totalPriceOfCartProducts: acc.totalPriceOfCartProducts + qty * newPrice,
+      actualPriceOfCart: acc.actualPriceOfCart + qty * price,
+    }),
+    { totalPriceOfCartProducts: 0, actualPriceOfCart: 0 }
   );
 
   const addProductToWishlist = async (product) => {
@@ -211,6 +214,7 @@ const ProductsContextProvider = ({ children }) => {
         updateProductQtyInCart,
         deleteProductFromCart,
         totalPriceOfCartProducts,
+        actualPriceOfCart,
         addProductToWishlist,
         deleteProductFromWishlist,
         applyFilters,
