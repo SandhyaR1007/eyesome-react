@@ -1,8 +1,8 @@
 export const sortByPrice = (type, data) => {
   if (type == "low_to_high") {
-    return [...data].sort((a, b) => a.price - b.price);
+    return [...data].sort((a, b) => a.newPrice - b.newPrice);
   } else if (type === "high_to_low") {
-    return [...data].sort((a, b) => b.price - a.price);
+    return [...data].sort((a, b) => b.newPrice - a.newPrice);
   }
   return data;
 };
@@ -19,7 +19,7 @@ export const filterByGender = (selectedGender, data) => {
 
 export const filterByPriceRange = (selectedRange, data) => {
   return selectedRange
-    ? data.filter(({ price }) => price <= selectedRange)
+    ? data.filter(({ newPrice }) => newPrice <= selectedRange)
     : data;
 };
 
@@ -37,7 +37,7 @@ export const filterByCheckbox = (selectedCategories, data) => {
 
 export const filterBySearch = (searchText, data) => {
   const searchLowerCased = searchText.toLowerCase();
-  return data.filter(({ name }) =>
-    name.toLowerCase().includes(searchLowerCased)
-  );
+  return searchText
+    ? data.filter(({ name }) => name.toLowerCase().includes(searchLowerCased))
+    : data;
 };
