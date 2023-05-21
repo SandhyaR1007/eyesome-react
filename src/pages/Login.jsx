@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import bannerHero from "../assets/bannerHero.jpg";
 import { Logo } from "../components";
@@ -8,6 +8,7 @@ import { useAuthContext } from "../contexts";
 const Login = () => {
   const { loginHandler, isAuthenticated, loggingIn } = useAuthContext();
   const navigate = useNavigate();
+  const location = useLocation();
   const [loginCredentials, setLoginCredentials] = useState({
     email: "",
     password: "",
@@ -17,7 +18,7 @@ const Login = () => {
     let id;
     if (isAuthenticated) {
       id = setTimeout(() => {
-        navigate("/");
+        navigate(location?.state?.from?.pathname ?? "/");
       }, 1000);
     }
 

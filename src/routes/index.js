@@ -1,4 +1,4 @@
-import { Routes, Route, Outlet, Navigate } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate, useLocation } from "react-router-dom";
 
 import SharedLayout from "./SharedLayout";
 import RequiresAuth from "./RequiresAuth";
@@ -10,11 +10,21 @@ import { useAuthContext } from "../contexts";
 
 const Index = () => {
   const { isAuthenticated } = useAuthContext();
+  const location = useLocation();
+  console.log({ location });
+
   return (
     <Routes>
       <Route
         element={
-          isAuthenticated ? <Navigate to="/" replace={true} /> : <Outlet />
+          isAuthenticated ? (
+            <Navigate
+              to={location?.state?.from?.pathname ?? "/"}
+              replace={true}
+            />
+          ) : (
+            <Outlet />
+          )
         }
       >
         {authRoutes.map((route, idx) => (
