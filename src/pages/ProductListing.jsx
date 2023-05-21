@@ -2,14 +2,16 @@ import { BiFilter } from "react-icons/bi";
 
 import bannerImg from "../assets/bannerHero.jpg";
 import loadingGif from "../assets/loading.gif";
-import { Filters, SingleProduct } from "../components";
+import { Filters, SingleProduct, SortBy } from "../components";
 import { glassesData } from "../data/productsData";
 import { useProductsContext } from "../contexts";
 import { useState } from "react";
+import { useFilter } from "../hooks/filtersHook";
 
 const ProductListing = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { allProducts, loading } = useProductsContext();
+  const productsList = useFilter();
 
   return (
     <>
@@ -35,22 +37,7 @@ const ProductListing = () => {
                 isFilterOpen={isFilterOpen}
                 setIsFilterOpen={setIsFilterOpen}
               />
-              <label>
-                <select
-                  name="sortBy"
-                  className="w-max py-1 px-2 rounded-md cursor-pointer shadow-md   hover:shadow-lg "
-                >
-                  <option value="" selected disabled>
-                    Sort By
-                  </option>
-                  <option value="low" className="">
-                    Low to High
-                  </option>
-                  <option value="high" className="">
-                    High to Low
-                  </option>
-                </select>
-              </label>
+              <SortBy />
               <button
                 className="flex py-1 px-2 rounded-md shadow-md items-center  gap-1 hover:bg-[--primary-text-color] hover:text-white hover:shadow-lg"
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -62,7 +49,7 @@ const ProductListing = () => {
           </section>
 
           <main className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {allProducts.map((glass) => (
+            {productsList.map((glass) => (
               <SingleProduct key={glass.id} product={glass} />
             ))}
           </main>
