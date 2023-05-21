@@ -1,18 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { CiSearch } from "react-icons/ci";
+
 import { RxHamburgerMenu } from "react-icons/rx";
 import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
 import { useProductsContext } from "../../contexts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Search from "../filters/Search";
 
 const Navbar = () => {
   const { cart } = useProductsContext();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <nav className="flex flex-col sm:flex-row py-4 max-w-screen mb-3">
       <div className="flex xs:justify-between w-full items-center">
@@ -29,19 +31,14 @@ const Navbar = () => {
             <Logo />
           </Link>
         </section>
+        <div className="hidden  sm:block sm:w-1/3 relative">
+          <Search />
+        </div>
 
-        <section className="hidden  sm:flex items-center md:w-1/4 sm:w-1/3 bg-black/[0.075] px-3 rounded-full text-sm">
-          <input
-            className="w-full py-2 px-3 bg-transparent focus:outline-none"
-            type="text"
-            placeholder="Search Glasses"
-          />
-          <CiSearch />
-        </section>
         <section className="flex items-center">
           <Link
             to="/product-listing"
-            className="mx-2 px-3 py-1 shadow-md rounded-md text-white bg-yellow-700 text-sm hover:bg-yellow-800 transition"
+            className="mx-2 px-3 py-1 shadow-sm rounded-md text-white bg-yellow-700 text-sm hover:bg-yellow-800 transition"
           >
             Explore
           </Link>
@@ -73,13 +70,9 @@ const Navbar = () => {
           </section>
         </section>
       </div>
-      <section className="sm:hidden  flex items-center  mt-4 bg-black/[0.075] px-3 rounded-full text-sm">
-        <input
-          className="w-full py-2 px-3 bg-transparent focus:outline-none"
-          type="text"
-          placeholder="Search Glasses"
-        />
-        <CiSearch />
+
+      <section className="mt-4 sm:hidden relative">
+        <Search />
       </section>
     </nav>
   );
