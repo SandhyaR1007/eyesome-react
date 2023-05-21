@@ -2,29 +2,18 @@ import { AiOutlineClose } from "react-icons/ai";
 import Checkbox from "./Checkbox";
 import InputRange from "./InputRange";
 import InputRadio from "./InputRadio";
+import InputRadioType2 from "./InputRadioType2";
+import { useProductsContext } from "../../contexts";
 
-const checkboxCategories = [
-  {
-    name: "All Products",
-    value: "all",
-  },
-  {
-    name: "Vision",
-    value: "vision",
-  },
-  {
-    name: "Sunglasses",
-    value: "sunglasses",
-  },
-  {
-    name: "Sports",
-    value: "sports",
-  },
-];
+const checkboxCategories = ["vision", "sunglasses", "sports"];
+
+const gendersList = ["all", "men", "women", "unisex"];
 
 const ratings = [1, 2, 3, 4];
 const FilterHeading = ({ text }) => <h2 className="text-xl mb-4">{text}</h2>;
 const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
+  const { clearFilters } = useProductsContext();
+
   return (
     <aside
       className={`filtersContainer fixed  top-0 h-screen z-10 flex flex-col p-3 gap-3 overflow-auto
@@ -33,27 +22,38 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
     }
     `}
     >
-      <div className="text-sm text-gray-600">Clear</div>
+      <div
+        className="text-sm text-gray-600 underline cursor-pointer"
+        onClick={clearFilters}
+      >
+        Clear
+      </div>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Filter Products</h1>
         <AiOutlineClose
-          className="text-xl"
+          className="text-xl cursor-pointer"
           onClick={() => setIsFilterOpen(!isFilterOpen)}
         />
       </div>
-
       <section className="py-3">
-        <FilterHeading text="Category" />
+        <FilterHeading text="Type" />
         <div className="grid grid-rows-2 grid-cols-2 gap-2">
+          {gendersList.map((data, index) => (
+            <InputRadioType2 data={data} />
+          ))}
+        </div>
+      </section>
+      <section className="py-3">
+        <FilterHeading text="Price Range" />
+        <InputRange />
+      </section>
+      <section className="py-3">
+        <FilterHeading text="Categories" />
+        <div className="flex flex-col gap-2">
           {checkboxCategories.map((data, index) => (
             <Checkbox data={data} index={index} />
           ))}
         </div>
-      </section>
-
-      <section className="py-3">
-        <FilterHeading text="Price Range" />
-        <InputRange />
       </section>
 
       <section className="py-3 flex flex-col gap-2">
