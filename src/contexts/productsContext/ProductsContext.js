@@ -10,7 +10,7 @@ import {
   postAddProductToWishlistService,
   postUpdateProductQtyCartService,
 } from "../../api/apiServices";
-import { actionTypes } from "../../utils/actionTypes";
+import { actionTypes, filterTypes } from "../../utils/actionTypes";
 import { useAuthContext } from "..";
 
 export const ProductsContext = createContext();
@@ -171,12 +171,26 @@ const ProductsContextProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const applyFilters = (filterType, filterValue) => {
+    dispatch({
+      type: filterTypes.FILTERS,
+      payload: { filterType, filterValue },
+    });
+  };
+  const clearFilters = () => {
+    dispatch({
+      type: filterTypes.CLEAR_FILTER,
+    });
+  };
   return (
     <ProductsContext.Provider
       value={{
         allProducts: state.allProducts,
         cart: state.cart,
         wishlist: state.wishlist,
+        filters: state.filters,
+        maxRange: state.maxRange,
         loading,
         getProductById,
         addProductToCart,
@@ -185,6 +199,8 @@ const ProductsContextProvider = ({ children }) => {
         totalPriceOfCartProducts,
         addProductToWishlist,
         deleteProductFromWishlist,
+        applyFilters,
+        clearFilters,
       }}
     >
       {children}

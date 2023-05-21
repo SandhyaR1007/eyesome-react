@@ -14,4 +14,5 @@ export const actionTypes = {
 export const filterTypes = {
   INITIALIZE_FILTERS: "INITIALIZE_FILTERS",
   FILTERS: "FILTERS",
+  CLEAR_FILTER: "CLEAR_FILTER",
 };
