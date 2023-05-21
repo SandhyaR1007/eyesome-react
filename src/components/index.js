@@ -11,3 +11,4 @@ export { default as SortBy } from "./filters/SortBy";
 export { default as Search } from "./filters/Search";
 
 export { default as CartItemCard } from "./cart/CartItemCard";
+export { default as SummaryCard } from "./checkout/SummaryCard";

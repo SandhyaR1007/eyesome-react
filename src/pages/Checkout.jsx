@@ -1,5 +1,5 @@
 import { useState } from "react";
-import glassCategory1 from "../assets/glassCategory1.png";
+import { SummaryCard } from "../components";
 
 const Checkout = () => {
   const [addressData, setAddressData] = useState([
@@ -14,35 +14,6 @@ const Checkout = () => {
     town: "aaa y698590809",
     pincode: "123345",
   });
-  const product = {
-    id: 1,
-    name: "Classic Aviator",
-    price: 4999.99,
-    category: "sunglasses",
-    rating: 4.5,
-    image: glassCategory1,
-    description:
-      "These classic aviator sunglasses are perfect for any occasion.",
-  };
-
-  const ItemsCard = () => {
-    return (
-      <div className="flex flex-col gap-2 shadow-sm p-4 rounded-sm ">
-        <div className="flex  items-center flex-wrap gap-2 w-full">
-          <div className="flex flex-1 items-center gap-2">
-            <div className=" bg-black/[0.075] h-16 w-16 rounded-md flex items-center">
-              <img src={glassCategory1} alt="" className="object-fit w-full" />
-            </div>
-            <div className="">
-              <h2>{product.name}</h2>
-              <span>{product.price}</span>
-            </div>
-          </div>
-          <div className="">2</div>
-        </div>
-      </div>
-    );
-  };
 
   const AddressCard = ({ address, pincode }) => {
     return (
@@ -120,38 +91,7 @@ const Checkout = () => {
             </div>
           </form>
         </section>
-
-        <section className="py-7 px-12 md:px-7 lg:px-12 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full h-min">
-          <h1 className="text-3xl font-bold">Order Summary</h1>
-          <ItemsCard />
-          <ItemsCard />
-          <ItemsCard />
-          <hr />
-          <div className=" flex justify-between items-center ">
-            <p className=" text-gray-600">Subtotal</p>
-            <p className="text-lg">100000</p>
-          </div>
-          <div className=" flex justify-between items-center ">
-            <p className=" text-gray-600">Discount</p>
-            <p className="text-lg">-10000</p>
-          </div>
-
-          <div className=" flex justify-between items-center">
-            <p className=" text-gray-600">Delivery Charges</p>
-            <p className="text-lg">Free</p>
-          </div>
-          <hr />
-          <div className="flex justify-between items-center">
-            <p className=" text-gray-600">Total</p>
-            <p className="text-2xl">90000</p>
-          </div>
-
-          <div className="w-full py-2   flex gap-4 items-center">
-            <button className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base">
-              Place Order
-            </button>
-          </div>
-        </section>
+        <SummaryCard />
       </main>
     </div>
   );
