@@ -2,15 +2,17 @@ import { BiFilter } from "react-icons/bi";
 
 import bannerImg from "../assets/bannerHero.jpg";
 import loadingGif from "../assets/loading.gif";
+
 import { Filters, SingleProduct, SortBy } from "../components";
-import { glassesData } from "../data/productsData";
+
 import { useProductsContext } from "../contexts";
 import { useState } from "react";
 import { useFilter } from "../hooks/filtersHook";
 
 const ProductListing = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const { allProducts, loading } = useProductsContext();
+
+  const { loading } = useProductsContext();
   const productsList = useFilter();
 
   return (
