@@ -7,7 +7,9 @@ import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
 import { useProductsContext } from "../../contexts";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
+
 import Search from "../filters/Search";
 
 const Navbar = () => {
