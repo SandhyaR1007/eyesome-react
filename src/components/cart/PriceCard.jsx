@@ -6,7 +6,8 @@ const PriceCard = ({ product }) => {
       <p className=" text-gray-600 flex-1">
         {product.name} ({product.qty})item
       </p>
-      <p className="text-lg">₹ {product.qty * product.price}</p>
+
+      <p className="text-lg">₹ {product.qty * product.newPrice}</p>
     </div>
   );
 };
