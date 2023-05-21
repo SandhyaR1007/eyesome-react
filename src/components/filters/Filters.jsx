@@ -2,12 +2,9 @@ import { AiOutlineClose } from "react-icons/ai";
 import Checkbox from "./Checkbox";
 import InputRange from "./InputRange";
 import InputRadio from "./InputRadio";
+import InputRadioType2 from "./InputRadioType2";
 
 const checkboxCategories = [
-  {
-    name: "All Products",
-    value: "all",
-  },
   {
     name: "Vision",
     value: "vision",
@@ -22,6 +19,8 @@ const checkboxCategories = [
   },
 ];
 
+const gender = ["All", "Men", "Women", "Unisex"];
+
 const ratings = [1, 2, 3, 4];
 const FilterHeading = ({ text }) => <h2 className="text-xl mb-4">{text}</h2>;
 const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
@@ -33,18 +32,28 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
     }
     `}
     >
-      <div className="text-sm text-gray-600">Clear</div>
+      <div className="text-sm text-gray-600 underline cursor-pointer">
+        Clear
+      </div>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Filter Products</h1>
         <AiOutlineClose
-          className="text-xl"
+          className="text-xl cursor-pointer"
           onClick={() => setIsFilterOpen(!isFilterOpen)}
         />
       </div>
+      <section className="py-3">
+        <FilterHeading text="Type" />
+        <div className="grid grid-rows-2 grid-cols-2 gap-2">
+          {gender.map((data, index) => (
+            <InputRadioType2 data={data} selected="Men" />
+          ))}
+        </div>
+      </section>
 
       <section className="py-3">
-        <FilterHeading text="Category" />
-        <div className="grid grid-rows-2 grid-cols-2 gap-2">
+        <FilterHeading text="Categories" />
+        <div className="flex flex-col gap-2">
           {checkboxCategories.map((data, index) => (
             <Checkbox data={data} index={index} />
           ))}
