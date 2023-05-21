@@ -37,9 +37,7 @@ export const filterByCheckbox = (selectedCategories, data) => {
 
 export const filterBySearch = (searchText, data) => {
   const searchLowerCased = searchText.toLowerCase();
-  return data.filter(
-    ({ name, brand }) =>
-      name.toLowerCase().includes(searchLowerCased) ||
-      brand.toLowerCase(searchLowerCased)
+  return data.filter(({ name }) =>
+    name.toLowerCase().includes(searchLowerCased)
   );
 };
