@@ -6,5 +6,6 @@ export { default as Trending } from "./trending/TrendingList";
 export { default as SingleProduct } from "./products/SingleProduct";
 export { default as StarRating } from "./products/StarRating";
 export { default as Filters } from "./filters/Filters";
+export { default as SortBy } from "./filters/SortBy";
 
 export { default as CartItemCard } from "./cart/CartItemCard";

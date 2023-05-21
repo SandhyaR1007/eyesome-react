@@ -1,15 +1,27 @@
 import React from "react";
-const InputRadioType2 = ({ data, selected }) => {
+import { useProductsContext } from "../../contexts";
+const InputRadioType2 = ({ data }) => {
+  const {
+    applyFilters,
+    filters: { gender },
+  } = useProductsContext();
   return (
     <label
-      className={`p-2 rounded-md  shadow-sm text-center ${
-        selected === data
+      className={`p-2 rounded-md  shadow-sm text-center capitalize ${
+        gender === data
           ? "bg-[--primary-text-color] text-white "
           : "bg-black/[0.1] hover:bg-[--primary-text-color] hover:text-white"
       } cursor-pointer`}
     >
       {data}
-      <input type="radio" name="category" value={data} className="invisible" />
+      <input
+        type="radio"
+        name="gender"
+        value={data}
+        className="invisible"
+        selected={gender === data}
+        onChange={(e) => applyFilters(e.target.name, e.target.value)}
+      />
     </label>
   );
 };
