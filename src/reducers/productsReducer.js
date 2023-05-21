@@ -4,6 +4,7 @@ export const initialState = {
   allProducts: [],
   cart: [],
   wishlist: [],
+  categoryList: [],
   maxRange: 0,
   filters: {
     gender: "all",
@@ -83,6 +84,9 @@ export const productsReducer = (state, action) => {
           searchText: "",
         },
       };
+
+    case actionTypes.INITIALIZE_CATEGORIES:
+      return { ...state, categoryList: action.payload };
 
     default:
       return state;

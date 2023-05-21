@@ -1,10 +1,11 @@
-import { Banner, Trending } from "../components";
+import { Banner, CategoryList, Trending } from "../components";
 
 const Home = () => {
   return (
     <>
       <Banner />
       <Trending />
+      <CategoryList />
     </>
   );
 };

@@ -1,5 +1,11 @@
 import axios from "axios";
-import { CART_URL, PRODUCTS_URL, LOGIN_URL, WISHLIST_URL } from "./apiUrls";
+import {
+  CART_URL,
+  PRODUCTS_URL,
+  LOGIN_URL,
+  WISHLIST_URL,
+  CATEGORIES_URL,
+} from "./apiUrls";
 
 const token = localStorage.getItem("token");
 export const loginService = (email, password) =>
@@ -77,3 +83,5 @@ export const deleteProductFromWishlistService = (productId) =>
       authorization: token,
     },
   });
+
+export const getAllCategoriesService = () => axios.get(CATEGORIES_URL);

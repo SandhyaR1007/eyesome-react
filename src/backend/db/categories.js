@@ -1,4 +1,6 @@
-import { v4 as uuid } from "uuid";
+import glassCategory1 from "../../assets/glassCategory1.png";
+import glassCategory2 from "../../assets/glassCategory2.png";
+import glassCategory3 from "../../assets/glassCategory3.png";
 
 /**
  * Category Database can be added here.
@@ -7,21 +9,25 @@ import { v4 as uuid } from "uuid";
 
 export const categories = [
   {
-    _id: uuid(),
-    categoryName: "fiction",
+    _id: "ef1f52f6-4e35-4cd7-ad4a-0a9b52de894f",
+    categoryName: "vision",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "Clear vision and stylish frames for a perfect blend of functionality and fashion",
+    categoryImg: glassCategory1,
   },
   {
-    _id: uuid(),
-    categoryName: "non-fiction",
+    _id: "937d27a0-51b7-4005-bb04-4f5f111eac90",
+    categoryName: "sports",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "Stay focused and perform at your best with our high-performance sports glasses.",
+    categoryImg: glassCategory3,
   },
   {
-    _id: uuid(),
-    categoryName: "horror",
+    _id: "1164f45b-1659-4631-88d7-47325bb21eff",
+    categoryName: "sunglasses",
     description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+      "Protect your eyes in style with our UV-protected sunglasses collection.",
+    categoryImg: glassCategory2,
   },
 ];
+console.log({ categories });

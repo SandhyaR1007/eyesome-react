@@ -49,6 +49,7 @@ export const products = [
     rating: 4.5,
     price: 1999,
     newPrice: 1899,
+    trending: true,
   },
   {
     _id: "887cdd99-1503-4527-aef4-88c521126a47",
@@ -62,9 +63,10 @@ export const products = [
     weight: "100g",
     quantity: 5,
     image: sports2,
-    rating: 2.8,
+    rating: 4.8,
     price: 1299,
     newPrice: 1199,
+    trending: true,
   },
   {
     _id: "dc2b2495-eb6c-4889-a6f7-3c8853a01ba2",
@@ -209,6 +211,7 @@ export const products = [
     rating: 4.7,
     price: 2999,
     newPrice: 2399,
+    trending: true,
   },
   {
     _id: "9e3419eb-e5f6-4813-8bf4-6d72b6498235",
@@ -353,6 +356,7 @@ export const products = [
     rating: 4.1,
     price: 1499,
     newPrice: 1399,
+    trending: true,
   },
   {
     _id: "9ca598d9-7cb5-4fb0-8455-b43028f9cb96",
@@ -369,6 +373,7 @@ export const products = [
     rating: 4.3,
     price: 2999,
     newPrice: 2599,
+    trending: true,
   },
   {
     _id: "51db0e19-b0e0-4d6e-bce0-739f1bd37ba7",

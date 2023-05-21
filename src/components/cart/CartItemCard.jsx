@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { useProductsContext } from "../../contexts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const CartItemCard = ({ product, isSearch, setSearch }) => {
   const navigate = useNavigate();
