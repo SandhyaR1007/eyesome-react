@@ -3,6 +3,7 @@ import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
   deleteProductFromCartService,
   deleteProductFromWishlistService,
+  getAllCategoriesService,
   getAllProductsService,
   getCartItemsService,
   getWishlistItemsService,
@@ -45,6 +46,14 @@ const ProductsContextProvider = ({ children }) => {
           dispatch({
             type: actionTypes.INITIALIZE_WISHLIST,
             payload: wishlistRes.data.wishlist,
+          });
+        }
+        const categoryRes = await getAllCategoriesService();
+        console.log({ categoryRes });
+        if (categoryRes.status === 200) {
+          dispatch({
+            type: actionTypes.INITIALIZE_CATEGORIES,
+            payload: categoryRes.data.categories,
           });
         }
       } catch (e) {
@@ -183,6 +192,9 @@ const ProductsContextProvider = ({ children }) => {
       type: filterTypes.CLEAR_FILTER,
     });
   };
+  const trendingProducts = state.allProducts.filter(
+    (product) => product.trending
+  );
   return (
     <ProductsContext.Provider
       value={{
@@ -191,7 +203,9 @@ const ProductsContextProvider = ({ children }) => {
         wishlist: state.wishlist,
         filters: state.filters,
         maxRange: state.maxRange,
+        catetoryList: state.catetoryList,
         loading,
+        trendingProducts,
         getProductById,
         addProductToCart,
         updateProductQtyInCart,

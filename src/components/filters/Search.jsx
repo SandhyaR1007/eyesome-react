@@ -8,7 +8,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log({ location });
 
   const { allProducts, applyFilters } = useProductsContext();
   const [search, setSearch] = useState("");
