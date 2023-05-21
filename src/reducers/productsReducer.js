@@ -4,8 +4,9 @@ export const initialState = {
   allProducts: [],
   cart: [],
   wishlist: [],
+  maxRange: 0,
   filters: {
-    gender: "",
+    gender: "all",
     categories: [],
     priceRange: "",
     rating: "",
@@ -17,7 +18,16 @@ export const initialState = {
 export const productsReducer = (state, action) => {
   switch (action.type) {
     case actionTypes.INITIALIZE_PRODUCTS:
-      return { ...state, allProducts: action.payload };
+      const maxValue = action.payload.reduce(
+        (acc, { price }) => (acc > price ? acc : price),
+        0
+      );
+      return {
+        ...state,
+        allProducts: action.payload,
+        maxRange: maxValue,
+        filters: { ...state.filters, priceRange: maxValue },
+      };
 
     case actionTypes.UPDATE_PRODUCTS:
       return {
@@ -57,6 +67,20 @@ export const productsReducer = (state, action) => {
         filters: {
           ...state.filters,
           [action.payload.filterType]: action.payload.filterValue,
+        },
+      };
+    case filterTypes.CLEAR_FILTER:
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+
+          gender: "all",
+          categories: [],
+          priceRange: state.maxRange,
+          rating: "",
+          sortBy: "",
+          searchText: "",
         },
       };
 
