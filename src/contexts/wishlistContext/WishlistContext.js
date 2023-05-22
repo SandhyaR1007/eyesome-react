@@ -7,38 +7,48 @@ import {
 } from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
 import { useAuthContext, useProductsContext } from "..";
+import { notify } from "../../utils/utils";
 
 export const WishlistContext = createContext();
 
 const WishlistContextProvider = ({ children }) => {
-  const { isAuthenticated } = useAuthContext();
+  const { token } = useAuthContext();
   const { updateInCartOrInWish } = useProductsContext();
   const [loadingWishlist, setLoadingWishlist] = useState(false);
 
   const [state, dispatch] = useReducer(wishlistReducer, initialState);
 
   useEffect(() => {
-    setLoadingWishlist(true);
-    (async () => {
-      try {
-        const wishlistRes = await getWishlistItemsService();
-        if (wishlistRes.status === 200) {
-          dispatch({
-            type: actionTypes.INITIALIZE_WISHLIST,
-            payload: wishlistRes.data.wishlist,
-          });
+    if (token) {
+      setLoadingWishlist(true);
+      (async () => {
+        try {
+          const wishlistRes = await getWishlistItemsService(token);
+          console.log({ wishlistRes });
+          if (wishlistRes.status === 200) {
+            dispatch({
+              type: actionTypes.INITIALIZE_WISHLIST,
+              payload: wishlistRes.data.wishlist,
+            });
+          }
+        } catch (err) {
+          console.log(err);
+          notify(
+            "error",
+            err?.response?.data?.errors
+              ? err?.response?.data?.errors[0]
+              : "Some Error Occurred!!"
+          );
+        } finally {
+          setLoadingWishlist(false);
         }
-      } catch (e) {
-        console.log(e);
-      } finally {
-        setLoadingWishlist(false);
-      }
-    })();
-  }, [isAuthenticated]);
+      })();
+    }
+  }, [token]);
 
   const addProductToWishlist = async (product) => {
     try {
-      const response = await postAddProductToWishlistService(product);
+      const response = await postAddProductToWishlistService(product, token);
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: actionTypes.ADD_PRODUCT_TO_WISHLIST,
@@ -46,14 +56,21 @@ const WishlistContextProvider = ({ children }) => {
         });
         updateInCartOrInWish(product._id, "inWish", true);
       }
+      notify("success", "Added to wishlist");
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     }
   };
 
   const deleteProductFromWishlist = async (productId) => {
     try {
-      const response = await deleteProductFromWishlistService(productId);
+      const response = await deleteProductFromWishlistService(productId, token);
       console.log({ response });
       if (response.status === 200 || response.status === 201) {
         dispatch({
@@ -61,9 +78,16 @@ const WishlistContextProvider = ({ children }) => {
           payload: state.wishlist.filter(({ _id }) => _id !== productId),
         });
         updateInCartOrInWish(productId, "inWish", false);
+        notify("warn", "Removed from wishlist");
       }
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     }
   };
 

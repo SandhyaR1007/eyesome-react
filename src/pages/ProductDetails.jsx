@@ -15,7 +15,7 @@ import { StarRating } from "../components";
 const ProductDetails = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
-  const { isAuthenticated } = useAuthContext();
+  const { token } = useAuthContext();
   const { getProductById, allProducts } = useProductsContext();
   const { addProductToCart } = useCartContext();
   const { addProductToWishlist, deleteProductFromWishlist } =
@@ -92,7 +92,7 @@ const ProductDetails = () => {
             <button
               className="btn-rounded-secondary flex items-center gap-2 md:text-sm lg:text-base"
               onClick={() => {
-                if (!isAuthenticated) {
+                if (!token) {
                   navigate("/login");
                 } else {
                   if (!product?.inCart) {

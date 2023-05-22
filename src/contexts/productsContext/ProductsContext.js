@@ -15,7 +15,7 @@ import { useAuthContext } from "..";
 export const ProductsContext = createContext();
 
 const ProductsContextProvider = ({ children }) => {
-  const { isAuthenticated } = useAuthContext();
+  const { token } = useAuthContext();
   const [loading, setLoading] = useState(false);
 
   const [state, dispatch] = useReducer(productsReducer, initialState);
@@ -47,7 +47,7 @@ const ProductsContextProvider = ({ children }) => {
         setLoading(false);
       }
     })();
-  }, [isAuthenticated]);
+  }, [token]);
 
   const getProductById = (productId) =>
     state.allProducts.find((product) => product._id === productId);

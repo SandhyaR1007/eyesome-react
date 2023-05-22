@@ -1,12 +1,11 @@
 import { createContext, useState } from "react";
 import { loginService, signupService } from "../../api/apiServices";
+import { notify } from "../../utils/utils";
 
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem("token")
-  );
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [loggingIn, setLoggingIn] = useState(false);
   const [signingUp, setSigningUp] = useState(false);
 
@@ -24,10 +23,17 @@ const AuthContextProvider = ({ children }) => {
           "userInfo",
           JSON.stringify(response?.data?.foundUser)
         );
-        setIsAuthenticated(response?.data?.encodedToken);
+        setToken(response?.data?.encodedToken);
+        notify("success", "Signed Up Successfully!!");
       }
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     } finally {
       setSigningUp(false);
     }
@@ -44,10 +50,17 @@ const AuthContextProvider = ({ children }) => {
           "userInfo",
           JSON.stringify(response?.data?.foundUser)
         );
-        setIsAuthenticated(response?.data?.encodedToken);
+        setToken(response?.data?.encodedToken);
+        notify("success", "Logged In Successfully!!");
       }
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     } finally {
       setLoggingIn(false);
     }
@@ -56,12 +69,13 @@ const AuthContextProvider = ({ children }) => {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
-    setIsAuthenticated(null);
+    setToken(null);
+    notify("info", "Logged out successfully!!", 100);
   };
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated,
+        token,
         loggingIn,
         loginHandler,
         logoutHandler,

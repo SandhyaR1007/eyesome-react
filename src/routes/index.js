@@ -9,15 +9,14 @@ import { Home, Login } from "../pages";
 import { useAuthContext } from "../contexts";
 
 const Index = () => {
-  const { isAuthenticated } = useAuthContext();
+  const { token } = useAuthContext();
   const location = useLocation();
-  console.log({ location });
 
   return (
     <Routes>
       <Route
         element={
-          isAuthenticated ? (
+          token ? (
             <Navigate
               to={location?.state?.from?.pathname ?? "/"}
               replace={true}

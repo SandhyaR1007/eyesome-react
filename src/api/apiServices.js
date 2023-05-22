@@ -7,7 +7,6 @@ import {
   CATEGORIES_URL,
 } from "./apiUrls";
 
-const token = localStorage.getItem("token");
 export const loginService = (email, password) =>
   axios.post(LOGIN_URL, { email, password });
 
@@ -19,14 +18,14 @@ export const getAllProductsService = () => axios.get(PRODUCTS_URL);
 export const getProductByIdService = (productId) =>
   axios.get(`${PRODUCTS_URL}/${productId}`);
 
-export const getCartItemsService = () =>
+export const getCartItemsService = (token) =>
   axios.get(CART_URL, {
     headers: {
       authorization: token,
     },
   });
 
-export const postAddProductToCartService = (product) =>
+export const postAddProductToCartService = (product, token) =>
   axios.post(
     CART_URL,
     { product },
@@ -37,7 +36,7 @@ export const postAddProductToCartService = (product) =>
     }
   );
 
-export const postUpdateProductQtyCartService = (productId, type) =>
+export const postUpdateProductQtyCartService = (productId, type, token) =>
   axios.post(
     `${CART_URL}/${productId}`,
     {
@@ -52,21 +51,21 @@ export const postUpdateProductQtyCartService = (productId, type) =>
     }
   );
 
-export const deleteProductFromCartService = (productId) =>
+export const deleteProductFromCartService = (productId, token) =>
   axios.delete(`${CART_URL}/${productId}`, {
     headers: {
       authorization: token,
     },
   });
 
-export const getWishlistItemsService = () =>
+export const getWishlistItemsService = (token) =>
   axios.get(WISHLIST_URL, {
     headers: {
       authorization: token,
     },
   });
 
-export const postAddProductToWishlistService = (product) =>
+export const postAddProductToWishlistService = (product, token) =>
   axios.post(
     WISHLIST_URL,
     { product },
@@ -77,7 +76,7 @@ export const postAddProductToWishlistService = (product) =>
     }
   );
 
-export const deleteProductFromWishlistService = (productId) =>
+export const deleteProductFromWishlistService = (productId, token) =>
   axios.delete(`${WISHLIST_URL}/${productId}`, {
     headers: {
       authorization: token,

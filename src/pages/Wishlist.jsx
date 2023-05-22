@@ -4,7 +4,7 @@ import { useWishlistContext } from "../contexts";
 
 const Wishlist = () => {
   const { wishlist } = useWishlistContext();
-  console.log({ wishlist });
+
   return (
     <div>
       <h1 className="text-3xl py-6 font-semibold">My Wishlist</h1>

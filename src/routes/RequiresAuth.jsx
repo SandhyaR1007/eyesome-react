@@ -4,8 +4,8 @@ import { useAuthContext } from "../contexts";
 
 const RequiresAuth = () => {
   const location = useLocation();
-  const { isAuthenticated } = useAuthContext();
-  return isAuthenticated ? (
+  const { token } = useAuthContext();
+  return token ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} />

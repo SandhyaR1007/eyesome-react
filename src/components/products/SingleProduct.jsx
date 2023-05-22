@@ -9,7 +9,7 @@ import {
 import { useNavigate } from "react-router";
 
 const SingleProduct = ({ product, fromWish }) => {
-  const { isAuthenticated } = useAuthContext();
+  const { token } = useAuthContext();
   const { isInCart } = useProductsContext();
   const { addProductToCart } = useCartContext();
   const { addProductToWishlist, deleteProductFromWishlist } =
@@ -65,7 +65,7 @@ const SingleProduct = ({ product, fromWish }) => {
           <button
             className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md`}
             onClick={() => {
-              if (!isAuthenticated) {
+              if (!token) {
                 navigate("/login");
               } else {
                 if (!product?.inCart || inCart) {
@@ -76,7 +76,7 @@ const SingleProduct = ({ product, fromWish }) => {
               }
             }}
           >
-            {product?.inCart || inCart ? "Go to Cart" : "Add to Cart"}
+            {product?.inCart || inCart ? "Go to Bag" : "Add to Bag"}
           </button>
           <button
             onClick={() => {

@@ -6,7 +6,7 @@ import { Logo } from "../components";
 import { useAuthContext } from "../contexts";
 
 const Login = () => {
-  const { loginHandler, isAuthenticated, loggingIn } = useAuthContext();
+  const { loginHandler, token, loggingIn } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
   const [loginCredentials, setLoginCredentials] = useState({
@@ -16,7 +16,7 @@ const Login = () => {
 
   useEffect(() => {
     let id;
-    if (isAuthenticated) {
+    if (token) {
       id = setTimeout(() => {
         navigate(location?.state?.from?.pathname ?? "/");
       }, 1000);
@@ -25,7 +25,7 @@ const Login = () => {
     return () => {
       clearInterval(id);
     };
-  }, [isAuthenticated]);
+  }, [token]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

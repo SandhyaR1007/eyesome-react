@@ -8,57 +8,81 @@ import {
 } from "../../api/apiServices";
 import { actionTypes } from "../../utils/actionTypes";
 import { useAuthContext, useProductsContext } from "..";
+import { notify } from "../../utils/utils";
 
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  const { isAuthenticated } = useAuthContext();
+  const { token } = useAuthContext();
   const { updateInCartOrInWish } = useProductsContext();
   const [loadingCart, setLoadingCart] = useState(false);
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
   useEffect(() => {
-    setLoadingCart(true);
-    (async () => {
-      try {
-        const cartRes = await getCartItemsService();
-        if (cartRes.status === 200) {
-          dispatch({
-            type: actionTypes.INITIALIZE_CART,
-            payload: cartRes.data.cart,
-          });
+    if (token) {
+      setLoadingCart(true);
+      (async () => {
+        try {
+          const cartRes = await getCartItemsService(token);
+          console.log({ cartRes });
+          if (cartRes.status === 200) {
+            dispatch({
+              type: actionTypes.INITIALIZE_CART,
+              payload: cartRes.data.cart,
+            });
+          }
+        } catch (err) {
+          console.log(err);
+          notify(
+            "error",
+            err?.response?.data?.errors
+              ? err?.response?.data?.errors[0]
+              : "Some Error Occurred!!"
+          );
+        } finally {
+          setLoadingCart(false);
         }
-      } catch (e) {
-        console.log(e);
-      } finally {
-        setLoadingCart(false);
-      }
-    })();
-  }, [isAuthenticated]);
+      })();
+    }
+  }, [token]);
 
   const addProductToCart = async (product) => {
     try {
-      const response = await postAddProductToCartService({
-        ...product,
-        qty: 1,
-      });
+      const response = await postAddProductToCartService(
+        {
+          ...product,
+          qty: 1,
+        },
+        token
+      );
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: actionTypes.ADD_PRODUCT_TO_CART,
           payload: [{ ...product, qty: 1 }, ...state.cart],
         });
         updateInCartOrInWish(product._id, "inCart", true);
+        notify("success", "Product Added to Bag");
       }
       console.log({ response });
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     }
   };
 
   const updateProductQtyInCart = async (productId, type) => {
     try {
-      const response = await postUpdateProductQtyCartService(productId, type);
+      const response = await postUpdateProductQtyCartService(
+        productId,
+        type,
+        token
+      );
       console.log({ response });
       if (response.status === 200 || response.status === 201) {
         if (type === "increment") {
@@ -83,21 +107,34 @@ const CartContextProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     }
   };
 
   const deleteProductFromCart = async (productId) => {
     try {
-      const response = await deleteProductFromCartService(productId);
+      const response = await deleteProductFromCartService(productId, token);
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: actionTypes.DELETE_PRODUCTS_FROM_CART,
           payload: response.data.cart,
         });
         updateInCartOrInWish(productId, "inCart", false);
+        notify("warn", "Product Removed from Bag");
       }
     } catch (err) {
       console.log(err);
+      notify(
+        "error",
+        err?.response?.data?.errors
+          ? err?.response?.data?.errors[0]
+          : "Some Error Occurred!!"
+      );
     }
   };
 
