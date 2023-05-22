@@ -222,7 +222,7 @@ const ProductsContextProvider = ({ children }) => {
   const deleteAddress = (addressId) => {
     dispatch({
       type: addressTypes.ADD_ADDRESS,
-      payload: state.addressList.filter(({ id }) => id === addressId),
+      payload: state.addressList.filter(({ id }) => id !== addressId),
     });
   };
   return (

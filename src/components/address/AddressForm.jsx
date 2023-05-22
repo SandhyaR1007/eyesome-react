@@ -16,7 +16,7 @@ const AddressForm = ({ setShowAddressForm }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log({ newAddress });
-    addAddress({ newAddress });
+    addAddress(newAddress);
     setCurrentAddress(newAddress);
     setShowAddressForm(false);
   };
