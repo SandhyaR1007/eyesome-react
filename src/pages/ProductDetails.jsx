@@ -3,7 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 
-import { useAuthContext, useProductsContext } from "../contexts";
+import {
+  useAuthContext,
+  useCartContext,
+  useProductsContext,
+  useWishlistContext,
+} from "../contexts";
 import { getProductByIdService } from "../api/apiServices";
 import { StarRating } from "../components";
 
@@ -11,13 +16,10 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const { isAuthenticated } = useAuthContext();
-  const {
-    getProductById,
-    addProductToCart,
-    allProducts,
-    addProductToWishlist,
-    deleteProductFromWishlist,
-  } = useProductsContext();
+  const { getProductById, allProducts } = useProductsContext();
+  const { addProductToCart } = useCartContext();
+  const { addProductToWishlist, deleteProductFromWishlist } =
+    useWishlistContext();
   const [loading, setLoading] = useState(false);
   const product = getProductById(productId);
 

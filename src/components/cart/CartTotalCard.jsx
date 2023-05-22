@@ -1,11 +1,11 @@
 import React from "react";
 import PriceCard from "./PriceCard";
-import { useProductsContext } from "../../contexts";
+import { useCartContext } from "../../contexts";
 import { useNavigate } from "react-router";
 
 const CartTotalCard = ({ cart }) => {
   const navigate = useNavigate();
-  const { totalPriceOfCartProducts } = useProductsContext();
+  const { totalPriceOfCartProducts } = useCartContext();
 
   return (
     <section className="md:col-span-1 py-7 px-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full h-min">

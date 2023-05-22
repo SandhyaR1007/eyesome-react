@@ -1,9 +1,9 @@
 import React from "react";
 import SingleProduct from "../components/products/SingleProduct";
-import { useProductsContext } from "../contexts";
+import { useWishlistContext } from "../contexts";
 
 const Wishlist = () => {
-  const { wishlist } = useProductsContext();
+  const { wishlist } = useWishlistContext();
   console.log({ wishlist });
   return (
     <div>

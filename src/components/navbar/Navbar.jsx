@@ -6,14 +6,15 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
-import { useProductsContext } from "../../contexts";
+import { useCartContext, useWishlistContext } from "../../contexts";
 
 import { useState } from "react";
 
 import Search from "../filters/Search";
 
 const Navbar = () => {
-  const { cart, wishlist } = useProductsContext();
+  const { cart } = useCartContext();
+  const { wishlist } = useWishlistContext();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

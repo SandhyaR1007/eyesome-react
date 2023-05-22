@@ -1,11 +1,11 @@
 import React from "react";
 
-import { useProductsContext } from "../contexts";
+import { useCartContext } from "../contexts";
 import { CartItemCard } from "../components";
 import CartTotalCard from "../components/cart/CartTotalCard";
 
 const Cart = () => {
-  const { cart } = useProductsContext();
+  const { cart } = useCartContext();
 
   return (
     <div className="">

@@ -1,9 +1,9 @@
 import React from "react";
-import { useProductsContext } from "../../contexts";
+import { useCartContext } from "../../contexts";
 
 const SummaryCard = () => {
   const { cart, totalPriceOfCartProducts, actualPriceOfCart } =
-    useProductsContext();
+    useCartContext();
 
   const summaryData = [
     {

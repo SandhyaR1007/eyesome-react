@@ -1,13 +1,12 @@
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsBookmarkHeart } from "react-icons/bs";
-import { useProductsContext } from "../../contexts";
+import { useCartContext } from "../../contexts";
 import { useNavigate } from "react-router";
 
 const CartItemCard = ({ product, isSearch, setSearch }) => {
   const navigate = useNavigate();
-  const { updateProductQtyInCart, deleteProductFromCart } =
-    useProductsContext();
+  const { updateProductQtyInCart, deleteProductFromCart } = useCartContext();
 
   const updateHandler = (type) => {
     if (type === "increment" && product.quantity > product.qty) {
