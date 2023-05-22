@@ -11,7 +11,11 @@ import {
   postAddProductToWishlistService,
   postUpdateProductQtyCartService,
 } from "../../api/apiServices";
-import { actionTypes, filterTypes } from "../../utils/actionTypes";
+import {
+  actionTypes,
+  addressTypes,
+  filterTypes,
+} from "../../utils/actionTypes";
 import { useAuthContext } from "..";
 
 export const ProductsContext = createContext();
@@ -19,7 +23,9 @@ export const ProductsContext = createContext();
 const ProductsContextProvider = ({ children }) => {
   const { isAuthenticated } = useAuthContext();
   const [loading, setLoading] = useState(false);
+
   const [state, dispatch] = useReducer(productsReducer, initialState);
+  const [currentAddress, setCurrentAddress] = useState(state.addressList[0]);
 
   useEffect(() => {
     setLoading(true);
@@ -198,6 +204,27 @@ const ProductsContextProvider = ({ children }) => {
   const trendingProducts = state.allProducts.filter(
     (product) => product.trending
   );
+
+  const addAddress = (newAddress) => {
+    dispatch({
+      type: addressTypes.ADD_ADDRESS,
+      payload: [...state.addressList, newAddress],
+    });
+  };
+  const updateAddress = (addressId, updatedAddress) => {
+    dispatch({
+      type: addressTypes.ADD_ADDRESS,
+      payload: state.addressList.map((item) =>
+        item.id === addressId ? updatedAddress : item
+      ),
+    });
+  };
+  const deleteAddress = (addressId) => {
+    dispatch({
+      type: addressTypes.ADD_ADDRESS,
+      payload: state.addressList.filter(({ id }) => id === addressId),
+    });
+  };
   return (
     <ProductsContext.Provider
       value={{
@@ -207,6 +234,10 @@ const ProductsContextProvider = ({ children }) => {
         filters: state.filters,
         maxRange: state.maxRange,
         categoryList: state.categoryList,
+
+        addressList: state.addressList,
+        currentAddress,
+
         loading,
         trendingProducts,
         getProductById,
@@ -219,6 +250,10 @@ const ProductsContextProvider = ({ children }) => {
         deleteProductFromWishlist,
         applyFilters,
         clearFilters,
+        addAddress,
+        updateAddress,
+        deleteAddress,
+        setCurrentAddress,
       }}
     >
       {children}

@@ -18,3 +18,9 @@ export const filterTypes = {
   FILTERS: "FILTERS",
   CLEAR_FILTER: "CLEAR_FILTER",
 };
+
+export const addressTypes = {
+  ADD_ADDRESS: "ADD_ADDRESS",
+  UPDATE_ADDRESS: "UPDATE_ADDRESS",
+  DELETE_ADDRESS: "DELETE_ADDRESS",
+};

@@ -1,4 +1,4 @@
-import { actionTypes, filterTypes } from "../utils/actionTypes";
+import { actionTypes, addressTypes, filterTypes } from "../utils/actionTypes";
 
 export const initialState = {
   allProducts: [],
@@ -14,6 +14,17 @@ export const initialState = {
     sortBy: "",
     searchText: "",
   },
+  addressList: [
+    {
+      id: "61bf1558-94c3-4494-a522-0aad46ed5334",
+      fullname: "Jeon Jungkook",
+      mobile: "0637291830",
+      flat: "42, Yongsan Trade Center, Yongsan,",
+      area: "Hangang-daero",
+      city: "Seoul",
+      pincode: "04322",
+    },
+  ],
 };
 
 export const productsReducer = (state, action) => {
@@ -87,6 +98,13 @@ export const productsReducer = (state, action) => {
 
     case actionTypes.INITIALIZE_CATEGORIES:
       return { ...state, categoryList: action.payload };
+
+    case addressTypes.ADD_ADDRESS:
+      return { ...state, addressList: action.payload };
+    case addressTypes.UPDATE_ADDRESS:
+      return { ...state, addressList: action.payload };
+    case addressTypes.DELETE_ADDRESS:
+      return { ...state, addressList: action.payload };
 
     default:
       return state;
