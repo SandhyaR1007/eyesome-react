@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { useProductsContext } from "../../contexts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const CartItemCard = ({ product, isSearch, setSearch }) => {
   const navigate = useNavigate();
@@ -77,7 +77,12 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
             )}
           </div>
         </div>
-        <div className="">₹{product.price}</div>
+        <div className="flex flex-col items-end">
+          <span>₹{product.newPrice}</span>
+          <span className="text-xs line-through text-gray-600">
+            ₹ {product.price}
+          </span>
+        </div>
       </div>
     </div>
   );

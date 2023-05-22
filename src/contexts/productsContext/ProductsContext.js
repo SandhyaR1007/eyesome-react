@@ -234,8 +234,10 @@ const ProductsContextProvider = ({ children }) => {
         filters: state.filters,
         maxRange: state.maxRange,
         categoryList: state.categoryList,
+
         addressList: state.addressList,
         currentAddress,
+
         loading,
         trendingProducts,
         getProductById,

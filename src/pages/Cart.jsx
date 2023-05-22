@@ -6,7 +6,6 @@ import CartTotalCard from "../components/cart/CartTotalCard";
 
 const Cart = () => {
   const { cart } = useProductsContext();
-  console.log({ cart });
 
   return (
     <div className="">

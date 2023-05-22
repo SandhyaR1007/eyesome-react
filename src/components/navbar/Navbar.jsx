@@ -13,7 +13,7 @@ import { useState } from "react";
 import Search from "../filters/Search";
 
 const Navbar = () => {
-  const { cart } = useProductsContext();
+  const { cart, wishlist } = useProductsContext();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -46,13 +46,18 @@ const Navbar = () => {
           </Link>
           <ul className=" hidden md:flex justify-between text-2xl ps-1">
             <li
-              className="bg-gray-200  p-2 rounded-full hover:bg-yellow-800 hover:text-white cursor-pointer mx-2 transition"
+              className="relative bg-gray-200  p-2 rounded-full hover:bg-yellow-800 hover:text-white cursor-pointer mx-2 transition shadow-sm"
               onClick={() => navigate("/wishlist")}
             >
               <BsBookmarkHeart />
+              {wishlist.length > 0 && (
+                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                  {wishlist.length}
+                </div>
+              )}
             </li>
             <li
-              className="relative bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-800 cursor-pointer mx-2 transition"
+              className="relative bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-800 cursor-pointer mx-2 transition shadow-sm"
               onClick={() => navigate("/cart")}
             >
               <HiOutlineShoppingBag />

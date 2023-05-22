@@ -1,4 +1,6 @@
-import { v4 as uuid } from "uuid";
+import glassCategory1 from "../../assets/glassCategory1.png";
+import glassCategory2 from "../../assets/glassCategory2.png";
+import glassCategory3 from "../../assets/glassCategory3.png";
 
 /**
  * Category Database can be added here.
@@ -11,18 +13,21 @@ export const categories = [
     categoryName: "vision",
     description:
       "Clear vision and stylish frames for a perfect blend of functionality and fashion",
+    categoryImg: glassCategory1,
   },
   {
     _id: "937d27a0-51b7-4005-bb04-4f5f111eac90",
     categoryName: "sports",
     description:
       "Stay focused and perform at your best with our high-performance sports glasses.",
+    categoryImg: glassCategory3,
   },
   {
     _id: "1164f45b-1659-4631-88d7-47325bb21eff",
     categoryName: "sunglasses",
     description:
-      "Protect your eyes in style with our trendy sunglasses collection, featuring UV protection and a variety of designs to suit any outfit or occasion.",
+      "Protect your eyes in style with our UV-protected sunglasses collection.",
+    categoryImg: glassCategory2,
   },
 ];
 console.log({ categories });
