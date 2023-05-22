@@ -1,12 +1,19 @@
 import React from "react";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { BsBookmarkHeart } from "react-icons/bs";
-import { useCartContext } from "../../contexts";
+import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
+import {
+  useCartContext,
+  useProductsContext,
+  useWishlistContext,
+} from "../../contexts";
 import { useNavigate } from "react-router";
 
 const CartItemCard = ({ product, isSearch, setSearch }) => {
   const navigate = useNavigate();
+  const { isInWish } = useProductsContext();
   const { updateProductQtyInCart, deleteProductFromCart } = useCartContext();
+  const { addProductToWishlist, deleteProductFromWishlist } =
+    useWishlistContext();
 
   const updateHandler = (type) => {
     if (type === "increment" && product.quantity > product.qty) {
@@ -17,6 +24,7 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
       deleteProductFromCart(product._id);
     }
   };
+  const inWish = isInWish(product._id);
   return (
     <div
       className={`m-auto flex flex-col gap-2  p-4 rounded-sm shadow-sm bg-white/[0.6] mb-2 max-w-xl ${
@@ -68,8 +76,20 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                   >
                     Remove from Bag
                   </button>
-                  <button>
-                    <BsBookmarkHeart className="text-xl hover:text-rose-600 transition mt-1" />
+                  <button
+                    onClick={() => {
+                      if (inWish) {
+                        deleteProductFromWishlist(product._id);
+                      } else {
+                        addProductToWishlist(product);
+                      }
+                    }}
+                  >
+                    {inWish ? (
+                      <BsFillBookmarkHeartFill className="text-xl text-rose-600 hover:shadow-md transition" />
+                    ) : (
+                      <BsBookmarkHeart className="text-xl hover:text-rose-600 hover:shadow-md transition" />
+                    )}
                   </button>
                 </div>
               </div>

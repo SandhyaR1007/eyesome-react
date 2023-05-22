@@ -96,6 +96,10 @@ const ProductsContextProvider = ({ children }) => {
       payload: state.addressList.filter(({ id }) => id !== addressId),
     });
   };
+  const isInCart = (productId) =>
+    state.allProducts.find((item) => item._id === productId && item.inCart);
+  const isInWish = (productId) =>
+    state.allProducts.find((item) => item._id === productId && item.inWish);
 
   return (
     <ProductsContext.Provider
@@ -106,6 +110,8 @@ const ProductsContextProvider = ({ children }) => {
         maxRange: state.maxRange,
         categoryList: state.categoryList,
         addressList: state.addressList,
+        isInCart,
+        isInWish,
         currentAddress,
         loading,
         trendingProducts,

@@ -3,16 +3,22 @@ import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 import {
   useAuthContext,
   useCartContext,
+  useProductsContext,
   useWishlistContext,
 } from "../../contexts";
 import { useNavigate } from "react-router";
 
-const SingleProduct = ({ product }) => {
+const SingleProduct = ({ product, fromWish }) => {
   const { isAuthenticated } = useAuthContext();
+  const { isInCart } = useProductsContext();
   const { addProductToCart } = useCartContext();
   const { addProductToWishlist, deleteProductFromWishlist } =
     useWishlistContext();
   const navigate = useNavigate();
+  let inCart;
+  if (fromWish) {
+    inCart = isInCart(product._id);
+  }
   return (
     <div
       className="flex flex-col  bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden
@@ -62,7 +68,7 @@ const SingleProduct = ({ product }) => {
               if (!isAuthenticated) {
                 navigate("/login");
               } else {
-                if (!product?.inCart) {
+                if (!product?.inCart || inCart) {
                   addProductToCart(product);
                 } else {
                   navigate("/cart");
@@ -70,7 +76,7 @@ const SingleProduct = ({ product }) => {
               }
             }}
           >
-            {product?.inCart ? "Go to Cart" : "Add to Cart"}
+            {product?.inCart || inCart ? "Go to Cart" : "Add to Cart"}
           </button>
           <button
             onClick={() => {

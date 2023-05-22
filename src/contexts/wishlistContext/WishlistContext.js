@@ -42,7 +42,7 @@ const WishlistContextProvider = ({ children }) => {
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: actionTypes.ADD_PRODUCT_TO_WISHLIST,
-          payload: response.data.wishlist,
+          payload: [{ ...product, inWish: true }, ...state.wishlist],
         });
         updateInCartOrInWish(product._id, "inWish", true);
       }
@@ -58,7 +58,7 @@ const WishlistContextProvider = ({ children }) => {
       if (response.status === 200 || response.status === 201) {
         dispatch({
           type: actionTypes.DELETE_PRODUCTS_FROM_WISHLIST,
-          payload: response.data.wishlist,
+          payload: state.wishlist.filter(({ _id }) => _id !== productId),
         });
         updateInCartOrInWish(productId, "inWish", false);
       }
