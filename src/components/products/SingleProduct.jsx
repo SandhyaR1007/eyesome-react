@@ -1,12 +1,17 @@
 import { GiRoundStar } from "react-icons/gi";
 import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
-import { useAuthContext, useProductsContext } from "../../contexts";
+import {
+  useAuthContext,
+  useCartContext,
+  useWishlistContext,
+} from "../../contexts";
 import { useNavigate } from "react-router";
 
 const SingleProduct = ({ product }) => {
   const { isAuthenticated } = useAuthContext();
-  const { addProductToCart, addProductToWishlist, deleteProductFromWishlist } =
-    useProductsContext();
+  const { addProductToCart } = useCartContext();
+  const { addProductToWishlist, deleteProductFromWishlist } =
+    useWishlistContext();
   const navigate = useNavigate();
   return (
     <div
