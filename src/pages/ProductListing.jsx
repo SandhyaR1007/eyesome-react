@@ -18,9 +18,9 @@ const ProductListing = () => {
   return (
     <>
       {loading ? (
-        <div className="">
+        <div className="h-[70vh] w-full flex items-center justify-center overflow-hidden ">
           <span>
-            <img width={200} src={loadingGif} alt="loading..." />
+            <img width={250} src={loadingGif} alt="loading..." />
           </span>
         </div>
       ) : (
