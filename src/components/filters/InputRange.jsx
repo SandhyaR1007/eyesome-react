@@ -19,6 +19,11 @@ const InputRange = () => {
         className="w-full accent-[--primary-text-color] cursor-pointer"
         onChange={(e) => applyFilters(e.target.name, e.target.value)}
       />
+      <div className="w-full flex justify-between p-0">
+        <span>0</span>
+        <span>{Math.floor(maxRange / 2)}</span>
+        <span>{maxRange}</span>
+      </div>
     </label>
   );
 };
