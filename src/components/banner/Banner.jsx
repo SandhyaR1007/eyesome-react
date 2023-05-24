@@ -3,7 +3,7 @@ import { BsArrowDownRightCircle } from "react-icons/bs";
 import bannerImg from "../../assets/bannerImg.png";
 import { useNavigate } from "react-router";
 
-const Banner = () => {
+const Banner = ({ catRef }) => {
   const navigate = useNavigate();
   return (
     <main className=" flex justify-between items-center py-3 mb-5  relative">
@@ -23,7 +23,14 @@ const Banner = () => {
           >
             Start Shopping
           </button>
-          <button className="p-3 flex items-center">
+          <button
+            className="p-3 flex items-center"
+            onClick={() =>
+              catRef.current.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+          >
             <span className="mx-2">Explore More</span>{" "}
             <BsArrowDownRightCircle className="text-lg" />
           </button>
