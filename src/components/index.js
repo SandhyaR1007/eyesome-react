@@ -13,6 +13,7 @@ export { default as Search } from "./filters/Search";
 
 export { default as CartItemCard } from "./cart/CartItemCard";
 export { default as SummaryCard } from "./checkout/SummaryCard";
+export { default as PriceDetailsCard } from "./checkout/PriceDetailsCard";
 
 export { default as AddressCard } from "./address/AddressCard";
 export { default as AddressForm } from "./address/AddressForm";

@@ -1,7 +1,6 @@
 import { createContext, useEffect, useReducer, useState } from "react";
 import { initialState, productsReducer } from "../../reducers/productsReducer";
 import {
-  deleteProductFromWishlistService,
   getAllCategoriesService,
   getAllProductsService,
 } from "../../api/apiServices";
@@ -20,6 +19,7 @@ const ProductsContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(productsReducer, initialState);
   const [currentAddress, setCurrentAddress] = useState(state.addressList[0]);
+  const [isOrderPlaced, setisOrderPlaced] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -112,6 +112,7 @@ const ProductsContextProvider = ({ children }) => {
         addressList: state.addressList,
         isInCart,
         isInWish,
+        isOrderPlaced,
         currentAddress,
         loading,
         trendingProducts,
@@ -123,6 +124,7 @@ const ProductsContextProvider = ({ children }) => {
         updateAddress,
         deleteAddress,
         setCurrentAddress,
+        setisOrderPlaced,
       }}
     >
       {children}
