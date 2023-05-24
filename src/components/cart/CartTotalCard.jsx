@@ -1,10 +1,12 @@
 import React from "react";
 import PriceCard from "./PriceCard";
-import { useCartContext } from "../../contexts";
+import { useCartContext, useProductsContext } from "../../contexts";
 import { useNavigate } from "react-router";
 
 const CartTotalCard = ({ cart }) => {
   const navigate = useNavigate();
+
+  const { setisOrderPlaced } = useProductsContext();
   const { totalPriceOfCartProducts } = useCartContext();
 
   return (
@@ -23,7 +25,14 @@ const CartTotalCard = ({ cart }) => {
       <div className="w-full py-2   flex gap-4 items-center">
         <button
           className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
-          onClick={() => navigate("/checkout")}
+          onClick={() => {
+            setisOrderPlaced(true);
+            setTimeout(() => {
+              navigate("/checkout", {
+                state: "cart",
+              });
+            }, 100);
+          }}
         >
           Proceed to Checkout
         </button>
