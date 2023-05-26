@@ -1,0 +1,39 @@
+.btn-primary {
+  @apply py-2 px-4 bg-gray-900  text-gray-100 rounded-lg hover:bg-gray-800 disabled:bg-opacity-50 disabled:hover:bg-opacity-50;
+}
+.btn-secondary {
+  @apply py-2 px-4 border border-[--primary-text-color] rounded-lg hover:bg-[--primary-text-color] hover:text-white transition;
+}
+.btn-rounded-primary {
+  @apply border  bg-[--primary-text-color] text-white py-1.5   rounded-full px-6  transition hover:bg-gray-800;
+}
+.btn-rounded-secondary {
+  @apply border border-[--primary-text-color]  py-1.5   rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition;
+}
+.custom-bg-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(226, 169, 45, 1) 0%,
+    rgba(148, 62, 14, 1) 100%
+  );
+}
+.card {
+  @apply flex flex-col justify-between bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden;
+}
+.cardImg {
+}
+.filtersContainer {
+  width: 280px;
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.custom-blur {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

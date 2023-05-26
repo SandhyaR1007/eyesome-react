@@ -1,13 +1,39 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Monoton&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --theme-color: #fbfaf7;
+  --primary-text-color: #252525;
+  --secondary-text-color: #807c77;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* For Firefox Browser */
+  scrollbar-width: thin;
+  scrollbar-color: currentColor #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* For Chrome, EDGE, Opera, Others */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--theme-color);
+  font-family: "Josefin Sans", sans-serif;
+}
+.font-monoton {
+  font-family: "Monoton", cursive;
 }
