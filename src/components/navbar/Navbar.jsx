@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <nav className="flex flex-col sm:flex-row py-4 max-w-screen mb-3">
       <div className="flex xs:justify-between w-full items-center">
-        <section className="relative flex">
+        <section className="relative flex items-center">
           <Link to="/profile">
             <img
               className="rounded-full border-2  bg-yellow-300 me-3 hover:bg-yellow-500 cursor-pointer"
