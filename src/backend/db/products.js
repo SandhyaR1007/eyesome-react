@@ -199,7 +199,7 @@ export const products = [
   {
     _id: "61bf1558-94c3-4494-a522-0aad46ed5334",
     qty: 0,
-    name: "Black rounded boss",
+    name: "Black boss",
     description:
       "Integer et nunc in turpis maximus facilisis ac ac elit. Integer et nunc in turpis maximus facilisis ac ac elit.",
     brand: "Brand 3",

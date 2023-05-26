@@ -62,7 +62,7 @@ const Search = () => {
         <CiSearch />
       </form>
       {search && showList && (
-        <ul className="absolute bg-white w-full max-h-72 overflow-auto rounded-b-md z-10">
+        <ul className="absolute bg-white/[0.9] w-full max-h-72 overflow-auto rounded-b-md z-10">
           {filteredData.length ? (
             filteredData.map((product) => (
               <li key={product._id} className="">
