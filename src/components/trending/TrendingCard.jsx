@@ -34,7 +34,7 @@ const TrendingCard = ({ product }) => {
         <img
           src={product.image}
           alt={product.name}
-          className="w-32 h-20 xs:w-28 xs:h-16 sm:w-32 sm:h-20 py-2 object-cover"
+          className="w-32 h-20 xs:w-28 xs:h-16 sm:w-32 sm:h-20 py-2 object-cover hover:scale-110 transition"
         />
       </div>
     </Link>
