@@ -38,7 +38,7 @@ const ProductDetails = () => {
 
   return (
     <div className="md:min-h-[80vh] flex justify-center items-center py-3">
-      <main className="grid grid-rows-2 md:grid-rows-1 md:grid-cols-2 gap-10 ">
+      <main className="flex md:flex-row flex-col gap-2 ">
         <section className="relative p-10 bg-black/[0.075] max-h-screen flex items-center rounded-lg">
           <img src={product?.image} alt="" className="w-full " />
         </section>
@@ -88,7 +88,7 @@ const ProductDetails = () => {
             </span>
           </div>
 
-          <div className="w-full py-2   flex gap-4 items-center">
+          <div className="w-full py-2   flex gap-4 items-center flex-wrap">
             <button
               className="btn-rounded-secondary flex items-center gap-2 md:text-sm lg:text-base"
               onClick={() => {
