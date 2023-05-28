@@ -26,7 +26,7 @@ const Cart = () => {
           <img
             src={emptyBag}
             alt="empty bag"
-            className="h-36 -rotate-12 mt-5"
+            className="h-36 -rotate-12 mt-5 drop-shadow-lg"
           />
           <div className="text-center">
             <h2 className="text-2xl font-bold">Hey, it feels so light!</h2>
