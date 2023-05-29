@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 const SingleProduct = ({ product, fromWish }) => {
   const { token } = useAuthContext();
   const { isInCart } = useProductsContext();
-  const { addProductToCart } = useCartContext();
+  const { addProductToCart, disableCart } = useCartContext();
   const { addProductToWishlist, deleteProductFromWishlist } =
     useWishlistContext();
   const navigate = useNavigate();
@@ -63,7 +63,8 @@ const SingleProduct = ({ product, fromWish }) => {
         </div>
         <div className="w-full py-2 border-t flex justify-between items-center">
           <button
-            className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md`}
+            className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md disabled:cursor-not-allowed`}
+            disabled={disableCart}
             onClick={() => {
               if (!token) {
                 navigate("/login");
