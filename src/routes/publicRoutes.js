@@ -20,9 +20,10 @@ const contentRoutes = [
   },
 
   {
-    path: "/product-details",
+    path: "/product-details/:productId",
     element: <ProductDetails />,
   },
+
   {
     path: "/mockman",
     element: <Mockman />,

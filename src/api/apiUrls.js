@@ -1,14 +1,18 @@
 const baseUrl = "/api";
 
-//auth urls
+//auth url
 export const SIGNUP_URL = `${baseUrl}/auth/signup`;
 export const LOGIN_URL = `${baseUrl}/auth/login`;
 
-//products urls
+//products url
 
-export const GET_ALL_PRODUCTS_URL = `${baseUrl}/products`;
-export const GET_PRODUCT_BY_ID_URL = `${baseUrl}/products/:productId`;
+export const PRODUCTS_URL = `${baseUrl}/products`;
 
-//category urls
-export const GET_ALL_CATEGORIES_URL = `${baseUrl}/categories`;
-export const GET_CATEGORY_BY_ID_URL = `${baseUrl}/category/:categoryId`;
+//category url
+export const CATEGORIES_URL = `${baseUrl}/categories`;
+
+//cart url
+export const CART_URL = `${baseUrl}/user/cart`;
+
+//wishlist url
+export const WISHLIST_URL = `${baseUrl}/user/wishlist`;

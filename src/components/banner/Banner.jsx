@@ -1,12 +1,14 @@
 import { BsArrowDownRightCircle } from "react-icons/bs";
 
 import bannerImg from "../../assets/bannerImg.png";
+import { useNavigate } from "react-router";
 
-const Banner = () => {
+const Banner = ({ catRef }) => {
+  const navigate = useNavigate();
   return (
     <main className=" flex justify-between items-center py-3 mb-5  relative">
       <section className="max-w-xl mx-auto sm:mx-0  w-full py-3  lg:w-1/3">
-        <h1 className="text-8xl  md:text-7xl lg:text-8xl font-semibold  py-3 w-full ">
+        <h1 className="text-6xl  sm:text-7xl lg:text-8xl font-semibold  py-3 w-full ">
           Glasses & Lens
         </h1>
         <p className="py-3 text-md  text-gray-600">
@@ -15,8 +17,20 @@ const Banner = () => {
           More than 100 types of assortment.
         </p>
         <section className="flex items-center">
-          <button className="btn-primary">Start Shopping</button>
-          <button className="p-3 flex items-center">
+          <button
+            className="btn-primary"
+            onClick={() => navigate("/product-listing")}
+          >
+            Start Shopping
+          </button>
+          <button
+            className="p-3 flex items-center"
+            onClick={() =>
+              catRef.current.scrollIntoView({
+                behavior: "smooth",
+              })
+            }
+          >
             <span className="mx-2">Explore More</span>{" "}
             <BsArrowDownRightCircle className="text-lg" />
           </button>
