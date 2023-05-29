@@ -13,7 +13,7 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
   const { isInWish } = useProductsContext();
   const { updateProductQtyInCart, deleteProductFromCart, disableCart } =
     useCartContext();
-  const { addProductToWishlist, deleteProductFromWishlist } =
+  const { addProductToWishlist, deleteProductFromWishlist, disableWish } =
     useWishlistContext();
 
   const updateHandler = (type) => {
@@ -79,6 +79,8 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                     Remove from Bag
                   </button>
                   <button
+                    className="disabled:cursor-wait"
+                    disabled={disableWish}
                     onClick={() => {
                       if (inWish) {
                         deleteProductFromWishlist(product._id);
