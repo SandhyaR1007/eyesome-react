@@ -12,7 +12,7 @@ const SingleProduct = ({ product, fromWish }) => {
   const { token } = useAuthContext();
   const { isInCart } = useProductsContext();
   const { addProductToCart, disableCart } = useCartContext();
-  const { addProductToWishlist, deleteProductFromWishlist } =
+  const { addProductToWishlist, deleteProductFromWishlist, disableWish } =
     useWishlistContext();
   const navigate = useNavigate();
   let inCart;
@@ -63,7 +63,7 @@ const SingleProduct = ({ product, fromWish }) => {
         </div>
         <div className="w-full py-2 border-t flex justify-between items-center">
           <button
-            className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md disabled:cursor-not-allowed`}
+            className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md disabled:cursor-wait`}
             disabled={disableCart}
             onClick={() => {
               if (!token) {
@@ -80,6 +80,8 @@ const SingleProduct = ({ product, fromWish }) => {
             {product?.inCart || inCart ? "Go to Bag" : "Add to Bag"}
           </button>
           <button
+            disabled={disableWish}
+            className="disabled:cursor-wait"
             onClick={() => {
               if (product?.inWish) {
                 deleteProductFromWishlist(product._id);
