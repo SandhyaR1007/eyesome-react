@@ -16,7 +16,9 @@ const Wishlist = () => {
         </main>
       ) : (
         <div className="h-[60vh] w-full flex items-center justify-center">
-          Wishlist is Empty
+          <h1 className="text-center text-6xl text-gray-300 font-semibold uppercase font-sans">
+            Nothing to Show
+          </h1>
         </div>
       )}
     </div>
