@@ -1,7 +1,43 @@
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import bannerHero from "../assets/bannerHero.jpg";
 import { Logo } from "../components";
+import { useAuthContext } from "../contexts";
+import { useEffect, useState } from "react";
 
 const Signup = () => {
+  const { signupHandler, signingUp, isAuthenticated } = useAuthContext();
+  const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    let id;
+    if (isAuthenticated) {
+      id = setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }
+
+    return () => {
+      clearInterval(id);
+    };
+  }, [isAuthenticated]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({ userDetails });
+    signupHandler(userDetails);
+  };
+
+  const isDisabled =
+    signingUp ||
+    !userDetails.username ||
+    !userDetails.email ||
+    !userDetails.password;
   return (
     <main className="grid  grid-rows-1 md:grid-cols-2 w-full  h-screen m-auto ">
       <section className=" hidden md:block max-h-screen  rounded-lg">
@@ -13,12 +49,20 @@ const Signup = () => {
           <div className="flex flex-col gap-2 ">
             <h1 className="text-4xl font-bold mb-3">Sign up</h1>
 
-            <form action="" className="flex flex-col gap-5 py-5">
+            <form
+              action=""
+              className="flex flex-col gap-5 py-5"
+              onSubmit={handleSubmit}
+            >
               <label className="flex flex-col">
                 <input
                   type="text"
                   className="border rounded-md p-1.5 shadow-sm"
                   placeholder="Username"
+                  value={userDetails.username}
+                  onChange={(e) =>
+                    setUserDetails({ ...userDetails, username: e.target.value })
+                  }
                 />
               </label>
               <label className="flex flex-col">
@@ -26,6 +70,10 @@ const Signup = () => {
                   type="email"
                   className="border rounded-md p-1.5 shadow-sm"
                   placeholder="Email"
+                  value={userDetails.email}
+                  onChange={(e) =>
+                    setUserDetails({ ...userDetails, email: e.target.value })
+                  }
                 />
               </label>
               <label className="flex flex-col">
@@ -33,24 +81,32 @@ const Signup = () => {
                   type="password"
                   className="border rounded-md p-1.5 shadow-sm"
                   placeholder="Password"
+                  value={userDetails.password}
+                  onChange={(e) =>
+                    setUserDetails({ ...userDetails, password: e.target.value })
+                  }
                 />
               </label>
-            </form>
-          </div>
-
-          <div className="w-full py-2   flex flex-col gap-4 items-center">
-            <button className="btn-primary w-2/3 text-lg text-center">
-              Create Account
-            </button>
-            <p className="text-gray-600 text-sm">
-              Already have an account?{" "}
-              <span
-                className="underline text-base
+              <div className="w-full py-2   flex flex-col gap-4 items-center">
+                <button
+                  type="submit"
+                  className="btn-primary w-2/3 text-lg text-center"
+                  disabled={isDisabled}
+                >
+                  {signingUp ? "Signing up..." : "Create Account"}
+                </button>
+                <p className="text-gray-600 text-sm">
+                  Already have an account?{" "}
+                  <Link
+                    to="/login"
+                    className="underline text-base
             "
-              >
-                Login
-              </span>
-            </p>
+                  >
+                    Login
+                  </Link>
+                </p>
+              </div>
+            </form>
           </div>
         </section>
       </div>
