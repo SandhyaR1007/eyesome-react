@@ -11,7 +11,8 @@ import { useNavigate } from "react-router";
 const CartItemCard = ({ product, isSearch, setSearch }) => {
   const navigate = useNavigate();
   const { isInWish } = useProductsContext();
-  const { updateProductQtyInCart, deleteProductFromCart } = useCartContext();
+  const { updateProductQtyInCart, deleteProductFromCart, disableCart } =
+    useCartContext();
   const { addProductToWishlist, deleteProductFromWishlist } =
     useWishlistContext();
 
@@ -71,7 +72,8 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                 </div>
                 <div className="flex gap-3 ">
                   <button
-                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs"
+                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs disabled:cursor-wait"
+                    disabled={disableCart}
                     onClick={() => deleteProductFromCart(product._id)}
                   >
                     Remove from Bag
