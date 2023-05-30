@@ -40,7 +40,7 @@ const Navbar = () => {
 
         <section className="flex items-center">
           <Link
-            to="/product-listing"
+            to="/products"
             className="mx-2 px-3 py-1 shadow-sm rounded-md text-white bg-yellow-700 text-sm hover:bg-yellow-800 transition"
           >
             Explore

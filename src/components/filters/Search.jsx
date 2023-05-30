@@ -15,7 +15,7 @@ const Search = () => {
   const [showList, setShowList] = useState(true);
 
   useEffect(() => {
-    if (location?.pathname !== "/product-listing") {
+    if (location?.pathname !== "/products") {
       setSearch("");
     }
   }, [location]);
@@ -23,7 +23,7 @@ const Search = () => {
     let id;
     id = setTimeout(() => {
       setFilteredData(filterBySearch(search, allProducts));
-      if (location?.pathname === "/product-listing" && !search) {
+      if (location?.pathname === "/products" && !search) {
         applyFilters("searchText", search);
       }
     }, 500);
@@ -41,7 +41,7 @@ const Search = () => {
     e.preventDefault();
     applyFilters("searchText", search);
     setShowList(false);
-    navigate("/product-listing");
+    navigate("/products");
   };
 
   return (

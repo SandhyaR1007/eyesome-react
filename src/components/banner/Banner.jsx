@@ -17,10 +17,7 @@ const Banner = ({ catRef }) => {
           More than 100 types of assortment.
         </p>
         <section className="flex items-center">
-          <button
-            className="btn-primary"
-            onClick={() => navigate("/product-listing")}
-          >
+          <button className="btn-primary" onClick={() => navigate("/products")}>
             Start Shopping
           </button>
           <button
