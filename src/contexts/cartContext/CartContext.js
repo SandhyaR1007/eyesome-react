@@ -14,7 +14,7 @@ export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const { token } = useAuthContext();
-  const { updateInCartOrInWish } = useProductsContext();
+  const { updateInCartOrInWish, clearCarted } = useProductsContext();
   const [loadingCart, setLoadingCart] = useState(false);
   const [disableCart, setDisableCart] = useState(false);
 
@@ -154,8 +154,6 @@ const CartContextProvider = ({ children }) => {
             type: actionTypes.DELETE_PRODUCTS_FROM_CART,
             payload: response.data.cart,
           });
-          updateInCartOrInWish(_id, "inCart", false);
-          notify("warn", "Product Removed from Bag");
         }
       } catch (err) {
         console.log(err);
@@ -167,6 +165,7 @@ const CartContextProvider = ({ children }) => {
         );
       }
     });
+    updateInCartOrInWish();
   };
 
   const { totalPriceOfCartProducts, actualPriceOfCart } = state.cart.reduce(
