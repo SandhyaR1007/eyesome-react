@@ -1,3 +1,4 @@
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import bannerHero from "../assets/bannerHero.jpg";
@@ -13,6 +14,11 @@ const Signup = () => {
     email: "",
     password: "",
   });
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
+  });
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
     let id;
@@ -37,7 +43,8 @@ const Signup = () => {
     signingUp ||
     !userDetails.username ||
     !userDetails.email ||
-    !userDetails.password;
+    !userDetails.password ||
+    !confirmPassword;
   return (
     <main className="grid  grid-rows-1 md:grid-cols-2 w-full  h-screen m-auto ">
       <section className=" hidden md:block max-h-screen  rounded-lg">
@@ -51,14 +58,15 @@ const Signup = () => {
 
             <form
               action=""
-              className="flex flex-col gap-5 py-5"
+              className="flex flex-col gap-4 py-5"
               onSubmit={handleSubmit}
             >
               <label className="flex flex-col">
                 <input
                   type="text"
-                  className="border rounded-md p-1.5 shadow-sm"
+                  required
                   placeholder="Username"
+                  className="border rounded-md p-1.5 shadow-sm"
                   value={userDetails.username}
                   onChange={(e) =>
                     setUserDetails({ ...userDetails, username: e.target.value })
@@ -68,24 +76,77 @@ const Signup = () => {
               <label className="flex flex-col">
                 <input
                   type="email"
-                  className="border rounded-md p-1.5 shadow-sm"
+                  required
                   placeholder="Email"
+                  className="border rounded-md p-1.5 shadow-sm"
                   value={userDetails.email}
                   onChange={(e) =>
                     setUserDetails({ ...userDetails, email: e.target.value })
                   }
                 />
               </label>
-              <label className="flex flex-col">
+              <label className="flex flex-col relative">
                 <input
-                  type="password"
-                  className="border rounded-md p-1.5 shadow-sm"
+                  required
                   placeholder="Password"
+                  type={showPassword.password ? "text" : "password"}
+                  className="border rounded-md p-1.5 shadow-sm"
                   value={userDetails.password}
                   onChange={(e) =>
                     setUserDetails({ ...userDetails, password: e.target.value })
                   }
                 />
+                <span
+                  className="absolute right-2 top-3 cursor-pointer"
+                  onClick={() =>
+                    setShowPassword({
+                      ...showPassword,
+                      password: !showPassword.password,
+                    })
+                  }
+                >
+                  {showPassword.password ? (
+                    <AiFillEye />
+                  ) : (
+                    <AiFillEyeInvisible />
+                  )}
+                </span>
+              </label>
+              <label className="flex flex-col relative">
+                <input
+                  required
+                  placeholder="Confirm Password"
+                  type={showPassword.confirmPassword ? "text" : "password"}
+                  className="border rounded-md p-1.5 shadow-sm"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <span
+                  className="absolute right-2 top-3 cursor-pointer"
+                  onClick={() =>
+                    setShowPassword({
+                      ...showPassword,
+                      confirmPassword: !showPassword.confirmPassword,
+                    })
+                  }
+                >
+                  {showPassword.confirmPassword ? (
+                    <AiFillEye />
+                  ) : (
+                    <AiFillEyeInvisible />
+                  )}
+                </span>
+                <p
+                  className={`pt-1 ${
+                    userDetails.password &&
+                    confirmPassword &&
+                    userDetails.password !== confirmPassword
+                      ? "visible text-red-600"
+                      : "invisible"
+                  }`}
+                >
+                  Password Mismatch
+                </p>
               </label>
               <div className="w-full py-2   flex flex-col gap-4 items-center">
                 <button
