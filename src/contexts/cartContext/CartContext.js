@@ -82,6 +82,7 @@ const CartContextProvider = ({ children }) => {
   };
 
   const updateProductQtyInCart = async (productId, type) => {
+    setDisableCart(true);
     try {
       const response = await postUpdateProductQtyCartService(
         productId,
@@ -112,6 +113,7 @@ const CartContextProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+      setDisableCart(false);
       notify(
         "error",
         err?.response?.data?.errors
