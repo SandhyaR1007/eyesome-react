@@ -55,7 +55,8 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                 <div className="flex gap-2 items-center">
                   <span className="text-gray-700">Quantity: </span>
                   <button
-                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md  text-xs"
+                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md  text-xs disabled:cursor-not-allowed"
+                    disabled={disableCart}
                     onClick={() => updateHandler("decrement")}
                   >
                     <AiOutlineMinus />
@@ -64,7 +65,8 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                     {product.qty}
                   </span>
                   <button
-                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md text-xs"
+                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md text-xs disabled:cursor-not-allowed"
+                    disabled={disableCart}
                     onClick={() => updateHandler("increment")}
                   >
                     <AiOutlinePlus />
