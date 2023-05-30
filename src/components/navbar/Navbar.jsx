@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { MdOutlineExplore } from "react-icons/md";
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import defaultUser from "../../assets/defaultUser.png";
@@ -43,7 +44,8 @@ const Navbar = () => {
             to="/products"
             className="mx-2 px-3 py-1 shadow-sm rounded-md text-white bg-yellow-700 text-sm hover:bg-yellow-800 transition"
           >
-            Explore
+            <span className="hidden xs:block">Explore</span>{" "}
+            <MdOutlineExplore className="xs:hidden" />
           </Link>
           <ul className=" hidden md:flex justify-between text-2xl ps-1">
             <li
