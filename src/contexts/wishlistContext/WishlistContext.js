@@ -15,7 +15,7 @@ const WishlistContextProvider = ({ children }) => {
   const { token } = useAuthContext();
   const { updateInCartOrInWish } = useProductsContext();
   const [loadingWishlist, setLoadingWishlist] = useState(false);
-
+  const [disableWish, setDisableWish] = useState(false);
   const [state, dispatch] = useReducer(wishlistReducer, initialState);
 
   useEffect(() => {
@@ -47,6 +47,7 @@ const WishlistContextProvider = ({ children }) => {
   }, [token]);
 
   const addProductToWishlist = async (product) => {
+    setDisableWish(true);
     try {
       const response = await postAddProductToWishlistService(product, token);
       if (response.status === 200 || response.status === 201) {
@@ -65,10 +66,13 @@ const WishlistContextProvider = ({ children }) => {
           ? err?.response?.data?.errors[0]
           : "Some Error Occurred!!"
       );
+    } finally {
+      setDisableWish(false);
     }
   };
 
   const deleteProductFromWishlist = async (productId) => {
+    setDisableWish(true);
     try {
       const response = await deleteProductFromWishlistService(productId, token);
       console.log({ response });
@@ -88,6 +92,8 @@ const WishlistContextProvider = ({ children }) => {
           ? err?.response?.data?.errors[0]
           : "Some Error Occurred!!"
       );
+    } finally {
+      setDisableWish(false);
     }
   };
 
@@ -95,6 +101,7 @@ const WishlistContextProvider = ({ children }) => {
     <WishlistContext.Provider
       value={{
         wishlist: state.wishlist,
+        disableWish,
         loadingWishlist,
         addProductToWishlist,
         deleteProductFromWishlist,

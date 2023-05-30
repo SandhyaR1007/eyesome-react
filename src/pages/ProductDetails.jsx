@@ -17,8 +17,8 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const { token } = useAuthContext();
   const { getProductById, allProducts } = useProductsContext();
-  const { addProductToCart } = useCartContext();
-  const { addProductToWishlist, deleteProductFromWishlist } =
+  const { addProductToCart, disableCart } = useCartContext();
+  const { addProductToWishlist, deleteProductFromWishlist, disableWish } =
     useWishlistContext();
   const [loading, setLoading] = useState(false);
   const product = getProductById(productId);
@@ -90,7 +90,8 @@ const ProductDetails = () => {
 
           <div className="w-full py-2   flex gap-4 items-center">
             <button
-              className="btn-rounded-secondary flex items-center gap-2 md:text-sm lg:text-base"
+              className="btn-rounded-secondary flex items-center gap-2 md:text-sm lg:text-base disabled:cursor-not-allowed"
+              disabled={disableCart}
               onClick={() => {
                 if (!token) {
                   navigate("/login");
@@ -108,7 +109,8 @@ const ProductDetails = () => {
             </button>
 
             <button
-              className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
+              className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base disabled:cursor-not-allowed"
+              disabled={disableWish}
               onClick={() => {
                 if (product?.inWish) {
                   deleteProductFromWishlist(product._id);

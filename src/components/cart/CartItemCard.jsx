@@ -11,8 +11,9 @@ import { useNavigate } from "react-router";
 const CartItemCard = ({ product, isSearch, setSearch }) => {
   const navigate = useNavigate();
   const { isInWish } = useProductsContext();
-  const { updateProductQtyInCart, deleteProductFromCart } = useCartContext();
-  const { addProductToWishlist, deleteProductFromWishlist } =
+  const { updateProductQtyInCart, deleteProductFromCart, disableCart } =
+    useCartContext();
+  const { addProductToWishlist, deleteProductFromWishlist, disableWish } =
     useWishlistContext();
 
   const updateHandler = (type) => {
@@ -54,7 +55,8 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                 <div className="flex gap-2 items-center">
                   <span className="text-gray-700">Quantity: </span>
                   <button
-                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md  text-xs"
+                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md  text-xs disabled:cursor-not-allowed"
+                    disabled={disableCart}
                     onClick={() => updateHandler("decrement")}
                   >
                     <AiOutlineMinus />
@@ -63,7 +65,8 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                     {product.qty}
                   </span>
                   <button
-                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md text-xs"
+                    className="bg-[--primary-text-color] p-1 text-gray-100 rounded-md text-xs disabled:cursor-not-allowed"
+                    disabled={disableCart}
                     onClick={() => updateHandler("increment")}
                   >
                     <AiOutlinePlus />
@@ -71,12 +74,15 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                 </div>
                 <div className="flex gap-3 ">
                   <button
-                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs"
+                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs disabled:cursor-not-allowed"
+                    disabled={disableCart}
                     onClick={() => deleteProductFromCart(product._id)}
                   >
                     Remove from Bag
                   </button>
                   <button
+                    className="disabled:cursor-not-allowed"
+                    disabled={disableWish}
                     onClick={() => {
                       if (inWish) {
                         deleteProductFromWishlist(product._id);

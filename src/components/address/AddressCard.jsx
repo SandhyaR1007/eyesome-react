@@ -1,11 +1,22 @@
 import { useProductsContext } from "../../contexts";
 
-const AddressCard = ({ address, isEdit, showInput = true }) => {
+const AddressCard = ({
+  address,
+  isEdit,
+  showInput = true,
+  editAddress,
+  setEditAddress,
+  setShowAddressForm,
+}) => {
   const { id, fullname, mobile, flat, area, city, pincode } = address;
   const { currentAddress, setCurrentAddress, updateAddress, deleteAddress } =
     useProductsContext();
   return (
-    <label className="flex bg-gray-50 items-center gap-2 shadow-sm p-4 rounded-sm">
+    <label
+      className={`flex ${
+        id === currentAddress.id && isEdit ? "bg-gray-100" : "bg-gray-50"
+      }  items-center gap-2 shadow-sm p-4 rounded-sm cursor-pointer`}
+    >
       {showInput && (
         <input
           type="radio"
@@ -30,7 +41,15 @@ const AddressCard = ({ address, isEdit, showInput = true }) => {
         </p>
         {isEdit && (
           <div className="flex gap-3 py-2">
-            <button className="text-amber-500 font-bold">Edit</button>
+            <button
+              className="text-amber-500 font-bold"
+              onClick={() => {
+                setEditAddress(address);
+                setShowAddressForm(true);
+              }}
+            >
+              Edit
+            </button>
             <button
               className="text-red-600 font-bold"
               onClick={() => deleteAddress(id)}

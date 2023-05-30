@@ -53,12 +53,23 @@ const ProductsContextProvider = ({ children }) => {
     state.allProducts.find((product) => product._id === productId);
 
   const updateInCartOrInWish = (productId, type, value) => {
-    dispatch({
-      type: actionTypes.UPDATE_PRODUCTS,
-      payload: state.allProducts.map((item) =>
-        item._id === productId ? { ...item, [type]: value } : item
-      ),
-    });
+    if (productId) {
+      dispatch({
+        type: actionTypes.UPDATE_PRODUCTS,
+        payload: state.allProducts.map((item) =>
+          item._id === productId ? { ...item, [type]: value } : item
+        ),
+      });
+    } else {
+      dispatch({
+        type: actionTypes.UPDATE_PRODUCTS,
+        payload: state.allProducts.map((item) => ({
+          ...item,
+          inCart: false,
+          qty: 0,
+        })),
+      });
+    }
   };
 
   const applyFilters = (filterType, filterValue) => {

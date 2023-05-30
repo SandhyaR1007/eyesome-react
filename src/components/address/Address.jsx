@@ -6,26 +6,49 @@ import AddressForm from "./AddressForm";
 
 const Address = ({ isEdit }) => {
   const [showAddressForm, setShowAddressForm] = useState(false);
+  const [editAddress, setEditAddress] = useState(null);
   const { addressList } = useProductsContext();
   return (
     <>
       {!isEdit && <h1 className="text-2xl font-bold">Address</h1>}
-      {addressList.map((address) => (
-        <AddressCard address={address} isEdit={isEdit} />
-      ))}
-      {showAddressForm ? (
-        <AddressForm setShowAddressForm={setShowAddressForm} />
+      {showAddressForm && !editAddress ? (
+        <AddressForm
+          setShowAddressForm={setShowAddressForm}
+          editAddress={editAddress}
+          setEditAddress={setEditAddress}
+        />
       ) : (
         <div className="flex flex-col items-start ">
-          <h3 className=" text-gray-600 ms-1 my-2">OR</h3>
           <button
             className="btn-rounded-primary text-sm "
             onClick={() => setShowAddressForm(!showAddressForm)}
           >
             + Add New Address
           </button>
+          <h3 className=" text-gray-600 ms-1 my-2">OR</h3>
         </div>
       )}
+      <div className="flex flex-col gap-2">
+        {addressList.map((address) => (
+          <>
+            {showAddressForm && editAddress?.id === address.id ? (
+              <AddressForm
+                setShowAddressForm={setShowAddressForm}
+                editAddress={editAddress}
+                setEditAddress={setEditAddress}
+              />
+            ) : (
+              <AddressCard
+                address={address}
+                isEdit={isEdit}
+                editAddress={editAddress}
+                setEditAddress={setEditAddress}
+                setShowAddressForm={setShowAddressForm}
+              />
+            )}
+          </>
+        ))}
+      </div>
     </>
   );
 };

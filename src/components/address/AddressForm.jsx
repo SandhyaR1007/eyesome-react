@@ -2,22 +2,30 @@ import React, { useState } from "react";
 import { useProductsContext } from "../../contexts";
 import { v4 as uuid } from "uuid";
 
-const AddressForm = ({ setShowAddressForm }) => {
-  const { addAddress, setCurrentAddress } = useProductsContext();
-  const [newAddress, setNewAddress] = useState({
-    id: uuid(),
-    fullname: "",
-    mobile: "",
-    flat: "",
-    area: "",
-    city: "",
-    pincode: "",
-  });
+const AddressForm = ({ setShowAddressForm, editAddress, setEditAddress }) => {
+  const { addAddress, setCurrentAddress, updateAddress } = useProductsContext();
+  const [newAddress, setNewAddress] = useState(
+    editAddress
+      ? editAddress
+      : {
+          id: uuid(),
+          fullname: "",
+          mobile: "",
+          flat: "",
+          area: "",
+          city: "",
+          pincode: "",
+        }
+  );
   const submitHandler = (e) => {
     e.preventDefault();
     console.log({ newAddress });
-    addAddress(newAddress);
-    setCurrentAddress(newAddress);
+    if (editAddress) {
+      updateAddress(newAddress.id, newAddress);
+    } else {
+      addAddress(newAddress);
+      setCurrentAddress(newAddress);
+    }
     setShowAddressForm(false);
   };
   return (
@@ -117,6 +125,9 @@ const AddressForm = ({ setShowAddressForm }) => {
               city: "",
               pincode: "",
             });
+            if (editAddress) {
+              setEditAddress(null);
+            }
           }}
         >
           Cancel
@@ -124,9 +135,6 @@ const AddressForm = ({ setShowAddressForm }) => {
         <button
           type="submit"
           className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
-          //   onClick={() => {
-          //     setAddressData([...addressData, newAddress]);
-          //   }}
         >
           Save
         </button>
