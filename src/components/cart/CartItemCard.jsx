@@ -72,14 +72,14 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                 </div>
                 <div className="flex gap-3 ">
                   <button
-                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs disabled:cursor-wait"
+                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs disabled:cursor-not-allowed"
                     disabled={disableCart}
                     onClick={() => deleteProductFromCart(product._id)}
                   >
                     Remove from Bag
                   </button>
                   <button
-                    className="disabled:cursor-wait"
+                    className="disabled:cursor-not-allowed"
                     disabled={disableWish}
                     onClick={() => {
                       if (inWish) {

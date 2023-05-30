@@ -90,7 +90,7 @@ const ProductDetails = () => {
 
           <div className="w-full py-2   flex gap-4 items-center">
             <button
-              className="btn-rounded-secondary flex items-center gap-2 md:text-sm lg:text-base disabled:cursor-wait"
+              className="btn-rounded-secondary flex items-center gap-2 md:text-sm lg:text-base disabled:cursor-not-allowed"
               disabled={disableCart}
               onClick={() => {
                 if (!token) {
@@ -109,7 +109,7 @@ const ProductDetails = () => {
             </button>
 
             <button
-              className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base disabled:cursor-wait"
+              className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base disabled:cursor-not-allowed"
               disabled={disableWish}
               onClick={() => {
                 if (product?.inWish) {
