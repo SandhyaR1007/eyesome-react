@@ -37,7 +37,7 @@ const Navbar = () => {
     <nav
       className={`flex flex-col sm:flex-row py-3 max-w-screen mb-3 fixed left-0 right-0 px-[5%] md:px-[10%]  ${
         colorChange
-          ? "shadow-sm bg-orange-50 drop-shadow-sm"
+          ? "shadow-sm bg-amber-50 drop-shadow-sm"
           : "bg-[--theme-color]"
       } z-10 transition delay-75 ease-in-out`}
     >
