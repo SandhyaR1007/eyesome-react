@@ -14,7 +14,7 @@ const AddressCard = ({
   return (
     <label
       className={`flex ${
-        id === currentAddress.id ? "bg-gray-100" : "bg-gray-50"
+        id === currentAddress.id && isEdit ? "bg-gray-100" : "bg-gray-50"
       }  items-center gap-2 shadow-sm p-4 rounded-sm cursor-pointer`}
     >
       {showInput && (

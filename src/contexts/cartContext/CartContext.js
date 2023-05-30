@@ -14,7 +14,7 @@ export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const { token } = useAuthContext();
-  const { updateInCartOrInWish } = useProductsContext();
+  const { updateInCartOrInWish, clearCarted } = useProductsContext();
   const [loadingCart, setLoadingCart] = useState(false);
   const [disableCart, setDisableCart] = useState(false);
 
@@ -145,6 +145,28 @@ const CartContextProvider = ({ children }) => {
       setDisableCart(false);
     }
   };
+  const clearCart = () => {
+    state.cart.map(async ({ _id }) => {
+      try {
+        const response = await deleteProductFromCartService(_id, token);
+        if (response.status === 200 || response.status === 201) {
+          dispatch({
+            type: actionTypes.DELETE_PRODUCTS_FROM_CART,
+            payload: response.data.cart,
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        notify(
+          "error",
+          err?.response?.data?.errors
+            ? err?.response?.data?.errors[0]
+            : "Some Error Occurred!!"
+        );
+      }
+    });
+    updateInCartOrInWish();
+  };
 
   const { totalPriceOfCartProducts, actualPriceOfCart } = state.cart.reduce(
     (acc, { qty, price, newPrice }) => ({
@@ -165,6 +187,7 @@ const CartContextProvider = ({ children }) => {
         deleteProductFromCart,
         totalPriceOfCartProducts,
         actualPriceOfCart,
+        clearCart,
       }}
     >
       {children}

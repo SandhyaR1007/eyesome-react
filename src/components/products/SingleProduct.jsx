@@ -19,6 +19,7 @@ const SingleProduct = ({ product, fromWish }) => {
   if (fromWish) {
     inCart = isInCart(product._id);
   }
+
   return (
     <div
       className="flex flex-col xs:flex-row sm:flex-col  bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden
@@ -27,7 +28,8 @@ const SingleProduct = ({ product, fromWish }) => {
       hover:scale-[1.02] hover:shadow-lg"
     >
       <div
-        className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075] h-1/2 xs:h-full sm:h-1/2 xs:w-1/2 w-full sm:w-full"
+        // className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075] h-1/2 xs:h-full sm:h-1/2 xs:w-1/2 w-full sm:w-full"
+        className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075]  xs:w-1/2 w-full sm:w-full"
         onClick={() => {
           navigate(`/product-details/${product._id}`);
         }}
@@ -35,7 +37,7 @@ const SingleProduct = ({ product, fromWish }) => {
         <img
           src={product.image}
           alt=""
-          className="w-full h-full object-cover xs:object-contain sm:object-cover"
+          className="w-full object-cover xs:object-contain sm:object-cover h-28"
         />
       </div>
 
