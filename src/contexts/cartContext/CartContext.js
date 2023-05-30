@@ -145,6 +145,29 @@ const CartContextProvider = ({ children }) => {
       setDisableCart(false);
     }
   };
+  const clearCart = () => {
+    state.cart.map(async ({ _id }) => {
+      try {
+        const response = await deleteProductFromCartService(_id, token);
+        if (response.status === 200 || response.status === 201) {
+          dispatch({
+            type: actionTypes.DELETE_PRODUCTS_FROM_CART,
+            payload: response.data.cart,
+          });
+          updateInCartOrInWish(_id, "inCart", false);
+          notify("warn", "Product Removed from Bag");
+        }
+      } catch (err) {
+        console.log(err);
+        notify(
+          "error",
+          err?.response?.data?.errors
+            ? err?.response?.data?.errors[0]
+            : "Some Error Occurred!!"
+        );
+      }
+    });
+  };
 
   const { totalPriceOfCartProducts, actualPriceOfCart } = state.cart.reduce(
     (acc, { qty, price, newPrice }) => ({
@@ -165,6 +188,7 @@ const CartContextProvider = ({ children }) => {
         deleteProductFromCart,
         totalPriceOfCartProducts,
         actualPriceOfCart,
+        clearCart,
       }}
     >
       {children}

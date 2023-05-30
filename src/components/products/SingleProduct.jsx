@@ -19,6 +19,7 @@ const SingleProduct = ({ product, fromWish }) => {
   if (fromWish) {
     inCart = isInCart(product._id);
   }
+
   return (
     <div
       className="flex flex-col xs:flex-row sm:flex-col  bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden

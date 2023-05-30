@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import spinningLoader from "../../assets/spinning-circles.svg";
 import OrderSummary from "./OrderSummary";
+import { useCartContext } from "../../contexts";
 
 const Modal = ({ showModal, setShowModal, setIsOrderPlaced }) => {
+  const { clearCart, cart } = useCartContext();
   const [disableBtn, setDisableBtn] = useState(false);
-  const clickHandler = () => {
-    setDisableBtn(true);
-    setTimeout(() => {
+
+  useEffect(() => {
+    if (cart.length === 0) {
       setIsOrderPlaced(true);
       setShowModal(false);
       setDisableBtn(false);
-    }, 2000);
+    }
+  }, [cart]);
+  const clickHandler = () => {
+    setDisableBtn(true);
+    clearCart();
   };
+
   return (
     <>
       {showModal ? (
