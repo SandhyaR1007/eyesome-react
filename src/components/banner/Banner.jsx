@@ -5,9 +5,10 @@ import { useNavigate } from "react-router";
 
 const Banner = ({ catRef }) => {
   const navigate = useNavigate();
+
   return (
-    <main className=" flex justify-between items-center py-3 mb-5  relative">
-      <section className="max-w-xl mx-auto sm:mx-0  w-full py-3  lg:w-1/3">
+    <main className=" flex justify-between items-center py-1 mb-5  relative">
+      <section className="max-w-xl mx-auto sm:mx-0  w-full py-2  lg:w-1/3">
         <h1 className="text-6xl  sm:text-7xl lg:text-8xl font-semibold  py-3 w-full ">
           Glasses & Lens
         </h1>

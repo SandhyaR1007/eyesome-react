@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BsBookmarkHeart } from "react-icons/bs";
 import { HiOutlineShoppingBag } from "react-icons/hi";
@@ -9,8 +10,6 @@ import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
 import { useCartContext, useWishlistContext } from "../../contexts";
 
-import { useState } from "react";
-
 import Search from "../filters/Search";
 
 const Navbar = () => {
@@ -18,9 +17,30 @@ const Navbar = () => {
   const { wishlist } = useWishlistContext();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [colorChange, setColorChange] = useState(false);
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 80) {
+      setColorChange(true);
+    } else {
+      setColorChange(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+
+    return () => {
+      window.removeEventListener("scroll", () => {});
+    };
+  }, []);
 
   return (
-    <nav className="flex flex-col sm:flex-row py-4 max-w-screen mb-3">
+    <nav
+      className={`flex flex-col sm:flex-row py-3 max-w-screen mb-3 fixed left-0 right-0 px-[5%] md:px-[10%]  ${
+        colorChange
+          ? "shadow-sm bg-orange-50 drop-shadow-sm"
+          : "bg-[--theme-color]"
+      } z-10 transition delay-75 ease-in-out`}
+    >
       <div className="flex xs:justify-between w-full items-center">
         <section className="relative flex items-center">
           <Link to="/profile">

@@ -6,7 +6,9 @@ const SharedLayout = () => {
   return (
     <div className="mx-[5%] md:mx-[10%]">
       <Navbar />
-      <Outlet />
+      <div className="pt-24 sm:pt-20">
+        <Outlet />
+      </div>
     </div>
   );
 };
