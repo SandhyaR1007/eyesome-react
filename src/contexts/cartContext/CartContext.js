@@ -113,13 +113,15 @@ const CartContextProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
-      setDisableCart(false);
+
       notify(
         "error",
         err?.response?.data?.errors
           ? err?.response?.data?.errors[0]
           : "Some Error Occurred!!"
       );
+    } finally {
+      setDisableCart(false);
     }
   };
 
