@@ -37,7 +37,7 @@ const Cart = () => {
 
           <button
             className="btn-rounded-secondary text-sm mt-5"
-            onClick={() => navigate("/product-listing")}
+            onClick={() => navigate("/products")}
           >
             Explore
           </button>

@@ -31,7 +31,7 @@ const SingleProduct = ({ product, fromWish }) => {
         // className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075] h-1/2 xs:h-full sm:h-1/2 xs:w-1/2 w-full sm:w-full"
         className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075]  xs:w-1/2 w-full sm:w-full"
         onClick={() => {
-          navigate(`/product-details/${product._id}`);
+          navigate(`/product/${product._id}`);
         }}
       >
         <img
