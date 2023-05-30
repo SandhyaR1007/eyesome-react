@@ -4,7 +4,7 @@ import Address from "../components/address/Address";
 import { useLocation, useNavigate } from "react-router";
 import Modal from "../components/checkout/Modal";
 import { useCartContext } from "../contexts";
-import orderSuccess from "../assets/order-success.gif";
+import orderSuccess from "../assets/success-order.gif";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -22,13 +22,25 @@ const Checkout = () => {
   return (
     <>
       {isOrderPlaced ? (
-        <div className="min-h-[80vh] flex justify-center items-center py-3">
-          <div className="bg-white h-1/2 w-96 m-auto shadow-sm flex flex-col items-center justify-center">
+        <div className="min-h-[80vh] flex justify-center items-center py-3 ">
+          <div
+            className="bg-white h-1/2 w-96 m-auto  rounded-md flex flex-col items-center justify-center p-5"
+            style={{
+              boxShadow: "rgba(17, 12, 46, 0.1) 0px 48px 120px 0px",
+            }}
+          >
             <div className=" w-64  flex items-center justify-center ">
-              <img src={orderSuccess} className="w-full object-fit" />
+              <img
+                src={orderSuccess}
+                alt="order-successfull"
+                className="w-full object-fit"
+              />
             </div>
-            <p className="text-3xl py-8 font-semibold text-gray-400">
+            <p className="text-3xl py-2 font-semibold text-gray-700">
               Order Successful
+            </p>
+            <p className="text-sm text-gray-400">
+              Thank you for ordering with us :)
             </p>
           </div>
           {/* <div className="font-sans text-xl md:text-6xl font-semibold uppercase tracking-wide text-gray-300">
