@@ -9,13 +9,20 @@ import { Filters, SingleProduct, SortBy } from "../components";
 import { useProductsContext } from "../contexts";
 import { useEffect, useState } from "react";
 import { useFilter } from "../hooks/filtersHook";
+import { useLocation } from "react-router";
 
 const ProductListing = () => {
+  const location = useLocation();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [showScrollArrow, setShowScrollArrow] = useState(false);
 
   const { loading } = useProductsContext();
   const productsList = useFilter();
+  useEffect(() => {
+    if (location?.state?.from === "category") {
+      setIsFilterOpen(true);
+    }
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
