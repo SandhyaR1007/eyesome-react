@@ -43,9 +43,6 @@ const Checkout = () => {
               Thank you for ordering with us :)
             </p>
           </div>
-          {/* <div className="font-sans text-xl md:text-6xl font-semibold uppercase tracking-wide text-gray-300">
-            Nothing Here
-          </div> */}
         </div>
       ) : (
         <div className="md:min-h-[80vh] flex justify-center items-center py-3">

@@ -8,7 +8,7 @@ const SummaryCard = ({ setShowModal }) => {
   const totalItems = cart.reduce((acc, { qty }) => acc + qty, 0);
 
   return (
-    <section className="py-7 px-12 md:px-7 lg:px-12 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-5 w-full h-min">
+    <section className="py-3 md:py-7 px-5 md:px-7 lg:px-12 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-5 w-full h-min">
       <h1 className="text-2xl font-bold">Order Summary</h1>
 
       {cart.map((item) => (

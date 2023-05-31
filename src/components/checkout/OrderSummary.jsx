@@ -9,7 +9,7 @@ const OrderSummary = () => {
     useCartContext();
   const totalItems = cart.reduce((acc, { qty }) => acc + qty, 0);
   return (
-    <div className="px-7 p-3 rounded-md shadow-sm bg-gray-50 flex flex-col gap-2 min-w-[25rem] w-full h-min">
+    <div className="px-7  rounded-md shadow-sm bg-gray-50 flex flex-col gap-2 min-w-[25rem] w-full h-min">
       <h1 className="text-sm font-semibold text-gray-700 ms-4">Address</h1>
       <AddressCard address={currentAddress} showInput={false} />
       <hr />

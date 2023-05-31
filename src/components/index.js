@@ -17,3 +17,5 @@ export { default as PriceDetailsCard } from "./checkout/PriceDetailsCard";
 
 export { default as AddressCard } from "./address/AddressCard";
 export { default as AddressForm } from "./address/AddressForm";
+
+export { default as Loader } from "./loader/Loader";

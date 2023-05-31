@@ -20,8 +20,7 @@
 .card {
   @apply flex flex-col justify-between bg-white/[0.5] rounded-lg shadow-md border-2 border-black/[0.05] overflow-hidden;
 }
-.cardImg {
-}
+
 .filtersContainer {
   width: 280px;
   background: rgba(255, 255, 255, 0.3);
