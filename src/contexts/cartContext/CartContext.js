@@ -135,7 +135,7 @@ const CartContextProvider = ({ children }) => {
           payload: response.data.cart,
         });
         updateInCartOrInWish(productId, "inCart", false);
-        notify("warn", "Product Removed from Bag");
+        notify("info", "Product Removed from Bag");
       }
     } catch (err) {
       console.log(err);

@@ -7,7 +7,7 @@ import { ToastContainer } from "react-toastify";
 const App = () => {
   return (
     <>
-      <ToastContainer />
+      <ToastContainer hideProgressBar theme="dark" autoClose={2000} />
       <Route />
     </>
   );
