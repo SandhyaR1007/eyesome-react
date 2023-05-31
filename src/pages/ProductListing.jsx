@@ -6,14 +6,21 @@ import loadingGif from "../assets/loading.gif";
 import { Filters, SingleProduct, SortBy } from "../components";
 
 import { useProductsContext } from "../contexts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFilter } from "../hooks/filtersHook";
+import { useLocation } from "react-router";
 
 const ProductListing = () => {
+  const location = useLocation();
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const { loading } = useProductsContext();
   const productsList = useFilter();
+  useEffect(() => {
+    if (location?.state?.from === "category") {
+      setIsFilterOpen(true);
+    }
+  }, []);
 
   return (
     <>

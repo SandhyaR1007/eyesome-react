@@ -71,7 +71,7 @@ const SingleProduct = ({ product, fromWish }) => {
               if (!token) {
                 navigate("/login");
               } else {
-                if (!product?.inCart || inCart) {
+                if (!product?.inCart || !inCart) {
                   addProductToCart(product);
                 } else {
                   navigate("/cart");
