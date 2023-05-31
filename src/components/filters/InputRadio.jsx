@@ -7,7 +7,7 @@ const InputRadio = ({ data, name }) => {
     <label>
       <input
         type="radio"
-        className=""
+        className="accent-current cursor-pointer"
         name={name}
         value={data}
         onChange={(e) => applyFilters(name, data)}
