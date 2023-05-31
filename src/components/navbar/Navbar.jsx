@@ -49,9 +49,8 @@ const Navbar = () => {
               width={40}
             />
           </Link>
-          <Link to="/">
-            <Logo />
-          </Link>
+
+          <Logo />
         </section>
         <div className="hidden  sm:block sm:w-1/3 relative">
           <Search />
@@ -72,7 +71,7 @@ const Navbar = () => {
             >
               <BsBookmarkHeart />
               {wishlist.length > 0 && (
-                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-600 border-2 border-[--theme-color] rounded-full -top-2 -right-2 dark:border-gray-900">
                   {wishlist.length}
                 </div>
               )}
@@ -83,7 +82,7 @@ const Navbar = () => {
             >
               <HiOutlineShoppingBag />
               {cart.length > 0 && (
-                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-600 border-2 border-[--theme-color] rounded-full -top-2 -right-2 dark:border-gray-900">
                   {cart.length}
                 </div>
               )}

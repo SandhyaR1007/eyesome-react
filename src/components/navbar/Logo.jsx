@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <div className="font-monoton text-3xl hover:text-red-600 cursor-pointer text-center">
-      eyesome
-    </div>
+    <Link to="/">
+      <div className="font-monoton text-3xl hover:text-red-800 cursor-pointer text-center transition">
+        eyesome
+      </div>
+    </Link>
   );
 };
 
