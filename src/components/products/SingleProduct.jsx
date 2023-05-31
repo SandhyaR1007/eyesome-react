@@ -8,17 +8,14 @@ import {
 } from "../../contexts";
 import { useNavigate } from "react-router";
 
-const SingleProduct = ({ product, fromWish }) => {
+const SingleProduct = ({ product }) => {
   const { token } = useAuthContext();
   const { isInCart } = useProductsContext();
   const { addProductToCart, disableCart } = useCartContext();
   const { addProductToWishlist, deleteProductFromWishlist, disableWish } =
     useWishlistContext();
   const navigate = useNavigate();
-  let inCart;
-  if (fromWish) {
-    inCart = isInCart(product._id);
-  }
+  let inCart = isInCart(product._id);
 
   return (
     <div
