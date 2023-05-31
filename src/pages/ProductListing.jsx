@@ -88,7 +88,7 @@ const ProductListing = () => {
             ))}
           </main>
           <button
-            className={` fixed bottom-3 bg-gray-800 right-2 p-2 rounded-full text-xl shadow-2xl transition-all delay-100 ease-in-out ${
+            className={` fixed bottom-10 bg-gray-800 right-2 p-2 rounded-full text-xl shadow-2xl transition-all delay-100 ease-in-out ${
               showScrollArrow ? "block" : "hidden"
             }`}
             onClick={scrollToTop}

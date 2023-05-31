@@ -7,7 +7,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="py-5 mt-3  bg-amber-50 flex flex-col justify-center items-center gap-2 absolute right-0 left-0">
+    <div className="py-5 mt-3  bg-amber-50 flex flex-wrap justify-center items-center gap-2 md:gap-10  absolute right-0 left-0 ">
       <p>Eyesome made with 💜 by Sandhya </p>
       <p className="flex gap-3">
         <a href="https://github.com/SandhyaR1007">
