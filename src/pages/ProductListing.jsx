@@ -1,4 +1,5 @@
 import { BiFilter } from "react-icons/bi";
+import { MdKeyboardArrowUp } from "react-icons/md";
 
 import bannerImg from "../assets/bannerHero.jpg";
 import loadingGif from "../assets/loading.gif";
@@ -6,14 +7,36 @@ import loadingGif from "../assets/loading.gif";
 import { Filters, SingleProduct, SortBy } from "../components";
 
 import { useProductsContext } from "../contexts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFilter } from "../hooks/filtersHook";
 
 const ProductListing = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [showScrollArrow, setShowScrollArrow] = useState(false);
 
   const { loading } = useProductsContext();
   const productsList = useFilter();
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    const toggleShowArrow = () => {
+      if (window.scrollY > 300) {
+        setShowScrollArrow(true);
+      } else {
+        setShowScrollArrow(false);
+      }
+    };
+    window.addEventListener("scroll", toggleShowArrow);
+
+    return () => {
+      window.removeEventListener("scroll", toggleShowArrow);
+    };
+  }, []);
 
   return (
     <>
@@ -41,7 +64,9 @@ const ProductListing = () => {
               />
               <SortBy />
               <button
-                className="flex py-1 px-2 rounded-md shadow-md items-center  gap-1 hover:bg-[--primary-text-color] hover:text-white hover:shadow-lg"
+                className={`flex py-1 px-2 rounded-md shadow-md items-center  gap-1 hover:bg-[--primary-text-color] hover:text-white hover:shadow-lg ${
+                  isFilterOpen ? "bg-[--primary-text-color] text-white" : ""
+                }`}
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
               >
                 <BiFilter className="text-lg" />
@@ -50,11 +75,19 @@ const ProductListing = () => {
             </div>
           </section>
 
-          <main className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          <main className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {productsList.map((glass) => (
               <SingleProduct key={glass.id} product={glass} />
             ))}
           </main>
+          <button
+            className={` fixed bottom-3 bg-gray-800 right-2 p-2 rounded-full text-xl shadow-2xl transition-all delay-100 ease-in-out ${
+              showScrollArrow ? "block" : "hidden"
+            }`}
+            onClick={scrollToTop}
+          >
+            <MdKeyboardArrowUp className=" text-white" />
+          </button>
         </div>
       )}
     </>
