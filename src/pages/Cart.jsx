@@ -10,9 +10,9 @@ const Cart = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="py-2">
+    <div className="py-2 ">
       {cart.length > 0 && (
-        <h1 className="text-3xl font-bold">Cart({cart.length})</h1>
+        <h1 className="text-2xl font-bold p-3 ">Bag({cart.length})</h1>
       )}
       {cart.length ? (
         <div className="md:grid md:grid-cols-3 gap-5">
