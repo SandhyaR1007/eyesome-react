@@ -4,9 +4,9 @@ import { Navbar } from "../components";
 
 const SharedLayout = () => {
   return (
-    <div className="mx-[5%] md:mx-[10%]">
+    <div className="px-[4%] md:px-[10%] pb-2">
       <Navbar />
-      <div className="pt-24 sm:pt-20">
+      <div className="pt-32 sm:pt-20">
         <Outlet />
       </div>
     </div>
