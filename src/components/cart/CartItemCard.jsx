@@ -34,7 +34,7 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
       onClick={() => {
         if (isSearch) {
           setSearch("");
-          navigate(`product-details/${product._id}`);
+          navigate(`product/${product._id}`);
         }
       }}
     >
