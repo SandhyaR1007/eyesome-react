@@ -18,7 +18,10 @@ const Banner = ({ catRef }) => {
           More than 100 types of assortment.
         </p>
         <section className="flex items-center">
-          <button className="btn-primary" onClick={() => navigate("/products")}>
+          <button
+            className="btn-primary text-sm md:text-base"
+            onClick={() => navigate("/products")}
+          >
             Start Shopping
           </button>
           <button
@@ -29,7 +32,7 @@ const Banner = ({ catRef }) => {
               })
             }
           >
-            <span className="mx-2">Explore More</span>{" "}
+            <span className="mx-2 text-sm md:text-base">Explore More</span>{" "}
             <BsArrowDownRightCircle className="text-lg" />
           </button>
         </section>
