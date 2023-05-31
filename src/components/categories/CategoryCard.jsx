@@ -9,7 +9,7 @@ const CategoryCard = ({
   const { applyFilters } = useProductsContext();
   const clickHandler = () => {
     applyFilters("categories", [categoryName]);
-    navigate("/product-listing");
+    navigate("/products", { state: { from: "category" } });
   };
   return (
     <section

@@ -15,12 +15,12 @@ const authRoutes = [
 
 const contentRoutes = [
   {
-    path: "/product-listing",
+    path: "/products",
     element: <ProductListing />,
   },
 
   {
-    path: "/product-details/:productId",
+    path: "/product/:productId",
     element: <ProductDetails />,
   },
 

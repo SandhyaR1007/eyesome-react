@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 export const notify = (type, message, delay) => {
   if (type === "success") {
     toast.success(message, {
-      position: toast.POSITION.BOTTOM_RIGHT,
+      position: toast.POSITION.BOTTOM_CENTER,
       delay,
     });
   } else if (type === "error") {

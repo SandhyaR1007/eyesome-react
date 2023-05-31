@@ -11,3 +11,5 @@ export { default as Wishlist } from "./Wishlist";
 export { default as Profile } from "./Profile";
 
 export { default as Checkout } from "./Checkout";
+
+export { default as ErrorPage } from "./ErrorPage";

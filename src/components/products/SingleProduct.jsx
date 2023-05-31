@@ -31,7 +31,7 @@ const SingleProduct = ({ product, fromWish }) => {
         // className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075] h-1/2 xs:h-full sm:h-1/2 xs:w-1/2 w-full sm:w-full"
         className="flex items-center justify-center p-10 xs:p-5 sm:p-10 bg-black/[0.075]  xs:w-1/2 w-full sm:w-full"
         onClick={() => {
-          navigate(`/product-details/${product._id}`);
+          navigate(`/product/${product._id}`);
         }}
       >
         <img
@@ -63,7 +63,7 @@ const SingleProduct = ({ product, fromWish }) => {
           </div>
           <p className="text-sm text-gray-600">{product.brand}</p>
         </div>
-        <div className="w-full py-2 border-t flex justify-between items-center">
+        <div className="w-full pt-2 border-t flex justify-between items-center">
           <button
             className={`border border-[--primary-text-color]  py-1.5 text-sm  rounded-full px-6 hover:bg-[--primary-text-color] hover:text-white transition hover:shadow-md disabled:cursor-not-allowed`}
             disabled={disableCart}
@@ -71,7 +71,7 @@ const SingleProduct = ({ product, fromWish }) => {
               if (!token) {
                 navigate("/login");
               } else {
-                if (!product?.inCart || inCart) {
+                if (!product?.inCart || !inCart) {
                   addProductToCart(product);
                 } else {
                   navigate("/cart");
