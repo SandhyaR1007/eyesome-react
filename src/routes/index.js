@@ -5,7 +5,7 @@ import RequiresAuth from "./RequiresAuth";
 import { authRoutes, contentRoutes } from "./publicRoutes";
 import { privateRoutes } from "./privateRoutes";
 
-import { Home, Login } from "../pages";
+import { ErrorPage, Home, Login } from "../pages";
 import { useAuthContext } from "../contexts";
 
 const Index = () => {
@@ -32,7 +32,7 @@ const Index = () => {
       </Route>
       <Route element={<SharedLayout />}>
         <Route path="/" element={<Home />} index />
-        <Route path="*" element={<div>Some Error occurred</div>} />
+        <Route path="*" element={<ErrorPage />} />
         {contentRoutes.map((route, idx) => (
           <Route key={idx} path={route.path} element={route.element} />
         ))}
