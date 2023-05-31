@@ -39,7 +39,7 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
       }}
     >
       <div className="flex  items-center flex-wrap gap-2 w-full">
-        <div className="flex flex-1 items-center gap-5">
+        <div className="flex flex-wrap xs:flex-nowrap justify-center xs:justify-start flex-1 items-center gap-5">
           <div
             className={` bg-black/[0.075] ${
               isSearch ? "h-14 w-14 " : "h-28 w-28"
@@ -72,9 +72,9 @@ const CartItemCard = ({ product, isSearch, setSearch }) => {
                     <AiOutlinePlus />
                   </button>
                 </div>
-                <div className="flex gap-3 ">
+                <div className="flex gap-1 sm:gap-3  ">
                   <button
-                    className="btn-rounded-secondary  text-sm mt-2 max-w-xs disabled:cursor-not-allowed"
+                    className="btn-rounded-secondary  text-xs sm:text-sm mt-2 max-w-xs disabled:cursor-not-allowed"
                     disabled={disableCart}
                     onClick={() => deleteProductFromCart(product._id)}
                   >

@@ -10,10 +10,12 @@ const Cart = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="">
-      <h1 className="text-3xl font-bold">Cart({cart.length})</h1>
+    <div className="py-2">
+      {cart.length > 0 && (
+        <h1 className="text-3xl font-bold">Cart({cart.length})</h1>
+      )}
       {cart.length ? (
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="md:grid md:grid-cols-3 gap-5">
           <main className="md:col-span-2">
             {cart.map((product) => (
               <CartItemCard product={product} />
@@ -22,7 +24,7 @@ const Cart = () => {
           <CartTotalCard cart={cart} />
         </div>
       ) : (
-        <div className="h-[60vh] w-full flex flex-col items-center justify-center flex-wrap gap-3 ">
+        <div className="h-[60vh] w-full flex flex-col items-center justify-center  gap-3 ">
           <img
             src={emptyBag}
             alt="empty bag"
