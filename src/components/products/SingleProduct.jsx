@@ -68,7 +68,7 @@ const SingleProduct = ({ product }) => {
               if (!token) {
                 navigate("/login");
               } else {
-                if (!product?.inCart || !inCart) {
+                if (!inCart) {
                   addProductToCart(product);
                 } else {
                   navigate("/cart");
@@ -76,7 +76,7 @@ const SingleProduct = ({ product }) => {
               }
             }}
           >
-            {product?.inCart || inCart ? "Go to Bag" : "Add to Bag"}
+            {inCart ? "Go to Bag" : "Add to Bag"}
           </button>
           <button
             disabled={disableWish}
