@@ -4,7 +4,6 @@ import Address from "../components/address/Address";
 import { useLocation, useNavigate } from "react-router";
 import Modal from "../components/checkout/Modal";
 import { useCartContext } from "../contexts";
-import orderSuccess from "../assets/success-order.gif";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ const Checkout = () => {
 
   return (
     <>
-      {isOrderPlaced ? (
+      {/* {isOrderPlaced ? (
         <div className="min-h-[80vh] flex justify-center items-center py-3 ">
           <div className="bg-white h-1/2 w-96 m-auto  rounded-md flex flex-col items-center justify-center p-5 modalShadow">
             <div className=" w-64  flex items-center justify-center ">
@@ -39,21 +38,20 @@ const Checkout = () => {
             </p>
           </div>
         </div>
-      ) : (
-        <div className="md:min-h-[80vh] flex justify-center items-center py-3">
-          <main className="grid md:grid-cols-2 gap-10 w-full">
-            <Modal
-              showModal={showModal}
-              setShowModal={setShowModal}
-              setIsOrderPlaced={setIsOrderPlaced}
-            />
-            <section className="p-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full h-min">
-              <Address />
-            </section>
-            <SummaryCard setShowModal={setShowModal} />
-          </main>
-        </div>
-      )}
+      ) : ( */}
+      <div className="md:min-h-[80vh] flex justify-center items-center py-3">
+        <main className="grid md:grid-cols-2 gap-10 w-full">
+          <Modal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            setIsOrderPlaced={setIsOrderPlaced}
+          />
+          <section className="p-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full h-min">
+            <Address />
+          </section>
+          <SummaryCard setShowModal={setShowModal} />
+        </main>
+      </div>
     </>
   );
 };

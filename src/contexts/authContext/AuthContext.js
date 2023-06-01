@@ -6,6 +6,11 @@ export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [userInfo, setUserInfo] = useState(
+    localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : null
+  );
   const [loggingIn, setLoggingIn] = useState(false);
   const [signingUp, setSigningUp] = useState(false);
 
@@ -82,6 +87,7 @@ const AuthContextProvider = ({ children }) => {
         logoutHandler,
         signupHandler,
         signingUp,
+        userInfo,
       }}
     >
       {children}

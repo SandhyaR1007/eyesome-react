@@ -1,4 +1,4 @@
-import { Cart, Wishlist, Checkout, Profile } from "../pages";
+import { Cart, Wishlist, Checkout, Profile, Orders } from "../pages";
 
 const privateRoutes = [
   {
@@ -12,6 +12,10 @@ const privateRoutes = [
   {
     path: "/checkout",
     element: <Checkout />,
+  },
+  {
+    path: "/orders",
+    element: <Orders />,
   },
   {
     path: "/profile",
