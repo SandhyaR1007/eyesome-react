@@ -7,19 +7,19 @@ const Checkbox = ({ data }) => {
   } = useProductsContext();
   const checkboxHandler = (e) => {
     let catArr = categories;
-    console.log(e.target.checked, e.target.value);
+
     if (e.target.checked) {
       catArr.push(e.target.value);
     } else {
       catArr = catArr.filter((cat) => cat !== e.target.value);
     }
-    console.log({ catArr });
+
     applyFilters(e.target.name, catArr);
   };
   return (
-    <label className="capitalize">
+    <label className="capitalize cursor-pointer">
       <input
-        className="accent-[--primary-text-color] me-2"
+        className="accent-[--primary-text-color] me-2 cursor-pointer"
         type="checkbox"
         name="categories"
         checked={categories.includes(data)}

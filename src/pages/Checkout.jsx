@@ -12,7 +12,7 @@ const Checkout = () => {
   const [showModal, setShowModal] = useState(false);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
   const location = useLocation();
-  console.log({ location });
+
   useEffect(() => {
     if (location?.state !== "cart" || !cart.length) {
       navigate("/");

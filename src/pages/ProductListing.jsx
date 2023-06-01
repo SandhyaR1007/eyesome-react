@@ -82,11 +82,17 @@ const ProductListing = () => {
             </div>
           </section>
 
-          <main className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-            {productsList.map((glass) => (
-              <SingleProduct key={glass.id} product={glass} />
-            ))}
-          </main>
+          {productsList.length > 0 ? (
+            <main className="relative grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+              {productsList.map((glass) => (
+                <SingleProduct key={glass.id} product={glass} />
+              ))}
+            </main>
+          ) : (
+            <p className="font-sans text-4xl  font-bold uppercase  tracking-wide text-gray-300 text-center w-full py-32">
+              Nothing to Show!
+            </p>
+          )}
           <button
             className={` fixed bottom-10 bg-gray-800 right-2 p-2 rounded-full text-xl shadow-2xl transition-all delay-100 ease-in-out ${
               showScrollArrow ? "block" : "hidden"
