@@ -1,5 +1,5 @@
 # <h1 align="center"> Eyesome </h1>
-<p align="center">Welcome to Eyesome, an ecommerce web application built with React and React Context for state management. Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.</p>
+<h4 align="center">Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.</h4>
 
 ## Getting Started
 
