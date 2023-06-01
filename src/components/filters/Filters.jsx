@@ -39,7 +39,7 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
         <FilterHeading text="Type" />
         <div className="grid grid-rows-2 grid-cols-2 gap-2">
           {gendersList.map((data, index) => (
-            <InputRadioType2 data={data} />
+            <InputRadioType2 data={data} key={index} />
           ))}
         </div>
       </section>
@@ -51,15 +51,15 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
         <FilterHeading text="Categories" />
         <div className="flex flex-col gap-2">
           {checkboxCategories.map((data, index) => (
-            <Checkbox data={data} index={index} />
+            <Checkbox data={data} key={index} />
           ))}
         </div>
       </section>
 
       <section className="py-3 flex flex-col gap-2">
         <FilterHeading text="Rating" />
-        {ratings.map((data) => (
-          <InputRadio data={data} name="rating" />
+        {ratings.map((data, index) => (
+          <InputRadio data={data} key={index} name="rating" />
         ))}
       </section>
     </aside>

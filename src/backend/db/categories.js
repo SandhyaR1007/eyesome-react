@@ -30,4 +30,3 @@ export const categories = [
     categoryImg: glassCategory2,
   },
 ];
-console.log({ categories });

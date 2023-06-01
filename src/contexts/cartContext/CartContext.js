@@ -26,7 +26,7 @@ const CartContextProvider = ({ children }) => {
       (async () => {
         try {
           const cartRes = await getCartItemsService(token);
-          console.log({ cartRes });
+
           if (cartRes.status === 200) {
             dispatch({
               type: actionTypes.INITIALIZE_CART,

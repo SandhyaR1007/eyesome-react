@@ -34,7 +34,7 @@ const ProductsContextProvider = ({ children }) => {
         }
 
         const categoryRes = await getAllCategoriesService();
-        console.log({ categoryRes });
+
         if (categoryRes.status === 200) {
           dispatch({
             type: actionTypes.INITIALIZE_CATEGORIES,
