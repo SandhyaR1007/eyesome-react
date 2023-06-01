@@ -1,4 +1,4 @@
-# Eyesome
+# Eyesome ![logo](./public/thugGlasses.png)
 
 Welcome to Eyesome, an ecommerce web application built with React and React Context for state management. Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.
 
