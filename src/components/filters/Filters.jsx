@@ -4,12 +4,12 @@ import InputRange from "./InputRange";
 import InputRadio from "./InputRadio";
 import InputRadioType2 from "./InputRadioType2";
 import { useProductsContext } from "../../contexts";
+import {
+  checkboxCategories,
+  gendersList,
+  ratings,
+} from "../../utils/constants";
 
-const checkboxCategories = ["vision", "sunglasses", "sports"];
-
-const gendersList = ["all", "men", "women", "unisex"];
-
-const ratings = [1, 2, 3, 4];
 const FilterHeading = ({ text }) => <h2 className="text-xl mb-4">{text}</h2>;
 const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
   const { clearFilters } = useProductsContext();
@@ -22,12 +22,6 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
     }
     `}
     >
-      <div
-        className="text-sm text-gray-600 underline cursor-pointer"
-        onClick={clearFilters}
-      >
-        Clear
-      </div>
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">Filter Products</h1>
         <AiOutlineClose
@@ -35,6 +29,12 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
           onClick={() => setIsFilterOpen(!isFilterOpen)}
         />
       </div>
+      <button
+        className="py-0.5 px-2 w-16 text-center bg-black/[0.2]  text-sm font-semibold shadow-sm rounded-md hover:bg-gray-800 hover:text-white transition-colors "
+        onClick={clearFilters}
+      >
+        Clear
+      </button>
       <section className="py-3">
         <FilterHeading text="Type" />
         <div className="grid grid-rows-2 grid-cols-2 gap-2">
