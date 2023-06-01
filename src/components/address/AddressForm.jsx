@@ -19,7 +19,7 @@ const AddressForm = ({ setShowAddressForm, editAddress, setEditAddress }) => {
   );
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log({ newAddress });
+
     if (editAddress) {
       updateAddress(newAddress.id, newAddress);
     } else {
