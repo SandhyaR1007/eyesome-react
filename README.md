@@ -1,5 +1,4 @@
-# <p align="center"> Eyesome </p>
-<p align="center"><img src="/public/thugGlasses.png" alt="logo" width="150"></p>
+# <h1 align="center"> Eyesome </h1>
 <p align="center">Welcome to Eyesome, an ecommerce web application built with React and React Context for state management. Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.</p>
 
 ## Technologies Used
