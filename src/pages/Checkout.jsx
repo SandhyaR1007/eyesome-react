@@ -23,12 +23,7 @@ const Checkout = () => {
     <>
       {isOrderPlaced ? (
         <div className="min-h-[80vh] flex justify-center items-center py-3 ">
-          <div
-            className="bg-white h-1/2 w-96 m-auto  rounded-md flex flex-col items-center justify-center p-5"
-            style={{
-              boxShadow: "rgba(17, 12, 46, 0.1) 0px 48px 120px 0px",
-            }}
-          >
+          <div className="bg-white h-1/2 w-96 m-auto  rounded-md flex flex-col items-center justify-center p-5 modalShadow">
             <div className=" w-64  flex items-center justify-center ">
               <img
                 src={orderSuccess}

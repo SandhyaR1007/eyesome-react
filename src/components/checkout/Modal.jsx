@@ -11,9 +11,11 @@ const Modal = ({ showModal, setShowModal, setIsOrderPlaced }) => {
 
   useEffect(() => {
     if (cart.length === 0) {
-      setIsOrderPlaced(true);
-      setShowModal(false);
-      setDisableBtn(false);
+      setTimeout(() => {
+        setIsOrderPlaced(true);
+        setShowModal(false);
+        setDisableBtn(false);
+      }, 2000);
     }
   }, [cart]);
   const clickHandler = () => {
@@ -40,7 +42,7 @@ const Modal = ({ showModal, setShowModal, setIsOrderPlaced }) => {
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     disabled={disableBtn}
-                    className="btn-rounded-primary w-1/2  text-sm ease-linear transition-all duration-150 h-10 flex justify-center
+                    className="btn-rounded-primary w-1/2  text-sm ease-linear transition-all duration-150 h-10 flex justify-center items-center
                     disabled:cursor-wait"
                     type="button"
                     onClick={clickHandler}
