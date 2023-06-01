@@ -1,5 +1,5 @@
 # <h1 align="center"> Eyesome </h1>
-<h4 align="center">Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.</h4>
+<h3 align="center">Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.</h3>
 
 ## Getting Started
 
