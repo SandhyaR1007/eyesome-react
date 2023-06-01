@@ -1,6 +1,15 @@
 # <h1 align="center"> Eyesome </h1>
 <p align="center">Welcome to Eyesome, an ecommerce web application built with React and React Context for state management. Eyesome is a platform dedicated to providing a seamless shopping experience for eyewear products.</p>
 
+## Getting Started
+
+To run the Eyesome ecommerce web application locally, please follow these steps:
+
+1. git clone https://github.com/SandhyaR1007/eyesome-react.git
+2. cd eyesome-react.
+3. npm install.
+4. npm start
+
 ## Technologies Used
 
 - ReactJS
@@ -33,11 +42,4 @@
 
 - Loaders and Toasts
 
-## Getting Started
 
-To run the Eyesome ecommerce web application locally, please follow these steps:
-
-1. git clone https://github.com/SandhyaR1007/eyesome-react.git
-2. cd eyesome-react.
-3. npm install.
-4. npm start
