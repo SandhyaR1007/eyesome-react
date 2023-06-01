@@ -24,7 +24,7 @@ const WishlistContextProvider = ({ children }) => {
       (async () => {
         try {
           const wishlistRes = await getWishlistItemsService(token);
-          console.log({ wishlistRes });
+
           if (wishlistRes.status === 200) {
             dispatch({
               type: actionTypes.INITIALIZE_WISHLIST,

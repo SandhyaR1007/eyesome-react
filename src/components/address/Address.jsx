@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 
 import { useProductsContext } from "../../contexts";
 import AddressCard from "./AddressCard";
@@ -30,7 +30,7 @@ const Address = ({ isEdit }) => {
       )}
       <div className="flex flex-col gap-2">
         {addressList.map((address) => (
-          <>
+          <Fragment key={address.id}>
             {showAddressForm && editAddress?.id === address.id ? (
               <AddressForm
                 setShowAddressForm={setShowAddressForm}
@@ -46,7 +46,7 @@ const Address = ({ isEdit }) => {
                 setShowAddressForm={setShowAddressForm}
               />
             )}
-          </>
+          </Fragment>
         ))}
       </div>
     </>
