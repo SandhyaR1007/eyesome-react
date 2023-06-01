@@ -4,7 +4,7 @@ import { useProductsContext } from "../../contexts";
 import { useEffect, useState } from "react";
 import CartItemCard from "../cart/CartItemCard";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import spinningLoaders from "../../assets/loaderBlack.svg";
 const Search = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,6 +13,7 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [showList, setShowList] = useState(true);
+  const [searching, setSearching] = useState(false);
 
   useEffect(() => {
     if (location?.pathname !== "/products") {
@@ -20,9 +21,11 @@ const Search = () => {
     }
   }, [location]);
   useEffect(() => {
+    setSearching(true);
     let id;
     id = setTimeout(() => {
       setFilteredData(filterBySearch(search, allProducts));
+      setSearching(false);
       if (location?.pathname === "/products" && !search) {
         applyFilters("searchText", search);
       }
@@ -62,8 +65,12 @@ const Search = () => {
         <CiSearch />
       </form>
       {search && showList && (
-        <ul className="absolute bg-white/[0.9] w-full max-h-72 overflow-auto rounded-b-md z-10">
-          {filteredData.length ? (
+        <ul className="absolute bg-amber-50 w-full max-h-72 overflow-auto rounded-b-md z-10">
+          {searching ? (
+            <li className="h-10 flex items-center justify-center">
+              <img src={spinningLoaders} alt="Searching..." />
+            </li>
+          ) : filteredData.length ? (
             filteredData.map((product) => (
               <li key={product._id} className="">
                 <CartItemCard
