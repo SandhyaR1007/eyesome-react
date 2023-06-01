@@ -82,10 +82,14 @@ const SingleProduct = ({ product }) => {
             disabled={disableWish}
             className="disabled:cursor-not-allowed"
             onClick={() => {
-              if (product?.inWish) {
-                deleteProductFromWishlist(product._id);
+              if (!token) {
+                navigate("/login");
               } else {
-                addProductToWishlist(product);
+                if (product?.inWish) {
+                  deleteProductFromWishlist(product._id);
+                } else {
+                  addProductToWishlist(product);
+                }
               }
             }}
           >
