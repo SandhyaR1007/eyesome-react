@@ -7,8 +7,8 @@
 To run the Eyesome ecommerce web application locally, please follow these steps:
 
 1. git clone https://github.com/SandhyaR1007/eyesome-react.git
-2. cd eyesome-react.
-3. npm install.
+2. cd eyesome-react
+3. npm install
 4. npm start
 
 ## Technologies Used
