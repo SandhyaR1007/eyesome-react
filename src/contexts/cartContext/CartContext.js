@@ -39,7 +39,7 @@ const CartContextProvider = ({ children }) => {
             "error",
             err?.response?.data?.errors
               ? err?.response?.data?.errors[0]
-              : "Some Error Occurred!!"
+              : err?.response?.data?.message
           );
         } finally {
           setLoadingCart(false);

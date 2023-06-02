@@ -91,8 +91,8 @@ const Login = () => {
                   onClick={() => {
                     setLoginCredentials({
                       ...loginCredentials,
-                      email: "adarshbalika@gmail.com",
-                      password: "adarshbalika",
+                      email: "kookie@bangtan.com",
+                      password: "bangtan0707",
                     });
                   }}
                 >

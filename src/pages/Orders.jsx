@@ -8,6 +8,10 @@ const Orders = () => {
   useEffect(() => {
     if (location?.state !== "orderSuccess") {
       navigate("/");
+    } else {
+      setTimeout(() => {
+        navigate("/products");
+      }, 3000);
     }
   }, []);
   return (

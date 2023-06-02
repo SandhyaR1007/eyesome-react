@@ -28,16 +28,16 @@ const AddressCard = ({
         />
       )}
       <div>
-        <h3 className="text-lg font-semibold">{fullname}</h3>
-        <p className="text-sm text-gray-500">
+        <h3 className="text-lg font-semibold break-all">{fullname}</h3>
+        <p className="text-sm text-gray-500 break-all">
           {flat},{area}
         </p>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-500 break-all">
           {city},{pincode}
         </p>
         <p className="text-sm text-gray-500">
           Mobile:
-          <span className="font-semibold ps-1">{mobile}</span>
+          <span className="font-semibold ps-1 break-all">{mobile}</span>
         </p>
         {isEdit && (
           <div className="flex gap-3 py-2">
