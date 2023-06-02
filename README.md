@@ -27,7 +27,7 @@ To run the Eyesome ecommerce web application locally, please follow these steps:
 - Filters
 - Search
 
-- Cart Management.
+- Cart Management
 
 - Wishlist Management
 
