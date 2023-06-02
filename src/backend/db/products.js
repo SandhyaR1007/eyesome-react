@@ -83,6 +83,7 @@ export const products = [
     rating: 4.7,
     price: 2999,
     newPrice: 2000,
+    trending: true,
   },
   {
     _id: "fd25068a-9647-45ba-b44d-c8af1523148a",
@@ -390,6 +391,7 @@ export const products = [
     rating: 2.8,
     price: 1299,
     newPrice: 1000,
+    trending: true,
   },
   {
     _id: "35332c85-f853-407a-80f8-840069381a0d",

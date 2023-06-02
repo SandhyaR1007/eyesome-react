@@ -25,7 +25,7 @@ const Address = ({ isEdit }) => {
           >
             + Add New Address
           </button>
-          <h3 className=" text-gray-600 ms-1 my-2">OR</h3>
+          {/* <h3 className=" text-gray-600 ms-1 my-2">OR</h3> */}
         </div>
       )}
       <div className="flex flex-col gap-2">
