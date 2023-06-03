@@ -1,8 +1,10 @@
 import React from "react";
-import { useCartContext } from "../../contexts";
+import { useCartContext, useProductsContext } from "../../contexts";
 import PriceDetailsCard from "./PriceDetailsCard";
+import { notify } from "../../utils/utils";
 
 const SummaryCard = ({ setShowModal }) => {
+  const { addressList, currentAddress } = useProductsContext();
   const { cart, totalPriceOfCartProducts, actualPriceOfCart } =
     useCartContext();
   const totalItems = cart.reduce((acc, { qty }) => acc + qty, 0);
@@ -49,7 +51,16 @@ const SummaryCard = ({ setShowModal }) => {
 
       <div className="w-full py-2   flex gap-4 items-center">
         <button
-          onClick={() => setShowModal(true)}
+          onClick={() => {
+            if (
+              addressList.length === 0 ||
+              Object.keys(currentAddress).length === 0
+            ) {
+              notify("warn", "Please Select an Address.");
+            } else {
+              setShowModal(true);
+            }
+          }}
           className="btn-rounded-primary rounded-full flex items-center gap-2 md:text-sm lg:text-base"
         >
           Place Order

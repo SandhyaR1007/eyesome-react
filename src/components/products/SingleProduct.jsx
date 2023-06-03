@@ -7,6 +7,7 @@ import {
   useWishlistContext,
 } from "../../contexts";
 import { useNavigate } from "react-router";
+import { notify } from "../../utils/utils";
 
 const SingleProduct = ({ product }) => {
   const { token } = useAuthContext();
@@ -67,6 +68,7 @@ const SingleProduct = ({ product }) => {
             onClick={() => {
               if (!token) {
                 navigate("/login");
+                notify("warn", "Please Login to continue");
               } else {
                 if (!inCart) {
                   addProductToCart(product);
@@ -84,6 +86,7 @@ const SingleProduct = ({ product }) => {
             onClick={() => {
               if (!token) {
                 navigate("/login");
+                notify("warn", "Please Login to continue");
               } else {
                 if (product?.inWish) {
                   deleteProductFromWishlist(product._id);

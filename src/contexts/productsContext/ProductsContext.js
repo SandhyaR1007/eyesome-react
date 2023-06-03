@@ -90,7 +90,7 @@ const ProductsContextProvider = ({ children }) => {
   const addAddress = (newAddress) => {
     dispatch({
       type: addressTypes.ADD_ADDRESS,
-      payload: [...state.addressList, newAddress],
+      payload: [newAddress, ...state.addressList],
     });
   };
   const updateAddress = (addressId, updatedAddress) => {
@@ -100,12 +100,18 @@ const ProductsContextProvider = ({ children }) => {
         item.id === addressId ? updatedAddress : item
       ),
     });
+    if (currentAddress.id === addressId) {
+      setCurrentAddress(updatedAddress);
+    }
   };
   const deleteAddress = (addressId) => {
     dispatch({
       type: addressTypes.ADD_ADDRESS,
       payload: state.addressList.filter(({ id }) => id !== addressId),
     });
+    if (currentAddress.id === addressId) {
+      setCurrentAddress({});
+    }
   };
   const isInCart = (productId) =>
     state.allProducts.find((item) => item._id === productId && item.inCart);
