@@ -11,6 +11,7 @@ import {
 } from "../contexts";
 import { getProductByIdService } from "../api/apiServices";
 import { StarRating } from "../components";
+import { notify } from "../utils/utils";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -105,6 +106,7 @@ const ProductDetails = () => {
               onClick={() => {
                 if (!token) {
                   navigate("/login");
+                  notify("warn", "Please Login to continue");
                 } else {
                   if (!product?.inCart) {
                     addProductToCart(product);
@@ -122,10 +124,15 @@ const ProductDetails = () => {
               className="btn-rounded-primary rounded-full flex items-center gap-2 text-sm disabled:cursor-not-allowed"
               disabled={disableWish}
               onClick={() => {
-                if (product?.inWish) {
-                  deleteProductFromWishlist(product._id);
+                if (!token) {
+                  navigate("/login");
+                  notify("warn", "Please Login to continue");
                 } else {
-                  addProductToWishlist(product);
+                  if (product?.inWish) {
+                    deleteProductFromWishlist(product._id);
+                  } else {
+                    addProductToWishlist(product);
+                  }
                 }
               }}
             >
