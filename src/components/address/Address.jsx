@@ -21,7 +21,10 @@ const Address = ({ isEdit }) => {
         <div className="flex flex-col items-start ">
           <button
             className="btn-rounded-primary text-sm "
-            onClick={() => setShowAddressForm(!showAddressForm)}
+            onClick={() => {
+              setShowAddressForm(true);
+              setEditAddress(false);
+            }}
           >
             + Add New Address
           </button>
