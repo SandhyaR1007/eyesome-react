@@ -56,7 +56,7 @@ const SummaryCard = ({ setShowModal }) => {
               addressList.length === 0 ||
               Object.keys(currentAddress).length === 0
             ) {
-              notify("warn", "Please Select an Address.");
+              notify("warn", "Please Select or Add an Address.");
             } else {
               setShowModal(true);
             }
