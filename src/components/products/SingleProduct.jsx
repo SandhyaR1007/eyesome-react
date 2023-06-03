@@ -6,7 +6,7 @@ import {
   useProductsContext,
   useWishlistContext,
 } from "../../contexts";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { notify } from "../../utils/utils";
 
 const SingleProduct = ({ product }) => {
@@ -16,6 +16,7 @@ const SingleProduct = ({ product }) => {
   const { addProductToWishlist, deleteProductFromWishlist, disableWish } =
     useWishlistContext();
   const navigate = useNavigate();
+  const location = useLocation();
   let inCart = isInCart(product._id);
 
   return (
@@ -67,7 +68,7 @@ const SingleProduct = ({ product }) => {
             disabled={disableCart}
             onClick={() => {
               if (!token) {
-                navigate("/login");
+                navigate("/login", { state: { from: location.pathname } });
                 notify("warn", "Please Login to continue");
               } else {
                 if (!inCart) {
@@ -85,7 +86,7 @@ const SingleProduct = ({ product }) => {
             className="disabled:cursor-not-allowed"
             onClick={() => {
               if (!token) {
-                navigate("/login");
+                navigate("/login", { state: { from: location.pathname } });
                 notify("warn", "Please Login to continue");
               } else {
                 if (product?.inWish) {

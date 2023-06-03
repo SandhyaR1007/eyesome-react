@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BsBookmarkHeart, BsFillBookmarkHeartFill } from "react-icons/bs";
 
@@ -15,6 +15,7 @@ import { notify } from "../utils/utils";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { productId } = useParams();
   const { token } = useAuthContext();
   const { getProductById, allProducts } = useProductsContext();
@@ -105,7 +106,7 @@ const ProductDetails = () => {
               disabled={disableCart}
               onClick={() => {
                 if (!token) {
-                  navigate("/login");
+                  navigate("/login", { state: { from: location.pathname } });
                   notify("warn", "Please Login to continue");
                 } else {
                   if (!product?.inCart) {
@@ -125,7 +126,7 @@ const ProductDetails = () => {
               disabled={disableWish}
               onClick={() => {
                 if (!token) {
-                  navigate("/login");
+                  navigate("/login", { state: { from: location.pathname } });
                   notify("warn", "Please Login to continue");
                 } else {
                   if (product?.inWish) {
