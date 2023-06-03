@@ -39,3 +39,6 @@
 .modalShadow {
   box-shadow: rgba(17, 12, 46, 0.1) 0px 48px 120px 0px;
 }
+.categoryContainer:hover img {
+  scale: 1.1;
+}
