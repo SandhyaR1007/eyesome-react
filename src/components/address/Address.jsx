@@ -18,15 +18,17 @@ const Address = ({ isEdit }) => {
           setEditAddress={setEditAddress}
         />
       ) : (
-        <button
-          className="btn-rounded-primary text-sm "
-          onClick={() => {
-            setShowAddressForm(true);
-            setEditAddress(false);
-          }}
-        >
-          + Add New Address
-        </button>
+        <div className="flex flex-col items-start ">
+          <button
+            className="btn-rounded-primary text-sm "
+            onClick={() => {
+              setShowAddressForm(true);
+              setEditAddress(false);
+            }}
+          >
+            + Add New Address
+          </button>
+        </div>
       )}
       <div className="flex flex-col gap-2">
         {addressList.map((address) => (
