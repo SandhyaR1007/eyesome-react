@@ -8,11 +8,16 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import defaultUser from "../../assets/defaultUser.png";
 import MenuDropdown from "./MenuDropdown";
 import Logo from "./Logo";
-import { useCartContext, useWishlistContext } from "../../contexts";
+import {
+  useAuthContext,
+  useCartContext,
+  useWishlistContext,
+} from "../../contexts";
 
 import Search from "../filters/Search";
 
 const Navbar = () => {
+  const { token } = useAuthContext();
   const { cart } = useCartContext();
   const { wishlist } = useWishlistContext();
   const navigate = useNavigate();
@@ -70,7 +75,7 @@ const Navbar = () => {
               onClick={() => navigate("/wishlist")}
             >
               <BsBookmarkHeart />
-              {wishlist.length > 0 && (
+              {token && wishlist.length > 0 && (
                 <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-600 border-2 border-[--theme-color] rounded-full -top-2 -right-2 ">
                   {wishlist.length}
                 </div>
@@ -81,7 +86,7 @@ const Navbar = () => {
               onClick={() => navigate("/cart")}
             >
               <HiOutlineShoppingBag />
-              {cart.length > 0 && (
+              {token && cart.length > 0 && (
                 <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-rose-600 border-2 border-[--theme-color] rounded-full -top-2 -right-2 ">
                   {cart.length}
                 </div>
