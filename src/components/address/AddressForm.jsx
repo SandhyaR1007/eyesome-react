@@ -112,26 +112,28 @@ const AddressForm = ({ setShowAddressForm, editAddress, setEditAddress }) => {
       </div>
 
       <div className="flex gap-3 mt-3 flex-wrap">
-        <button
-          type="button"
-          className="btn-rounded-secondary rounded-full flex items-center gap-2 text-sm p-1"
-          onClick={() => {
-            setNewAddress({
-              id: uuid(),
-              fullname: "Naruto Uzumaki",
-              mobile: "2134567890",
-              flat: "9, 100, uzumaki aparts",
-              area: "Hokage rock",
-              city: "Konohagakure",
-              pincode: "090909",
-            });
-            if (editAddress) {
-              setEditAddress(null);
-            }
-          }}
-        >
-          Fill dummy values
-        </button>
+        {!editAddress && (
+          <button
+            type="button"
+            className="btn-rounded-secondary rounded-full flex items-center gap-2 text-sm p-1"
+            onClick={() => {
+              setNewAddress({
+                id: uuid(),
+                fullname: "Naruto Uzumaki",
+                mobile: "2134567890",
+                flat: "9, 100, uzumaki aparts",
+                area: "Hokage rock",
+                city: "Konohagakure",
+                pincode: "090909",
+              });
+              if (editAddress) {
+                setEditAddress(null);
+              }
+            }}
+          >
+            Fill dummy values
+          </button>
+        )}
         <button
           type="button"
           className="btn-rounded-secondary rounded-full flex items-center gap-2 text-sm"
