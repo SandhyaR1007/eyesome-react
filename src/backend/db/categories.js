@@ -1,6 +1,6 @@
-import glassCategory1 from "../../assets/glassCategory1.png";
-import glassCategory2 from "../../assets/glassCategory2.png";
-import glassCategory3 from "../../assets/glassCategory3.png";
+import glassCategory1 from "../../assets/categories/visionmod1.jpg";
+import glassCategory2 from "../../assets/categories/sunmod1.jpg";
+import glassCategory3 from "../../assets/categories/sportsmod1.jpg";
 
 /**
  * Category Database can be added here.
