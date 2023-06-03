@@ -36,7 +36,7 @@ const Filters = ({ isFilterOpen, setIsFilterOpen }) => {
         Clear
       </button>
       <section className="py-3">
-        <FilterHeading text="Type" />
+        <FilterHeading text="Gender" />
         <div className="grid grid-rows-2 grid-cols-2 gap-2">
           {gendersList.map((data, index) => (
             <InputRadioType2 data={data} key={index} />
