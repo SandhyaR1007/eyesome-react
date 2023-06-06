@@ -17,7 +17,7 @@ const Cart = () => {
         <meta name="description" content="Login page eyesome" />
       </Helmet>
       {cart.length > 0 && (
-        <h1 className="text-2xl font-bold p-3 ">Bag({cart.length})</h1>
+        <h1 className="text-2xl font-bold p-3 ">Bag({cart.length})</h1> 
       )}
       {cart.length ? (
         <div className="md:grid md:grid-cols-3 gap-5">
