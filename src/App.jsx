@@ -3,14 +3,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { Index as Route } from "./routes/index";
 import "./custom.styles.css";
 import { ToastContainer } from "react-toastify";
+import { HelmetProvider } from "react-helmet-async";
 
-const App = () => {
+export default App = () => {
+  const helmetContext = {};
   return (
     <>
-      <ToastContainer hideProgressBar theme="dark" autoClose={2000} />
-      <Route />
+      <HelmetProvider context={helmetContext}>
+        <ToastContainer hideProgressBar theme="dark" autoClose={2000} />
+        <Route />
+      </HelmetProvider>
     </>
   );
 };
-
-export default App;

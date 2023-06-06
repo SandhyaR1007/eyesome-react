@@ -4,6 +4,7 @@ import { useCartContext } from "../contexts";
 import { CartItemCard } from "../components";
 import CartTotalCard from "../components/cart/CartTotalCard";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
   const { cart } = useCartContext();
@@ -11,6 +12,10 @@ const Cart = () => {
 
   return (
     <div className="py-2 ">
+      <Helmet>
+        <title>Cart | eyesome</title>
+        <meta name="description" content="Login page eyesome" />
+      </Helmet>
       {cart.length > 0 && (
         <h1 className="text-2xl font-bold p-3 ">Bag({cart.length})</h1>
       )}

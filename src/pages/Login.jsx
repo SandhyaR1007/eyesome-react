@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import bannerHero from "../assets/bannerHero.jpg";
 import { Logo } from "../components";
 import { useAuthContext } from "../contexts";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { loginHandler, token, loggingIn } = useAuthContext();
@@ -33,6 +34,10 @@ const Login = () => {
   };
   return (
     <main className="grid  grid-rows-1 lg:grid-cols-2 w-full  h-screen m-auto">
+      <Helmet>
+        <title>Login | eyesome</title>
+        <meta name="description" content="Login page eyesome" />
+      </Helmet>
       <section className=" hidden lg:block max-h-screen  rounded-lg">
         <img src={bannerHero} alt="" className="w-full h-full object-cover" />
       </section>
