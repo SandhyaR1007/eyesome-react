@@ -5,7 +5,7 @@ import "./custom.styles.css";
 import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
 
-export default App = () => {
+const App = () => {
   const helmetContext = {};
   return (
     <>
@@ -16,3 +16,4 @@ export default App = () => {
     </>
   );
 };
+export default App;
