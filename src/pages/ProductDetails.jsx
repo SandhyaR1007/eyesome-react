@@ -12,6 +12,7 @@ import {
 import { getProductByIdService } from "../api/apiServices";
 import { StarRating } from "../components";
 import { notify } from "../utils/utils";
+import { Helmet } from "react-helmet-async";
 
 const ProductDetails = () => {
   const navigate = useNavigate();
@@ -40,6 +41,10 @@ const ProductDetails = () => {
 
   return (
     <div className="md:min-h-[80vh] flex justify-center items-center pt-5 sm:pt-3 pb-2 relative">
+      <Helmet>
+        <title>Product Details | eyesome</title>
+        <meta name="description" content="" />
+      </Helmet>
       <main className="grid grid-rows-1 sm:grid-cols-2 gap-2 sm:gap-10 ">
         <section className="relative p-7 bg-black/[0.075]  flex items-center justify-center rounded-lg">
           <img

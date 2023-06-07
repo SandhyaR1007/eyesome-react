@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import orderSuccess from "../assets/success-order.gif";
 import { useLocation, useNavigate } from "react-router";
+import { Helmet } from "react-helmet-async";
 
 const Orders = () => {
   const location = useLocation();
@@ -16,6 +17,10 @@ const Orders = () => {
   }, []);
   return (
     <div className="min-h-[80vh] flex justify-center items-center py-3 ">
+     <Helmet>
+        <title>Orders | eyesome</title>
+        <meta name="description" content="" />
+      </Helmet>
       <div className="bg-white h-1/2 w-96 m-auto  rounded-md flex flex-col items-center justify-center p-5 modalShadow">
         <div className=" w-64  flex items-center justify-center ">
           <img

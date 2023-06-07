@@ -2,6 +2,7 @@ import React from "react";
 import SingleProduct from "../components/products/SingleProduct";
 import { useWishlistContext } from "../contexts";
 import emptyWish from "../assets/empty-wish.gif";
+import { Helmet } from "react-helmet-async";
 
 const Wishlist = () => {
   const { wishlist } = useWishlistContext();
@@ -10,7 +11,10 @@ const Wishlist = () => {
     <div>
       {wishlist.length ? (
         <>
-          {" "}
+          <Helmet>
+            <title>Wishlist | eyesome</title>
+            <meta name="description" content="" />
+          </Helmet>
           <h1 className="text-2xl py-6 font-semibold text-gray-800">
             Wishlist
           </h1>
