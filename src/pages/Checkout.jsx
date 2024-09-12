@@ -4,6 +4,7 @@ import Address from "../components/address/Address";
 import { useLocation, useNavigate } from "react-router";
 import Modal from "../components/checkout/Modal";
 import { useCartContext } from "../contexts";
+import { Helmet } from "react-helmet-async";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -20,6 +21,10 @@ const Checkout = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Checkout | eyesome</title>
+        <meta name="description" content="" />
+      </Helmet>
       <div className="md:min-h-[80vh] flex justify-center items-center py-3">
         <main className="grid md:grid-cols-2 gap-10 w-full">
           <Modal

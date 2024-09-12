@@ -4,6 +4,7 @@ import { useAuthContext, useProductsContext } from "../contexts";
 
 import { AddressCard, AddressForm } from "../components";
 import Address from "../components/address/Address";
+import { Helmet } from "react-helmet-async";
 
 const Profile = () => {
   const userDetails = localStorage.getItem("userInfo")
@@ -26,6 +27,10 @@ const Profile = () => {
 
   return (
     <div className="min-h-[80vh] min-w-md max-w-lg m-auto mt-10">
+     <Helmet>
+        <title>Profile | eyesome</title>
+        <meta name="description" content="" />
+      </Helmet>
       <section className="h-full p-7 rounded-md shadow-sm bg-white/[0.7] flex flex-col gap-6 w-full">
         <div className="flex">
           <button
